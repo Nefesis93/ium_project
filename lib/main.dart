@@ -52,6 +52,28 @@ class LogInPage extends StatelessWidget {
                   hintText: "Enter password"
                 )
               )
+            ),
+            FlatButton(
+              onPressed: () => 0,
+              child: Text(
+                "Forgot Password",
+                style: TextStyle(color: Colors.blue, fontSize: 15),
+              )
+            ),
+            Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(20)
+              ),
+              child: FlatButton(
+                onPressed: () => 0,
+                child: Text(
+                  "Login",
+                  style: TextStyle(color: Colors.white, fontSize: 25)
+                )
+              )
             )
           ]
         )
@@ -59,16 +81,3 @@ class LogInPage extends StatelessWidget {
     );
   }
 }
-
-/*
-      appBar: AppBar(
-        title: const Text("prova app"),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.home),
-            tooltip: 'Go to Home Page',
-            onPressed: () => 0,
-          ),
-        ]
-      ),
-*/
