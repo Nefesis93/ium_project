@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/login.dart';
 import 'package:ium_project/main.dart';
+import 'package:ium_project/login_info.dart';
 
 /*
 app bar in alto con le funzioni di ricerca e login
@@ -40,6 +41,9 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
+/*
+funzione che costruisce il dialog che cercano di accedere a funzioni bloccate per gli utenti non loggati
+*/
 void _loginDialog(BuildContext context) {
   showDialog<String>(
     context: context,
@@ -86,6 +90,9 @@ void _loginDialog(BuildContext context) {
   );
 }
 
+/*
+funzione che fa tornare alla home page con un' animazione customizzata 
+*/
 Route _home() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const MyApp(),
@@ -125,8 +132,8 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
             child: IconButton(
               onPressed: () {
                 Navigator.of(context).pushReplacement(
-                _home(),
-              );
+                  _home(),
+                );
               },
               icon: const Icon(
                 Icons.home,
@@ -140,7 +147,13 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {
-                _loginDialog(context);
+                if (UserLogin().getLoginInfo())
+                {
+                  //l'utente è loggato
+                } else {
+                  //l'utente non è loggato
+                  _loginDialog(context);
+                } 
               },
               icon: const Icon(
                 Icons.menu_book,
@@ -154,6 +167,9 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
+/*
+pulsante + che andrà inserito nel mezzo della bottom bar
+*/
 class FloatingPlusButton extends StatelessWidget {
   const FloatingPlusButton({Key? key}) : super(key: key);
 
@@ -161,7 +177,13 @@ class FloatingPlusButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        _loginDialog(context);
+        if (UserLogin().getLoginInfo())
+        {
+          //l'utente è loggato
+        } else {
+          //l'utente non è loggato
+          _loginDialog(context);
+        } 
       },
       elevation: 0,
       backgroundColor: Colors.white,

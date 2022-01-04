@@ -1,4 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/main.dart';
+import 'package:ium_project/login_info.dart';
+
+/*
+funzione che chiude la schermata di login con un' animazione customizzata 
+*/
+Route _loggedIn() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const MyApp(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset.zero;
+      const end = Offset.zero;
+
+      var tween = Tween(begin: begin, end: end);
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
+}
 
 /*
 schermata di login
@@ -52,7 +74,13 @@ class LoginPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20)
               ),
               child: TextButton(
-                onPressed: () => 0,
+                onPressed: () {
+                  UserLogin().login();
+                  Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(
+                    _loggedIn(),
+                  );
+                },
                 child: const Text(
                   "Login",
                   style: TextStyle(
