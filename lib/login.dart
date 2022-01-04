@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 /*
 schermata di login
 */
-class LogInPage extends StatelessWidget {
-  const LogInPage({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login Page"),
+        title: const Text("Login"),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,7 +55,10 @@ class LogInPage extends StatelessWidget {
                 onPressed: () => 0,
                 child: const Text(
                   "Login",
-                  style: TextStyle(color: Colors.white, fontSize: 25)
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25
+                  )
                 )
               )
             )

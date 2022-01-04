@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/login.dart';
+import 'package:ium_project/bars.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,11 +18,12 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
         //barra superiore
-        //appBar: DefaultBar(),
+        appBar: DefaultBar(),
         //barra inferiore
-        //bottomNavigationBar: DefaultBottomBar(),
-        //pagina di login
-        body: LogInPage(),
+        bottomNavigationBar: DefaultBottomBar(),
+        //più della barra inferiore
+        floatingActionButton: FloatingPlusButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       )
     );
   }
