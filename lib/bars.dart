@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ium_project/login.dart';
 import 'package:ium_project/main.dart';
 import 'package:ium_project/login_info.dart';
+import 'package:ium_project/notes_loading.dart';
 
 /*
 app bar in alto con le funzioni di ricerca e login
@@ -118,7 +119,7 @@ void _logoutDialog(BuildContext context) {
             UserLogin().logout();
             Navigator.pop(context);
           },
-          child: const Text("Disconnetto"),
+          child: const Text("Disconnetti"),
         ),
         Container(
           height: 40,
@@ -234,6 +235,10 @@ class FloatingPlusButton extends StatelessWidget {
         if (UserLogin().getLoginInfo())
         {
           //l'utente è loggato
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const NotesLoading()),
+          );
         } else {
           //l'utente non è loggato
           _loginDialog(context);
