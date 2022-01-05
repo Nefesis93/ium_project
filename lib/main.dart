@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/bars.dart';
-import 'package:ium_project/login_info.dart';
 
 void main() {
-  UserLogin user = UserLogin();
   runApp(const MyApp());
 }
 

@@ -27,10 +27,16 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const LoginPage()),
-            );
+            if (UserLogin().isLoggedIn) {
+              //l'utente è loggato
+                _logoutDialog(context);
+            } else {
+              //l'utente non è loggato
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginPage()),
+              );
+            }
           },
           icon: const Icon(
             Icons.account_circle
@@ -79,6 +85,54 @@ void _loginDialog(BuildContext context) {
             },
             child: const Text(
               "Effettua l'accesso",
+              style: TextStyle(
+                color: Colors.white
+              )
+            )
+          )
+        )
+      ],
+    )
+  );
+}
+
+/*
+funzione che costruisce il dialog che permette all'utente di disconnettersi
+*/
+void _logoutDialog(BuildContext context) {
+  showDialog<String>(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+      title: const Text(
+        "Sei già loggato",
+        textAlign: TextAlign.center,
+      ),
+      content: const Text(
+        "Hai già effettuato l'accesso per questa sessione",
+        textAlign: TextAlign.center,
+      ),
+      actionsAlignment: MainAxisAlignment.spaceBetween,
+      actions: <Widget>[
+        TextButton(
+          onPressed: () {
+            UserLogin().logout();
+            Navigator.pop(context);
+          },
+          child: const Text("Disconnetto"),
+        ),
+        Container(
+          height: 40,
+          width: 150,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(10)
+          ),
+          child: TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "Ho capito",
               style: TextStyle(
                 color: Colors.white
               )
