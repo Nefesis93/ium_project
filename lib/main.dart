@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
         //barra superiore
-        appBar: DefaultBar(),
+        appBar: DefaultBar(
+          title: "Home",
+        ),
         //barra inferiore
         bottomNavigationBar: DefaultBottomBar(),
         //più della barra inferiore
