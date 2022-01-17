@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/login_info.dart';
+import 'package:ium_project/custom_animations.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -69,7 +71,14 @@ class Settings extends StatelessWidget {
               ),
             ),
             child: TextButton(
-              onPressed: () => 0,
+              onPressed: () {
+                // aggiunto il logout
+                UserLogin().logout();
+                  Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(
+                    MyAnimations.homeAnimation(),
+                  );
+              },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.fromLTRB(10, 20, 348, 20),
               ),
