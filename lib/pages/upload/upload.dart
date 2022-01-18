@@ -1,38 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/custom_animations.dart';
-
-/*
-funzione che costruisce il dialog che conferma l'inserimento di un appunto
-*/
-void _uploadDialog(BuildContext context) {
-  showDialog<String>(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-      content: const Text(
-        "Appunti caricati con successo",
-        textAlign: TextAlign.center,
-      ),
-      actionsAlignment: MainAxisAlignment.end,
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.of(context).pushReplacement(
-              MyAnimations.homeAnimation()
-            );
-          },
-          child: const Text("ok"),
-        ),
-      ],
-    )
-  );
-}
+import 'package:ium_project/utility/custom_animations.dart';
+import 'package:ium_project/pages/upload/upload_dialogs.dart';
 
 /*
 schermata di caricamento appunti
 */
-class NotesLoading extends StatelessWidget {
-  const NotesLoading({Key? key}) : super(key: key);
+class UploadPage extends StatelessWidget {
+  const UploadPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +21,9 @@ class NotesLoading extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
               child: TextField(
+                maxLength: 25,
                 decoration: InputDecoration(
+                  counterText: "",
                   border: OutlineInputBorder(),
                   labelText: "Titolo",
                   hintText: "Inserisci il titolo dei tuoi appunti"
@@ -57,7 +33,9 @@ class NotesLoading extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(10),
               child: TextField(
+                maxLength: 25,
                 decoration: InputDecoration(
+                  counterText: "",
                   border: OutlineInputBorder(),
                   labelText: "Facoltà",
                   hintText: "Inserisci la facoltà"
@@ -67,7 +45,9 @@ class NotesLoading extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(10),
               child: TextField(
+                maxLength: 25,
                 decoration: InputDecoration(
+                  counterText: "",
                   border: OutlineInputBorder(),
                   labelText: "Corso",
                   hintText: "Inserisci il corso"
@@ -77,7 +57,9 @@ class NotesLoading extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.fromLTRB(10, 10, 10, 50),
               child: TextField(
+                maxLength: 25,
                 decoration: InputDecoration(
+                  counterText: "",
                   border: OutlineInputBorder(),
                   labelText: "Prof.",
                   hintText: "Inserisci il cognome del Prof."
@@ -145,7 +127,7 @@ class NotesLoading extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        _uploadDialog(context);
+                        UploadDialogs.uploadDialog(context);
                       },
                       child: const Text(
                         "Carica",

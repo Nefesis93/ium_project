@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/login_info.dart';
-import 'package:ium_project/custom_animations.dart';
+import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/utility/custom_dialogs.dart';
+import 'package:ium_project/pages/settings_information/settings_information.dart';
+import 'package:ium_project/pages/settings/settings_dialogs.dart';
+
 
 class Settings extends StatelessWidget {
   const Settings({Key? key}) : super(key: key);
@@ -17,8 +20,7 @@ class Settings extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(0),
+      body: Column(
         children:  <Widget>[
           Container(
             height: 60,
@@ -29,7 +31,14 @@ class Settings extends StatelessWidget {
               ),
             ),
             child: TextButton(
-              onPressed: () => 0,
+              onPressed: () {
+                //inserire cambia password
+                if (UserLogin().getLoginInfo()) {
+                  SettingsDialogs.changePasswordDialog(context);
+                } else {
+                  MyDialogs.permissionDialog(context);
+                }
+              },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.fromLTRB(10, 20, 235, 20),
               ),
@@ -50,7 +59,12 @@ class Settings extends StatelessWidget {
               ),
             ),
             child: TextButton(
-              onPressed: () => 0,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsInformation())
+                );
+              },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.fromLTRB(10, 20, 279, 20),
               ),
@@ -72,12 +86,13 @@ class Settings extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () {
-                // aggiunto il logout
-                UserLogin().logout();
-                  Navigator.pop(context);
-                  Navigator.of(context).pushReplacement(
-                    MyAnimations.homeAnimation(),
-                  );
+                if (UserLogin().getLoginInfo()) {
+                  //popup di conferma
+                  SettingsDialogs.confirmLogoutDialog(context);
+                } else {
+                  //popup gia loggato
+                  SettingsDialogs.alreadyLogoutDialog(context);
+                }
               },
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.fromLTRB(10, 20, 348, 20),

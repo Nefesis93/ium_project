@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/login.dart';
-import 'package:ium_project/main.dart';
-import 'package:ium_project/login_info.dart';
-import 'package:ium_project/notes_loading.dart';
-import 'package:ium_project/libreria.dart';
-import 'package:ium_project/settings.dart';
-
+import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/informations/page_track.dart';
+import 'package:ium_project/pages/login/login.dart';
+import 'package:ium_project/pages/upload/upload.dart';
+import 'package:ium_project/pages/library/library.dart';
+import 'package:ium_project/pages/settings/settings.dart';
+import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/utility/custom_dialogs.dart';
+import 'package:ium_project/utility/bars/bars_dialogs.dart';
 
 /*
 app bar in alto con le funzioni di ricerca e login
@@ -43,11 +45,12 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           onPressed: () {
-            if (UserLogin().isLoggedIn) {
+            if (UserLogin().getLoginInfo()) {
               //l'utente è loggato
-                _logoutDialog(context);
+              BarsDialogs.logoutDialog(context);
             } else {
               //l'utente non è loggato
+              PageTrack().pushPage(MyPage.login);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -61,6 +64,7 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
+            PageTrack().pushPage(MyPage.settings);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const Settings()),
@@ -74,123 +78,6 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
       ],  
     );
   }
-}
-
-/*
-funzione che costruisce il dialog che cercano di accedere a funzioni bloccate per gli utenti non loggati
-*/
-void _loginDialog(BuildContext context) {
-  showDialog<String>(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-      title: const Text(
-        "Accesso negato",
-        textAlign: TextAlign.center,
-      ),
-      content: const Text(
-        "Devi effettuare l'accesso per utilizzare questa funzione",
-        textAlign: TextAlign.center,
-      ),
-      actionsAlignment: MainAxisAlignment.spaceBetween,
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: const Text("Ho capito"),
-        ),
-        Container(
-          height: 40,
-          width: 150,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child: TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
-              );
-            },
-            child: const Text(
-              "Effettua l'accesso",
-              style: TextStyle(
-                color: Colors.white
-              )
-            )
-          )
-        )
-      ],
-    )
-  );
-}
-
-/*
-funzione che costruisce il dialog che permette all'utente di disconnettersi
-*/
-void _logoutDialog(BuildContext context) {
-  showDialog<String>(
-    context: context,
-    builder: (BuildContext context) => AlertDialog(
-      title: const Text(
-        "Sei già loggato",
-        textAlign: TextAlign.center,
-      ),
-      content: const Text(
-        "Hai già effettuato l'accesso per questa sessione",
-        textAlign: TextAlign.center,
-      ),
-      actionsAlignment: MainAxisAlignment.spaceBetween,
-      actions: <Widget>[
-        TextButton(
-          onPressed: () {
-            UserLogin().logout();
-            Navigator.pop(context);
-          },
-          child: const Text("Disconnetti"),
-        ),
-        Container(
-          height: 40,
-          width: 150,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.circular(10)
-          ),
-          child: TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text(
-              "Ho capito",
-              style: TextStyle(
-                color: Colors.white
-              )
-            )
-          )
-        )
-      ],
-    )
-  );
-}
-
-/*
-funzione che fa tornare alla home page con un' animazione customizzata 
-*/
-Route _home() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const MyApp(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset.zero;
-      const end = Offset.zero;
-
-      var tween = Tween(begin: begin, end: end);
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }
 
 /*
@@ -214,8 +101,9 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {
+                
                 Navigator.of(context).pushReplacement(
-                  _home(),
+                  BarsDialogs.home(),
                 );
               },
               icon: const Icon(
@@ -240,7 +128,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
                   );
                 } else {
                   //l'utente non è loggato
-                  _loginDialog(context);
+                  MyDialogs.permissionDialog(context);
                 } 
               },
               icon: const Icon(
@@ -274,11 +162,11 @@ class FloatingPlusButton extends StatelessWidget {
             //l'utente è loggato
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const NotesLoading()),
+              MaterialPageRoute(builder: (context) => const UploadPage()),
             );
           } else {
             //l'utente non è loggato
-            _loginDialog(context);
+            MyDialogs.permissionDialog(context);
           } 
         },
         elevation: 0,

@@ -1,6 +1,8 @@
 to do:
+- inserire le funzioni di navigazione ogni volta che si naviga da una pagina all'altra
+    solo cartelle library, login, settings, upload, le altre sono gia fatte
 - la mia libreria
-- impostazioni
 - pagina generica di appunti
 - inserire recensioni
 - ricerca
+- rimuovere padding da TUTTO
