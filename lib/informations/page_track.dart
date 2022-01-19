@@ -37,4 +37,8 @@ class PageTrack {
       pushPage(page);
     }
   }
+
+  void clearPages() {
+    size = 0; 
+  }
 }
