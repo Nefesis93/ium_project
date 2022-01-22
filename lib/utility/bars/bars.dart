@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
-import 'package:ium_project/informations/page_track.dart';
+import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/upload/upload.dart';
 import 'package:ium_project/pages/library/library.dart';
@@ -50,7 +50,6 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
               BarsDialogs.logoutDialog(context);
             } else {
               //l'utente non è loggato
-              PageTrack().pushPage(MyPage.login);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -64,7 +63,6 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
-            PageTrack().pushPage(MyPage.settings);
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const Settings()),
@@ -101,7 +99,8 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {
-                
+                //resetto lo stato della libreria
+                LibraryInfo().appuntiCaricati();
                 Navigator.of(context).pushReplacement(
                   BarsDialogs.home(),
                 );
@@ -119,6 +118,8 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {
+                //resetto lo stato della libreria
+                LibraryInfo().appuntiCaricati();
                 if (UserLogin().getLoginInfo())
                 {
                   //l'utente è loggato

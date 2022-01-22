@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/enums/my_page.dart';
-import 'package:ium_project/informations/page_track.dart';
 import 'package:ium_project/pages/login/login.dart';
 
 /*
@@ -40,7 +38,6 @@ class MyDialogs {
             child: TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                PageTrack().pushPage(MyPage.login);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const LoginPage()),

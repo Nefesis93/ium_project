@@ -1,8 +1,11 @@
 to do:
-- inserire le funzioni di navigazione ogni volta che si naviga da una pagina all'altra
-    solo cartelle library, login, settings, upload, le altre sono gia fatte
-- la mia libreria
-- pagina generica di appunti
-- inserire recensioni
+- pagina generica di appunti che servirà per i due punti seguenti
+- home (mancano da inserire i link ai singoli appunti e aggiungere elementi)
+- la mia libreria (mancano da inserire i link ai singoli appunti e aggiungere elementi)
 - ricerca
-- rimuovere padding da TUTTO
+- fixare padding su alcune pagine in modo tale che si vedano bene su più dipositivi
+
+implementate delle route(pagine dell'app) predefinite nel main così è più facile richiamarle, il codice ancora non è aggiornato su tutti i navigate
+    e al momento non è importante ma se capitano a tiro fixiamo
+    riferimento: https://www.youtube.com/watch?v=nyvwx7o277U&ab_channel=ResoCoder
+    ho utilizzato il metodo che lui fa vedere per secondo tanto noi non passimo parametri tra le pagine (spero che non ci serva)

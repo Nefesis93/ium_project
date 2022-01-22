@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/enums/my_page.dart';
-import 'package:ium_project/informations/page_track.dart';
+import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/main.dart';
 import 'package:ium_project/informations/login_info.dart';
 
@@ -12,11 +11,6 @@ class BarsDialogs {
   funzione che fa tornare alla home page con un' animazione customizzata 
   */
   static Route home() {
-    //setto la pagina attuale a home se non sono gia nella home
-    PageTrack pageTrack = PageTrack();
-    if (pageTrack.getLast() != MyPage.home) {
-      pageTrack.pushPage(MyPage.home);
-    }
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) => const MyApp(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
@@ -54,6 +48,10 @@ class BarsDialogs {
             onPressed: () {
               UserLogin().logout();
               Navigator.pop(context);
+              LibraryInfo().appuntiCaricati();
+              Navigator.of(context).pushReplacement(
+                BarsDialogs.home(),
+              );
             },
             child: const Text("Disconnetti"),
           ),

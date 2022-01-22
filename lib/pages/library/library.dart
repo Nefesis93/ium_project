@@ -3,13 +3,13 @@ import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/custom_animations.dart';
-import 'package:ium_project/informations/user_library.dart';
+import 'package:ium_project/informations/library_info.dart';
 
 class Library extends StatelessWidget {
   const Library({Key? key}) : super(key: key);
 
   Widget createBody(BuildContext context) {
-    if (MyLybrary().getState()) {
+    if (LibraryInfo().getState()) {
       //sto nel tab appunti caricati
       return Column(
         children: [
@@ -51,7 +51,7 @@ class Library extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    MyLybrary().appuntiScaricati();
+                    LibraryInfo().appuntiScaricati();
                     Navigator.pop(context);
                     Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
                   },
@@ -69,7 +69,7 @@ class Library extends StatelessWidget {
               )
             ],
           ),
-          //lista che contiene l'elenco dei file presenti AL MOMENTO NON FUNZIONA
+          //lista che contiene l'elenco degli appunti
           ListView(
             shrinkWrap: true,
             children: <Widget> [
@@ -148,9 +148,10 @@ class Library extends StatelessWidget {
                                 decoration: const BoxDecoration(
                                   color: Colors.blue,
                                 ),
-                                //alignment: Alignment.centerLeft,
                                 child: TextButton(
-                                  onPressed: () => 0,
+                                  onPressed: () {
+                                    Navigator.pushNamed(context, '/recensioni');
+                                  },
                                   child: const Text(
                                     "Visualizza Recensioni",
                                     style: TextStyle(
@@ -176,6 +177,7 @@ class Library extends StatelessWidget {
       //sto nel tab appunti scaricati
       return Column(
         children: [
+          //barra con appunti caricati e scaricati
           Row(
             children: <Widget>[
               Container(
@@ -190,7 +192,7 @@ class Library extends StatelessWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    MyLybrary().appuntiCaricati();
+                    LibraryInfo().appuntiCaricati();
                     Navigator.pop(context);
                     Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
                   },

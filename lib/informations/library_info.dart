@@ -1,15 +1,15 @@
 /*
 file che mantiene traccia dello stato della libreria
 */
-class MyLybrary {
-  static final MyLybrary _library = MyLybrary._internal();
+class LibraryInfo {
+  static final LibraryInfo _library = LibraryInfo._internal();
 
   //se settato a true significa che sto nel tab appunti caricati
   bool _state = true;
 
-  MyLybrary._internal();
+  LibraryInfo._internal();
 
-  factory MyLybrary() {
+  factory LibraryInfo() {
     return _library;
   }
 
