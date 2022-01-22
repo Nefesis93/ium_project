@@ -4,7 +4,7 @@ import 'package:ium_project/utility/custom_animations.dart';
 /*
 classe che conterrà tutti i dialog utilizzati nella pagina di upload degli appunti
 */
-class UploadDialogs {
+class AddAppuntoDialogs {
   /*
   funzione che costruisce il dialog che conferma l'inserimento di un appunto
   */

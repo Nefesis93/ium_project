@@ -266,10 +266,8 @@ class Home extends StatelessWidget {
                 ]
               ),
               //ultimo elemento della lista, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-              Expanded(
-                child: Container(
-                  height: 422,
-                ),
+              Container(
+                height: 422,
               ),
             ]
           ),

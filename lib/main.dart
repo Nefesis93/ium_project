@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/pages/add_appunto/add_appunto.dart';
+import 'package:ium_project/pages/add_recensione/add_recensione.dart';
 import 'package:ium_project/pages/home/home.dart';
 import 'package:ium_project/pages/library/library.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/recensioni/recensioni.dart';
 import 'package:ium_project/pages/settings/settings.dart';
 import 'package:ium_project/pages/settings_information/settings_information.dart';
-import 'package:ium_project/pages/upload/upload.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      //modificata la home per testare
       home: const Home(),
       //mappa che contiene il link a tutte le pagine
       routes: {
@@ -29,8 +31,9 @@ class MyApp extends StatelessWidget {
         '/settings': (_) => const Settings(),
         '/settings_information': (_) => const SettingsInformation(),
         '/library': (_) => const Library(),
-        '/upload': (_) => const UploadPage(),
+        '/add_appunto': (_) => const AddAppunto(),
         '/recensioni': (_) => const Recensioni(),
+        '/add_recensione': (_) => const AddRecensione(),
       },
     );
   }

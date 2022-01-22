@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/utility/custom_animations.dart';
-import 'package:ium_project/pages/upload/upload_dialogs.dart';
+
+import 'add_appunto_dialog.dart';
 
 /*
 schermata di caricamento appunti
 */
-class UploadPage extends StatelessWidget {
-  const UploadPage({Key? key}) : super(key: key);
+class AddAppunto extends StatelessWidget {
+  const AddAppunto({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +128,7 @@ class UploadPage extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        UploadDialogs.uploadDialog(context);
+                        AddAppuntoDialogs.uploadDialog(context);
                       },
                       child: const Text(
                         "Carica",

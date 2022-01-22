@@ -1,8 +1,11 @@
 to do:
+- pagina per scrivere una recensione (iniziata ma non finita)
+-pagina di anteprima degli appunti
 - pagina generica di appunti che servirà per i due punti seguenti
 - home (mancano da inserire i link ai singoli appunti e aggiungere elementi)
 - la mia libreria (mancano da inserire i link ai singoli appunti e aggiungere elementi)
 - ricerca
+- inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload
 - fixare padding su alcune pagine in modo tale che si vedano bene su più dipositivi
 
 implementate delle route(pagine dell'app) predefinite nel main così è più facile richiamarle, il codice ancora non è aggiornato su tutti i navigate

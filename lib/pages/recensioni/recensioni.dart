@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/pages/recensioni/recensioni_dialogs.dart';
+import 'package:ium_project/utility/custom_dialogs.dart';
 
 class Recensioni extends StatelessWidget {
   const Recensioni({Key? key}) : super(key: key);
@@ -37,10 +37,10 @@ class Recensioni extends StatelessWidget {
                 //bottone chiarezza
                 TextButton(
                   onLongPress: () {
-                    RecensioniDialogs.chiarezzaDialog(context);
+                    MyDialogs.chiarezzaDialog(context);
                   },
                   onPressed: () {
-                    RecensioniDialogs.chiarezzaDialog(context);
+                    MyDialogs.chiarezzaDialog(context);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,10 +61,10 @@ class Recensioni extends StatelessWidget {
                 //bottone validità
                 TextButton(
                   onLongPress: () {
-                    RecensioniDialogs.validitaDialog(context);
+                    MyDialogs.validitaDialog(context);
                   },
                   onPressed: () {
-                    RecensioniDialogs.validitaDialog(context);
+                    MyDialogs.validitaDialog(context);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,10 +85,10 @@ class Recensioni extends StatelessWidget {
                 //bottone completezza
                 TextButton(
                   onLongPress: () {
-                    RecensioniDialogs.completezzaDialog(context);
+                    MyDialogs.completezzaDialog(context);
                   },
                   onPressed: () {
-                    RecensioniDialogs.completezzaDialog(context);
+                    MyDialogs.completezzaDialog(context);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -395,10 +395,8 @@ class Recensioni extends StatelessWidget {
             ]
           ),
           //ultimo elemento della lsita, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-          Expanded(
-            child: Container(
-              height: 225,
-            ),
+          Container(
+            height: 225,
           ),
         ],
       ),
