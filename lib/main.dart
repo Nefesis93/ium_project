@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       //modificata la home per testare
-      home: const Home(),
+      home: const AddRecensione(),
       //mappa che contiene il link a tutte le pagine
       routes: {
         '/home': (_) => const Home(),
