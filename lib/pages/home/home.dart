@@ -45,7 +45,7 @@ class Home extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  //bottoni con le scritte
+                  //bottone degli appunti
                   Container(
                     height: 70,
                     width: 392,

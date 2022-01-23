@@ -40,7 +40,8 @@ class Settings extends StatelessWidget {
                 }
               },
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.fromLTRB(10, 20, 235, 20),
+                alignment: Alignment.centerLeft,
+                minimumSize: const Size.fromWidth(double.infinity),
               ),
               child: const Text(
                 "Cambia Password",
@@ -66,7 +67,8 @@ class Settings extends StatelessWidget {
                 );
               },
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.fromLTRB(10, 20, 279, 20),
+                alignment: Alignment.centerLeft,
+                minimumSize: const Size.fromWidth(double.infinity),
               ),
               child: const Text(
                 "Informazioni",
@@ -95,7 +97,8 @@ class Settings extends StatelessWidget {
                 }
               },
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.fromLTRB(10, 20, 348, 20),
+                alignment: Alignment.centerLeft,
+                minimumSize: const Size.fromWidth(double.infinity),
               ),
               child: const Text(
                 "Esci",
