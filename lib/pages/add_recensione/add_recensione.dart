@@ -184,14 +184,14 @@ class AddRecensione extends StatelessWidget {
                             children: const <Widget>[
                               Icon(
                                 Icons.star,
-                                color: Colors.blue,
+                                color: Colors.green,
                               ),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                                 child: Text(
                                   'Correttezza',
                                   style: TextStyle(
-                                    color: Colors.blue,
+                                    color: Colors.green,
                                     fontSize: 15,
                                   ),
                                 ),
