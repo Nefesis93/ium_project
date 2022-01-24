@@ -100,7 +100,7 @@ class Settings extends StatelessWidget {
                 minimumSize: const Size.fromWidth(double.infinity),
               ),
               child: const Text(
-                "Esci",
+                "Disconnetti",
                 style: TextStyle(
                   fontSize: 18,
                 ),

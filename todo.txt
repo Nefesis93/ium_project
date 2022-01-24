@@ -7,7 +7,7 @@ to do:
 - la mia libreria (mancano da inserire i link ai singoli appunti e aggiungere elementi)
 
 - inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload
-- fixare padding su alcune pagine in modo tale che si vedano bene su più dipositivi
+- fixare padding su home e libreria
 
 implementate delle route(pagine dell'app) predefinite nel main così è più facile richiamarle, il codice ancora non è aggiornato su tutti i navigate
     e al momento non è importante ma se capitano a tiro fixiamo
