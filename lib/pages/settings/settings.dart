@@ -32,7 +32,6 @@ class Settings extends StatelessWidget {
             ),
             child: TextButton(
               onPressed: () {
-                //inserire cambia password
                 if (UserLogin().getLoginInfo()) {
                   SettingsDialogs.changePasswordDialog(context);
                 } else {

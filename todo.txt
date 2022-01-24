@@ -1,5 +1,5 @@
 to do:
--pagina di anteprima degli appunti
+- pagina di anteprima degli appunti
 - ricerca
 - pagina generica di appunti che servirà per i due punti seguenti
 

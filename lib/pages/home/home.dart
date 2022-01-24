@@ -22,7 +22,6 @@ class Home extends StatelessWidget {
             children: <Widget> [
               Container(
                 height: 40,
-                width: 392,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -42,13 +41,13 @@ class Home extends StatelessWidget {
                 )
               ),
               //prima riga della lista di appunti
-              Row(
+              Row(  
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   //bottone degli appunti
                   Container(
                     height: 70,
-                    width: 392,
+                    width: MediaQuery.of(context).size.width,
                     alignment: Alignment.bottomLeft,
                     decoration: const BoxDecoration(
                       border: Border(
@@ -159,7 +158,7 @@ class Home extends StatelessWidget {
                   //bottoni con le scritte
                   Container(
                     height: 70,
-                    width: 392,
+                    width: MediaQuery.of(context).size.width,
                     alignment: Alignment.bottomLeft,
                     decoration: const BoxDecoration(
                       border: Border(
@@ -175,6 +174,8 @@ class Home extends StatelessWidget {
                           },
                           style: TextButton.styleFrom(
                             padding: const EdgeInsets.fromLTRB(20, 15, 130, 10),
+                            //alignment: Alignment.centerLeft,
+                            //minimumSize: const Size.fromWidth(double.infinity),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

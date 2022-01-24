@@ -24,7 +24,7 @@ class Recensioni extends StatelessWidget {
           //container che contiene le 3 stelline a inizio pagina
           Container(
             height: 40,
-            width: 392,
+            width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
             decoration: const BoxDecoration(
               border: Border(
@@ -111,12 +111,10 @@ class Recensioni extends StatelessWidget {
           ),
           //prima recensione
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              //riga che contiene tutta la prima recensione
               Container(
-                height: 185,
-                width: 392,
+                padding: const EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(width: 2, color: Colors.blue),
@@ -129,9 +127,11 @@ class Recensioni extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         //nome
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
+                        Container(
+                          height: 35,
+                          alignment: Alignment.bottomLeft,
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: const Text(
                             "Anonimo1",
                             style: TextStyle(
                               color: Colors.blue,
@@ -141,8 +141,9 @@ class Recensioni extends StatelessWidget {
                           ),
                         ),
                         //stelline e voti
-                        SizedBox(
-                          //padding: const EdgeInsets.fromLTRB(100, 0, 20, 0),
+                        Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           height: 45,
                           width: 150,
                           child: Column(
@@ -204,9 +205,10 @@ class Recensioni extends StatelessWidget {
                       ],
                     ),
                     //recensione
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(10, 10, 40, 0),
-                      child: Text(
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.all(0),
+                      child: const Text(
                         "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
                         "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
                         "Consigliatissimi a chiunque!",
@@ -216,40 +218,45 @@ class Recensioni extends StatelessWidget {
                       ),
                     ),
                     //pollice commento
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children:  <Widget>[
-                        //commento utile?
-                        const Padding(
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "Ti è stata utile questa recensione?",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        //pollice
-                        Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: IconButton(
-                              onPressed: () => 0,
-                              icon: const Icon(
-                                Icons.thumb_up_alt,
+                    Container(
+                      height: 30,
+                      alignment: Alignment.bottomRight,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children:  <Widget>[
+                          //commento utile?
+                          const Padding(
+                            padding: EdgeInsets.all(0),
+                            child: Text(
+                              "Ti è stata utile questa recensione?",
+                              style: TextStyle(
                                 color: Colors.blue,
+                                fontSize: 13,
                               ),
                             ),
+                          ),
+                          //pollice
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Opacity(
+                              opacity: 0.3,
+                              child: IconButton(
+                                onPressed: () => 0,
+                                icon: const Icon(
+                                  Icons.thumb_up_alt,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            )
                           )
-                        )
-                      ],
+                        ],
+                      ),
                     ),
-                  ]
+                  ],
                 ),
               ),
-            ]
+            ],
           ),
           //seconda recensione
           Row(
@@ -257,24 +264,25 @@ class Recensioni extends StatelessWidget {
             children: <Widget>[
               //riga che contiene tutta la prima recensione
               Container(
-                height: 205,
-                width: 392,
+                padding: const EdgeInsets.all(10),
+                width: MediaQuery.of(context).size.width,
                 decoration: const BoxDecoration(
                   border: Border(
                     bottom: BorderSide(width: 2, color: Colors.blue),
                   ),
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     //nome, stelline e voti
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         //nome
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: Text(
+                        Container(
+                          height: 35,
+                          alignment: Alignment.bottomLeft,
+                          padding: const EdgeInsets.all(0),
+                          child: const Text(
                             "Anonimo2",
                             style: TextStyle(
                               color: Colors.blue,
@@ -347,9 +355,10 @@ class Recensioni extends StatelessWidget {
                       ],
                     ),
                     //recensione
-                    const Padding(
-                      padding:EdgeInsets.fromLTRB(10, 10, 40, 0),
-                      child: Text(
+                    Container(
+                      alignment: Alignment.topLeft,
+                      padding: const EdgeInsets.all(0),
+                      child: const Text(
                         "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
                         "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
                         "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti.",
@@ -358,45 +367,46 @@ class Recensioni extends StatelessWidget {
                         ),
                       ),
                     ),
-                    //pollice commento
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children:  <Widget>[
-                        //commento utile?
-                        const Padding(
-                          padding: EdgeInsets.all(0),
-                          child: Text(
-                            "Ti è stata utile questa recensione?",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                        //pollice
-                        Padding(
-                          padding: const EdgeInsets.all(0),
-                          child: Opacity(
-                            opacity: 0.3,
-                            child: IconButton(
-                              onPressed: () => 0,
-                              icon: const Icon(
-                                Icons.thumb_up_alt,
+                    Container(
+                      height: 30,
+                      alignment: Alignment.bottomRight,
+                      //pollice commento
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children:  <Widget>[
+                          //commento utile?
+                          const Padding(
+                            padding: EdgeInsets.all(0),
+                            child: Text(
+                              "Ti è stata utile questa recensione?",
+                              style: TextStyle(
                                 color: Colors.blue,
+                                fontSize: 13,
                               ),
                             ),
+                          ),
+                          //pollice
+                          Padding(
+                            padding: const EdgeInsets.all(0),
+                            child: Opacity(
+                              opacity: 0.3,
+                              child: IconButton(
+                                onPressed: () => 0,
+                                icon: const Icon(
+                                  Icons.thumb_up_alt,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            )
                           )
-                        )
-                      ],
+                        ],
+                      ),
                     ),
                   ]
                 ),
               ),
             ]
-          ),
-          //ultimo elemento della lsita, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-          Container(
-            height: 225,
           ),
         ],
       ),

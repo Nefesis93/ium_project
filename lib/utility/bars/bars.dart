@@ -93,7 +93,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
         children: <Widget>[
           Container(
             height: 55,
-            width: 196,
+            width: MediaQuery.of(context).size.width/2 -1,
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {
@@ -112,7 +112,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           Container(
             height: 55,
-            width: 196,
+            width: MediaQuery.of(context).size.width/2 -1,
             decoration: const BoxDecoration(color: Colors.blue),
             child: IconButton(
               onPressed: () {

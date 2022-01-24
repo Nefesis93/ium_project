@@ -5,15 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ium_project",
+            "name": "Pixel 3",
             "request": "launch",
             "type": "dart",
+            "deviceId": "emulator-5554",
         },
         {
-            "name": "ium_project (profile mode)",
+            "name": "Chrome",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile",
+            "deviceId": "chrome",
         }
     ]
 }
