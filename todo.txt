@@ -1,10 +1,10 @@
 to do:
-- pagina di anteprima degli appunti
+- pagina di anteprima degli appunti (finire lo switch case sulle varie pagine che dobbiamo creare)
 - ricerca
-- pagina generica di appunti che servirà per i due punti seguenti
+- pagina generica di appunti che servirà per i due punti seguenti (con titolo e body che cambiano in base a che appunto stiamo guardanto tipo le anteprime)
 
-- home (mancano da inserire i link ai singoli appunti e aggiungere elementi)
-- la mia libreria (mancano da inserire i link ai singoli appunti e aggiungere elementi)
+- home (mancano da inserire i link ai singoli appunti)
+- la mia libreria (mancano da inserire i link ai singoli appunti e alle anteprime)
 
 - inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload
 - fixare padding su home e libreria

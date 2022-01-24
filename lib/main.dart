@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/pages/add_appunto/add_appunto.dart';
 import 'package:ium_project/pages/add_recensione/add_recensione.dart';
+import 'package:ium_project/pages/appunti/anteprime/notes_preview.dart';
 import 'package:ium_project/pages/home/home.dart';
 import 'package:ium_project/pages/library/library.dart';
 import 'package:ium_project/pages/login/login.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/add_appunto': (_) => const AddAppunto(),
         '/recensioni': (_) => const Recensioni(),
         '/add_recensione': (_) => const AddRecensione(),
+        '/notes_preview': (_) => const NotesPreview(),
       },
     );
   }

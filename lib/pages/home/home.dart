@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/utility/bars/bars.dart';
 
 class Home extends StatelessWidget {
@@ -60,10 +62,11 @@ class Home extends StatelessWidget {
                         TextButton(
                           onPressed: () => 0,
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(20, 15, 105, 10),
+                            padding: const EdgeInsets.fromLTRB(10, 10, 100, 10),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
                               Text(
                                 "Lock",
@@ -134,9 +137,12 @@ class Home extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
                               child: IconButton(
-                                onPressed: () => 0,
+                                onPressed: () {
+                                  TopicInfo().setTopic(Topic.lock);
+                                  Navigator.pushNamed(context, '/notes_preview');
+                                },
                                 icon: const Icon(
                                   Icons.find_in_page_outlined,
                                   color: Colors.blue,
@@ -173,12 +179,12 @@ class Home extends StatelessWidget {
                             
                           },
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(20, 15, 130, 10),
-                            //alignment: Alignment.centerLeft,
-                            //minimumSize: const Size.fromWidth(double.infinity),
+                            padding: const EdgeInsets.fromLTRB(10, 10, 135, 10),
+                            alignment: Alignment.centerLeft,
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
                               Text(
                                 "Algebra",
@@ -249,9 +255,12 @@ class Home extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 5, 0),
                               child: IconButton(
-                                onPressed: () => 0,
+                                onPressed: () {
+                                  TopicInfo().setTopic(Topic.algebra);
+                                  Navigator.pushNamed(context, '/notes_preview');
+                                },
                                 icon: const Icon(
                                   Icons.find_in_page_outlined,
                                   color: Colors.blue,
@@ -265,10 +274,6 @@ class Home extends StatelessWidget {
                     )
                   ),
                 ]
-              ),
-              //ultimo elemento della lista, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-              Container(
-                height: 422,
               ),
             ]
           ),

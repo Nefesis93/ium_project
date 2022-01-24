@@ -11,14 +11,14 @@ class Library extends StatelessWidget {
   Widget createBody(BuildContext context) {
     if (LibraryInfo().getState()) {
       //sto nel tab appunti caricati
-      return Column(
-        children: [
+      return ListView(
+        children: <Widget>[
           //barra con appunti caricati e scaricati
           Row(
             children: <Widget>[
               Container(
                 height: 40,
-                width: 196,
+                width: MediaQuery.of(context).size.width/2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -29,7 +29,8 @@ class Library extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => 0,
                   style: TextButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+                    alignment: Alignment.center,
+                    minimumSize: const Size.fromWidth(double.infinity),
                   ),
                   child: const Text(
                     "Appunti Caricati",
@@ -41,7 +42,7 @@ class Library extends StatelessWidget {
               ),
               Container(
                 height: 40,
-                width: 196,
+                width: MediaQuery.of(context).size.width/2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -56,7 +57,8 @@ class Library extends StatelessWidget {
                     Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
                   },
                   style: TextButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(28, 0, 28, 0),
+                    alignment: Alignment.center,
+                    minimumSize: const Size.fromWidth(double.infinity),
                   ),
                   child: Text(
                     "Appunti Scaricati",
@@ -80,7 +82,7 @@ class Library extends StatelessWidget {
                   //bottoni con le scritte
                   Container(
                     height: 70,
-                    width: 392,
+                    width: MediaQuery.of(context).size.width,
                     alignment: Alignment.bottomLeft,
                     decoration: const BoxDecoration(
                       border: Border(
@@ -93,10 +95,11 @@ class Library extends StatelessWidget {
                         TextButton(
                           onPressed: () => 0,
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(20, 15, 120, 10),
+                            padding: const EdgeInsets.fromLTRB(10, 10, 130, 10),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
                               Text(
                                 "Lock",
@@ -169,10 +172,6 @@ class Library extends StatelessWidget {
                   ),
                 ]
               ),
-              //ultimo elemento della lsita, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-              Container(
-                height: 492,
-              ),
             ]
           )
         ],
@@ -186,8 +185,8 @@ class Library extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 40,
-                width: 196,
-                alignment: Alignment.centerLeft,
+                width: MediaQuery.of(context).size.width/2,
+                alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(width: 1, color: Colors.blue),
@@ -201,7 +200,8 @@ class Library extends StatelessWidget {
                     Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
                   },
                   style: TextButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+                    alignment: Alignment.center,
+                    minimumSize: const Size.fromWidth(double.infinity),
                   ),
                   child: Text(
                     "Appunti Caricati",
@@ -214,8 +214,8 @@ class Library extends StatelessWidget {
               ),
               Container(
                 height: 40,
-                width: 196,
-                alignment: Alignment.centerLeft,
+                width: MediaQuery.of(context).size.width/2,
+                alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
                     left: BorderSide(width: 1, color: Colors.blue),
@@ -225,7 +225,8 @@ class Library extends StatelessWidget {
                 child: TextButton(
                   onPressed: () => 0,
                   style: TextButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(28, 0, 28, 0),
+                    alignment: Alignment.center,
+                    minimumSize: const Size.fromWidth(double.infinity),
                   ),
                   child: const Text(
                     "Appunti Scaricati",
@@ -297,10 +298,6 @@ class Library extends StatelessWidget {
                     )
                   ),
                 ]
-              ),
-              //ultimo elemento della lsita, serve per far sembrare la lista grande come tutta la pagina, va ridimensionato in base al numero di elementi
-              Container(
-                height: 492,
               ),
             ],
           ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/informations/login_info.dart';
-import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/pages/login/login_dialogs.dart';
 
 /*
@@ -76,9 +75,9 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                       UserLogin().login();
                       Navigator.pop(context);
-                      Navigator.of(context).pushReplacement(
-                        MyAnimations.homeAnimation(),
-                      );
+                      //Navigator.of(context).pushReplacement(
+                      //  MyAnimations.homeAnimation(),
+                      //);
                     },
                     child: const Text(
                       "Login",
