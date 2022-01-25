@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/topic_info.dart';
+import 'package:ium_project/utility/custom_dialogs.dart';
 
 class NotesPreview extends StatelessWidget {
   const NotesPreview({Key? key}) : super(key: key);
@@ -25,13 +26,13 @@ class NotesPreview extends StatelessWidget {
         shrinkWrap: true,
         children: <Widget>[
           getList(TopicInfo().getTopic()),
-          getButton(),
+          getButton(context),
         ],
       ),
     );
   }
 
-  Widget getButton() {
+  Widget getButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
       child: Container(
@@ -42,7 +43,9 @@ class NotesPreview extends StatelessWidget {
           color: Colors.blue,
         ),
         child: TextButton(
-          onPressed: () => 0,
+          onPressed: () {
+            MyDialogs.downloadCompleatedDialog(context);
+          },
           child: const Text(
             "Scarica gli appunti completi",
             style: TextStyle(

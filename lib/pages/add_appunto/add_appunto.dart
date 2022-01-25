@@ -26,8 +26,8 @@ class AddAppunto extends StatelessWidget {
             child: SizedBox(
               width: 400,
               child: Column(
-                children: <Widget>[
-                  const Padding(
+                children: const <Widget>[
+                  Padding(
                     padding: EdgeInsets.fromLTRB(10, 50, 10, 10),
                     child: TextField(
                       maxLength: 25,
@@ -39,7 +39,7 @@ class AddAppunto extends StatelessWidget {
                       )
                     )
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       maxLength: 25,
@@ -51,7 +51,7 @@ class AddAppunto extends StatelessWidget {
                       )
                     )
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(10),
                     child: TextField(
                       maxLength: 25,
@@ -63,8 +63,8 @@ class AddAppunto extends StatelessWidget {
                       )
                     )
                   ),
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 50),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10, 10, 10, 80),
                     child: TextField(
                       maxLength: 25,
                       decoration: InputDecoration(
@@ -75,87 +75,145 @@ class AddAppunto extends StatelessWidget {
                       )
                     )
                   ),
-                  Container(
-                    height: 150,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        //inserire qui la funzione 
-                      },
-                      child: const Text(
-                        "Inserisci un documento (.pdf)",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25
-                        )
-                      )
-                    )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          height: 40,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.blue,
-                            ),
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Navigator.of(context).pushReplacement(
-                                MyAnimations.homeAnimation()
-                              );
-                            },
-                            child: const Text(
-                              "Annulla",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.blue,
-                              )
-                            )
-                          )
-                        ),
-                        Container(
-                          height: 40,
-                          width: 150,
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              AddAppuntoDialogs.uploadDialog(context);
-                            },
-                            child: const Text(
-                              "Carica",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                              )
-                            )
-                          )
-                        ),
-                      ],
-                    )
-                  )
+                  PDFButton(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+}  
+
+class PDFButton extends StatefulWidget {
+  const PDFButton({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _AddAppuntoState();
+  }
+}
+
+class _AddAppuntoState extends State<StatefulWidget> {
+  bool _fileCheck = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          height: _fileCheck
+            ? 150
+            : 50,
+          width: 250,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(20)
+          ),
+          child: TextButton(
+            onPressed: () { 
+              setState(() {
+                _fileCheck = !_fileCheck;
+              });
+            },
+            child: _fileCheck
+              ? const Text(
+                "Inserisci un documento (.pdf)",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25
+                )
+              )
+              : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Text(
+                    "prova.pdf",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25
+                    )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                    child: RotatedBox(
+                      quarterTurns: 1,
+                      child: Icon(
+                        Icons.attachment,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              
+              
+              
+          ),
+        ),
+        Opacity(
+          opacity: _fileCheck
+          ? 0
+          : 1,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  height: 40,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.blue,
+                    ),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.of(context).pushReplacement(
+                        MyAnimations.homeAnimation()
+                      );
+                    },
+                    child: const Text(
+                      "Annulla",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blue,
+                      )
+                    )
+                  )
+                ),
+                Container(
+                  height: 40,
+                  width: 150,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      AddAppuntoDialogs.uploadDialog(context);
+                    },
+                    child: const Text(
+                      "Carica",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                      )
+                    )
+                  )
+                ),
+              ],
+            )
+          )
+        ),
+      ]
     );
   }
 }

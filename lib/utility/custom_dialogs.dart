@@ -75,7 +75,7 @@ class MyDialogs {
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, '/library');
             },
             child: const Text("ok"),
           ),
@@ -166,5 +166,5 @@ class MyDialogs {
         ],
       )
     );
-  } 
+  }
 }

@@ -260,10 +260,11 @@ class Library extends StatelessWidget {
                         TextButton(
                           onPressed: () => 0,
                           style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(20, 15, 60, 10),
+                            padding: const EdgeInsets.fromLTRB(10, 10, 60, 10),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: const <Widget>[
                               Text(
                                 "Processi di Sviluppo Ing.",
