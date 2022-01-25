@@ -96,7 +96,7 @@ class PDFButton extends StatefulWidget {
 }
 
 class _AddAppuntoState extends State<StatefulWidget> {
-  bool _fileCheck = false;
+  bool _fileCheck = true;
 
   @override
   Widget build(BuildContext context) {
