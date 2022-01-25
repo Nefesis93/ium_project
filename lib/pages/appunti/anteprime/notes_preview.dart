@@ -25,14 +25,14 @@ class NotesPreview extends StatelessWidget {
       body: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          getList(TopicInfo().getTopic()),
-          getButton(context),
+          _getList(TopicInfo().getTopic()),
+          _getButton(context),
         ],
       ),
     );
   }
 
-  Widget getButton(BuildContext context) {
+  Widget _getButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
       child: Container(
@@ -58,7 +58,7 @@ class NotesPreview extends StatelessWidget {
     );
   }
 
-  Widget getList(Topic topic) {
+  Widget _getList(Topic topic) {
     switch(topic) {
       case Topic.lock: {
         return Column(

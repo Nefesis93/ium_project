@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 
@@ -13,7 +15,47 @@ class Lock extends StatelessWidget {
         bottomNavigationBar: const DefaultBottomBar(),
         floatingActionButton: const FloatingPlusButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: ListView(
+        body: _getList(TopicInfo().getTopic(), context),
+    );
+  }
+
+  Widget _getButton(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 250,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(30)
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (UserLogin().getLoginInfo()) {
+            //l'utente è loggato
+            MyDialogs.downloadCompleatedDialog(context);
+          } else {
+            //l'utente non è loggato
+            MyDialogs.permissionDialog(context);
+          }
+        },
+        child: const Text(
+          "Scarica",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25
+          )
+        )
+      )
+    );
+  }
+
+  Widget _getRecensioni(BuildContext context) {
+    return Row();
+  }
+
+  Widget _getList(Topic topic, BuildContext context) {
+    switch(topic) {
+      case Topic.lock: {
+        return ListView(
           shrinkWrap: true,
           children: <Widget>[
             Container(
@@ -85,32 +127,7 @@ class Lock extends StatelessWidget {
                     ),
                   ),
                   //bottone scarica
-                  Container(
-                    height: 50,
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(30)
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        if (UserLogin().getLoginInfo()) {
-                          //l'utente è loggato
-                          MyDialogs.downloadCompleatedDialog(context);
-                        } else {
-                          //l'utente non è loggato
-                          MyDialogs.permissionDialog(context);
-                        }
-                      },
-                      child: const Text(
-                        "Scarica",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25
-                        )
-                      )
-                    )
-                  ),
+                  _getButton(context),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Container(
@@ -152,11 +169,16 @@ class Lock extends StatelessWidget {
                       )
                     ),
                   ),
+                  _getRecensioni(context),
                 ],
               )
             )
-        ]
-      ) 
-    );
+          ]
+        );
+      }
+      case Topic.algebra: {
+        return Scaffold();
+      }
+    }
   }
 }
