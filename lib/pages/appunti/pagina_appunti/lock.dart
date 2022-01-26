@@ -151,7 +151,8 @@ class Lock extends StatelessWidget {
                               ),
                               iconSize: 320,
                               onPressed: () {
-                                MyDialogs.chiarezzaDialog(context);
+                                Navigator.pushNamed(
+                                      context, '/notes_preview');
                               },
                             ),
                             IconButton(
@@ -177,7 +178,127 @@ class Lock extends StatelessWidget {
         );
       }
       case Topic.algebra: {
-        return Scaffold();
+        return ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              //titolo
+              child: Column(
+                children: <Widget>[
+                  const Text(
+                    "Algebra",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 40,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    //riga contenente due colonne
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 45,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const <Widget>[
+                              Text(
+                                "Winry Rockbell",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "Prof. Papi",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 45,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: const <Widget>[
+                              Text(
+                                "Algebra",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "Facoltà di Informatica",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]
+                    ),
+                  ),
+                  //bottone scarica
+                  _getButton(context),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                    child: Container(
+                      height: 330,
+                      width: 330,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: Colors.blue
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(0),
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            IconButton(
+                              icon: Image.asset(
+                                'assets/images/algebra1.png',
+                                height: 300,
+                              ),
+                              iconSize: 320,
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                      context, '/notes_preview');
+                              },
+                            ),
+                            IconButton(
+                              icon: Image.asset(
+                                'assets/images/sincronizzazione2.png',
+                                height: 300,
+                              ),
+                              iconSize: 320,
+                              onPressed: () {
+                                MyDialogs.chiarezzaDialog(context);
+                              },
+                            ),
+                          ],
+                        ) 
+                      )
+                    ),
+                  ),
+                  _getRecensioni(context),
+                ],
+              )
+            )
+          ]
+        );
       }
     }
   }

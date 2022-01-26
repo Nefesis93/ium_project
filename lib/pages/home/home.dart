@@ -57,6 +57,7 @@ class Home extends StatelessWidget {
                   children: <Widget>[
                     TextButton(
                         onPressed: () {
+                          TopicInfo().setTopic(Topic.lock);
                           Navigator.pushNamed(context, '/lock');
                         },
                         style: TextButton.styleFrom(
@@ -168,7 +169,10 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          TopicInfo().setTopic(Topic.algebra);
+                          Navigator.pushNamed(context, '/lock');
+                        },
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(10, 10, 135, 10),
                           alignment: Alignment.centerLeft,
