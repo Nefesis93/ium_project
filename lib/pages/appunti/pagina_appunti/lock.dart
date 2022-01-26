@@ -19,7 +19,36 @@ class Lock extends StatelessWidget {
     );
   }
 
-  Widget _getButton(BuildContext context) {
+  Widget _getButtonScarica(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 250,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(30)
+      ),
+      child: TextButton(
+        onPressed: () {
+          if (UserLogin().getLoginInfo()) {
+            //l'utente è loggato
+            MyDialogs.downloadCompleatedDialog(context);
+          } else {
+            //l'utente non è loggato
+            MyDialogs.permissionDialog(context);
+          }
+        },
+        child: const Text(
+          "Scarica",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25
+          )
+        )
+      )
+    );
+  }
+
+  Widget _getButtonRecensione(BuildContext context) {
     return Container(
       height: 50,
       width: 250,
@@ -49,7 +78,22 @@ class Lock extends StatelessWidget {
   }
 
   Widget _getRecensioni(BuildContext context) {
-    return Row();
+    return ListView(
+      shrinkWrap: true,
+      children: <Widget> [
+        Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.fromLTRB(0, 15, 0, 10),
+          child: const Text(
+            "Valutazioni e Recensioni",
+            style: TextStyle(
+              color: Colors.blue,
+              fontSize: 20,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _getList(Topic topic, BuildContext context) {
@@ -107,7 +151,7 @@ class Lock extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: const <Widget>[
                               Text(
-                                "Ingegneria del Software",
+                                "Sistemi Operativi",
                                 style: TextStyle(
                                   color: Colors.blue,
                                   fontSize: 16,
@@ -127,7 +171,7 @@ class Lock extends StatelessWidget {
                     ),
                   ),
                   //bottone scarica
-                  _getButton(context),
+                  _getButtonScarica(context),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Container(
@@ -250,7 +294,7 @@ class Lock extends StatelessWidget {
                     ),
                   ),
                   //bottone scarica
-                  _getButton(context),
+                  _getButtonScarica(context),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: Container(
