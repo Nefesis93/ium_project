@@ -1,7 +1,10 @@
 to do:
 - ricerca
 - sistemare routing delle pagine
-- bug in bottone scrivi una recensione, porta ad un'altra pagina, inoltre il bottone scrivi non dovrebbe visualizzarsi nella schermata di visualliza recensioni
+- il bottone scrivi non dovrebbe visualizzarsi nella schermata di visualliza recensioni
+  si visualizza perchè nel metodo richiamato è presente il bottone. O modifichiamo il metodo o copiamo tutto il resto. -> Luca T.
+- sulla pagina 'appunti scaricati' se si riscaricano gli appunti cliccando direttamente sul pulsante di download la pagina viene ricaricata dal basso su se stessa. Da fixare
+- far si che l'opacità del pollice cambi quando ci si clicca sopra
 
 - poplare le varie pagine
 

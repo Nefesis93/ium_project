@@ -111,6 +111,7 @@ class Recensioni extends StatelessWidget {
             )
           ),
           AppuntiUtility.getRecensioni(context),
+          
         ],
       ),
     );

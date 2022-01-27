@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
@@ -162,6 +163,7 @@ class AppuntiUtility {
   }
 
   static Widget getRecensioni(BuildContext context) {
+    double myOpacity = 0.3;
     return Column(
       //shrinkWrap: true,
       children: <Widget> [
@@ -186,7 +188,7 @@ class AppuntiUtility {
             ),
             child: TextButton(
               onPressed: () => {
-                Navigator.pushNamed(context, '/recensioni')
+                Navigator.pushNamed(context, '/add_recensione')
               },
               child: const Text(
                 "Scrivi una recensione",
@@ -419,14 +421,17 @@ class AppuntiUtility {
                         Padding(
                           padding: const EdgeInsets.all(0),
                           child: Opacity(
-                            opacity: 0.3,
                             child: IconButton(
-                              onPressed: () => 0,
+                              onPressed: () {
+                               myOpacity = 1;
+                               //non funziona
+                              },
                               icon: const Icon(
                                 Icons.thumb_up_alt,
                                 color: Colors.blue,
                               ),
                             ),
+                            opacity: myOpacity,
                           )
                         )
                       ],
