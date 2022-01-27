@@ -54,7 +54,7 @@ class Library extends StatelessWidget {
                   onPressed: () {
                     LibraryInfo().appuntiScaricati();
                     Navigator.pop(context);
-                    Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
+                    Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
                   },
                   style: TextButton.styleFrom(
                     alignment: Alignment.center,
@@ -197,7 +197,7 @@ class Library extends StatelessWidget {
                   onPressed: () {
                     LibraryInfo().appuntiCaricati();
                     Navigator.pop(context);
-                    Navigator.of(context).push(MyAnimations.flatAnimation(MyPage.library));
+                    Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
                   },
                   style: TextButton.styleFrom(
                     alignment: Alignment.center,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/library/library.dart';
@@ -6,6 +7,8 @@ import 'package:ium_project/pages/settings/settings.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/bars/bars_dialogs.dart';
+
+import '../custom_animations.dart';
 
 /*
 app bar in alto con le funzioni di ricerca e login
@@ -99,9 +102,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 //resetto lo stato della libreria
                 LibraryInfo().appuntiCaricati();
-                Navigator.of(context).pushReplacement(
-                  BarsDialogs.home(),
-                );
+                Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
               },
               icon: const Icon(
                 Icons.home,
@@ -121,10 +122,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
                 if (UserLogin().getLoginInfo())
                 {
                   //l'utente è loggato
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Library()),
-                  );
+                  Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
                 } else {
                   //l'utente non è loggato
                   MyDialogs.permissionDialog(context);

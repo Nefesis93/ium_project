@@ -58,7 +58,7 @@ class Home extends StatelessWidget {
                     TextButton(
                         onPressed: () {
                           TopicInfo().setTopic(Topic.lock);
-                          Navigator.pushNamed(context, '/lock');
+                          Navigator.pushNamed(context, '/appunti');
                         },
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(10, 10, 100, 10),
@@ -171,7 +171,7 @@ class Home extends StatelessWidget {
                     TextButton(
                         onPressed: () {
                           TopicInfo().setTopic(Topic.algebra);
-                          Navigator.pushNamed(context, '/lock');
+                          Navigator.pushNamed(context, '/appunti');
                         },
                         style: TextButton.styleFrom(
                           padding: const EdgeInsets.fromLTRB(10, 10, 135, 10),

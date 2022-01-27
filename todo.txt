@@ -10,11 +10,13 @@ to do:
 - inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload
 - fixare padding su home e libreria
 
+GIA FATTO
 implementate delle route(pagine dell'app) predefinite nel main così è più facile richiamarle, il codice ancora non è aggiornato su tutti i navigate
     e al momento non è importante ma se capitano a tiro fixiamo
     riferimento: https://www.youtube.com/watch?v=nyvwx7o277U&ab_channel=ResoCoder
     ho utilizzato il metodo che lui fa vedere per secondo tanto noi non passimo parametri tra le pagine (spero che non ci serva)
 
+GIA RIMOSSI
 inseriti degli elementi alla fine delle liste nella pagina home, nella libreria e nelle recensioni per far sembrare che la lista occupa tutta la pagina.
     Quel codice però quel codice non è compatibile con tutti i device e va quindi eventualmente alla fine fixato.
     alternative attualmente attuabili:"

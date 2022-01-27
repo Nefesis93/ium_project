@@ -1,31 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/main.dart';
 import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 /*
 classe che conterrà tutti i dialog utilizzati nelle barre dell'applicazione
 */
 class BarsDialogs {
-  /*
-  funzione che fa tornare alla home page con un' animazione customizzata 
-  */
-  static Route home() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => const MyApp(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset.zero;
-        const end = Offset.zero;
-  
-        var tween = Tween(begin: begin, end: end);
-  
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
 
   /*
   funzione che costruisce il dialog che permette all'utente di disconnettersi
@@ -49,9 +32,7 @@ class BarsDialogs {
               UserLogin().logout();
               Navigator.pop(context);
               LibraryInfo().appuntiCaricati();
-              Navigator.of(context).pushReplacement(
-                BarsDialogs.home(),
-              );
+              Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
             },
             child: const Text("Disconnetti"),
           ),

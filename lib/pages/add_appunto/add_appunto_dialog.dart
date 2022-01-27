@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 
 /*
@@ -21,9 +22,7 @@ class AddAppuntoDialogs {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              Navigator.of(context).pushReplacement(
-                MyAnimations.homeAnimation()
-              );
+              Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
             },
             child: const Text("ok"),
           ),
