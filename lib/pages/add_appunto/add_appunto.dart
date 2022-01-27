@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 
 import 'add_appunto_dialog.dart';
@@ -13,9 +14,8 @@ class AddAppunto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Carica Appunti"),
-        centerTitle: true,
+      appBar: const CloseAppBar(
+        title: "Carica Appunti",
       ),
       body: GestureDetector(
         onTap: () {
@@ -150,9 +150,6 @@ class _AddAppuntoState extends State<StatefulWidget> {
                   ),
                 ],
               ),
-              
-              
-              
           ),
         ),
         Opacity(

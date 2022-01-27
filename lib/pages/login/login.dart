@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/pages/login/login_dialogs.dart';
+import 'package:ium_project/utility/bars/bars.dart';
 
 /*
 schermata di login
@@ -15,9 +16,8 @@ class LoginPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Login"),
-          centerTitle: true,
+        appBar: const CloseAppBar(
+          title: "Login",
         ),
         body: SingleChildScrollView(
           child: Container(

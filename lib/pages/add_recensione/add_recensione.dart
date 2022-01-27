@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/pages/add_recensione/add_recensione_dialog.dart';
+import 'package:ium_project/utility/bars/bars.dart';
 
 class AddRecensione extends StatelessWidget {
   const AddRecensione({Key? key}) : super(key: key);
@@ -11,14 +12,8 @@ class AddRecensione extends StatelessWidget {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text(
-            "Inserisci Recensione",
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
+        appBar: const CloseAppBar(
+          title: "Inserisci Recensione",
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),

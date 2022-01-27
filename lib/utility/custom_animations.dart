@@ -15,16 +15,18 @@ class CustomAnimations {
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset.zero;
         const end = Offset.zero;
-
-        var tween = Tween(begin: begin, end: end);
+        final tween = Tween(begin: begin, end: end);
+        final offsetAnimation = animation.drive(tween);
 
         return SlideTransition(
-          position: animation.drive(tween),
+          position: offsetAnimation,
           child: child,
         );
       },
     );
   }
+
+  /*
 
   static Route leftToRight(MyPage page) {
     
@@ -33,4 +35,7 @@ class CustomAnimations {
   static Route rightToLeft(MyPage page) {
 
   }
+  */
+
+  
 }

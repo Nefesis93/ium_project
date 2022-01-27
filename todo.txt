@@ -1,6 +1,7 @@
 to do:
 - ricerca
 - sistemare routing delle pagine
+- bug in bottone scrivi una recensione, porta ad un'altra pagina, inoltre il bottone scrivi non dovrebbe visualizzarsi nella schermata di visualliza recensioni
 
 - poplare le varie pagine
 

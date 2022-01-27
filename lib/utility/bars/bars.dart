@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/login/login.dart';
-import 'package:ium_project/pages/library/library.dart';
 import 'package:ium_project/pages/settings/settings.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
@@ -177,6 +176,37 @@ class FloatingPlusButton extends StatelessWidget {
           size: 35,
         ),
       )
+    );
+  }
+}
+
+class CloseAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CloseAppBar({Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
+
+  @override
+  Size get preferredSize => const Size.fromHeight(55);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(title),
+      centerTitle: true,
+      automaticallyImplyLeading: false,
+      actions: <Widget>[
+        IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.close,
+            size: 30,
+          )
+        )
+      ],
     );
   }
 }
