@@ -59,34 +59,124 @@ class NotesPreview extends StatelessWidget {
   }
 
   Widget _getList(Topic topic) {
-    switch(topic) {
-      case Topic.lock: {
-        return Column(
-          children: <Widget>[
-            Image.asset(
-              'assets/images/sincronizzazione1.png',
-            ),
-            Image.asset(
-              'assets/images/sincronizzazione2.png',
-            ),
-          ],
-        );
-      }
-      case Topic.algebra: {
-        return Column(
-          children: <Widget>[
-            Image.asset(
-              'assets/images/algebra1.png',
-            ),
-            Image.asset(
-              'assets/images/algebra2.png',
-            ),
-            Image.asset(
-              'assets/images/algebra3.png',
-            ),
-          ],
-        );
-      }
+    switch (topic) {
+      case Topic.lock:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/sincronizzazione1.png',
+              ),
+              Image.asset(
+                'assets/images/sincronizzazione2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.algebra:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/algebra1.png',
+              ),
+              Image.asset(
+                'assets/images/algebra2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.pdsi:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/Pdsi1.png',
+              ),
+              Image.asset(
+                'assets/images/Pdsi2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.tipidilock:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/unknown.png',
+              ),
+              Image.asset(
+                'assets/images/unknown1.png',
+              ),
+            ],
+          );
+        }
+      case Topic.lockduefasi:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/unknown.png',
+              ),
+              Image.asset(
+                'assets/images/unknown1.png',
+              ),
+            ],
+          );
+        }
+      case Topic.algoritmi:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/algo1.png',
+              ),
+              Image.asset(
+                'assets/images/algo2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.turing:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/mdt1.png',
+              ),
+              Image.asset(
+                'assets/images/mdt2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.basi:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/basi1.png',
+              ),
+              Image.asset(
+                'assets/images/basi2.png',
+              ),
+            ],
+          );
+        }
+      case Topic.prototyping:
+        {
+          return Column(
+            children: <Widget>[
+              Image.asset(
+                'assets/images/prototyping1.png',
+              ),
+              Image.asset(
+                'assets/images/prototyping2.png',
+              ),
+            ],
+          );
+        }
     }
   }
 }
