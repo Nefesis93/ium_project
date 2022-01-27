@@ -102,7 +102,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 //resetto lo stato della libreria
                 LibraryInfo().appuntiCaricati();
-                Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
+                Navigator.of(context).pushReplacement(CustomAnimations.flatAnimation(MyPage.home));
               },
               icon: const Icon(
                 Icons.home,
@@ -122,7 +122,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
                 if (UserLogin().getLoginInfo())
                 {
                   //l'utente è loggato
-                  Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
+                  Navigator.of(context).pushReplacement(CustomAnimations.flatAnimation(MyPage.library));
                 } else {
                   //l'utente non è loggato
                   MyDialogs.permissionDialog(context);

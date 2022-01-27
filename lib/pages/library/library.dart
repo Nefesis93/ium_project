@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/utility/appunti/home_lib_utility.dart';
 import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/custom_animations.dart';
@@ -76,102 +78,8 @@ class Library extends StatelessWidget {
             shrinkWrap: true,
             children: <Widget> [
               //prima riga della lista della view
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  //bottoni con le scritte
-                  Container(
-                    height: 70,
-                    width: MediaQuery.of(context).size.width,
-                    alignment: Alignment.bottomLeft,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 2, color: Colors.blue),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: () => 0,
-                          style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(10, 10, 130, 10),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                "Lock",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                "Sistemi Operativi",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Row(
-                                children: const <Icon>[
-                                  Icon(
-                                    Icons.star,
-                                    color: Colors.blue,
-                                  ),
-                                   Icon(
-                                    Icons.star,
-                                    color: Colors.blue,
-                                  ),
-                                   Icon(
-                                    Icons.star,
-                                    color: Colors.blue,
-                                  ),
-                                   Icon(
-                                    Icons.star,
-                                    color: Colors.blue,
-                                  ),
-                                   Icon(
-                                    Icons.star,
-                                    color: Colors.blue,
-                                  ),
-                                ],
-                              ),
-                              Container(
-                                height: 30,
-                                decoration: const BoxDecoration(
-                                  color: Colors.blue,
-                                ),
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.pushNamed(context, '/recensioni');
-                                  },
-                                  child: const Text(
-                                    "Visualizza Recensioni",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        )
-                      ]
-                    )
-                  ),
-                ]
-              ),
+              _getRowCaricati(context, Topic.lock),
+              _getRowCaricati(context, Topic.basi),
             ]
           )
         ],
@@ -241,70 +149,124 @@ class Library extends StatelessWidget {
           ListView(
             shrinkWrap: true,
             children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  //bottoni con le scritte
-                  Container(
-                    height: 70,
-                    width: 392,
-                    alignment: Alignment.bottomLeft,
-                    decoration: const BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(width: 2, color: Colors.blue),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: () => 0,
-                          style: TextButton.styleFrom(
-                            padding: const EdgeInsets.fromLTRB(10, 10, 60, 10),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const <Widget>[
-                              Text(
-                                "Processi di Sviluppo Ing.",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                "Ingegneria del Software",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            ],
-                          )
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                          child: IconButton(
-                            onPressed: () {
-                              MyDialogs.downloadCompleatedDialog(context);
-                            },
-                            icon: const Icon(
-                              Icons.download_sharp,
-                              color: Colors.blue,
-                              size: 35,
-                            ),
-                          )
-                        )
-                      ]
-                    )
-                  ),
-                ]
-              ),
+              _getRowScaricati(context, Topic.pdsi),
             ],
           ),
         ],
       );
     }
+  }
+
+  Widget _getRowScaricati(BuildContext context, Topic topic) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.bottomLeft,
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 2, color: Colors.blue),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              HomeLibUtility.getTitle(context, topic),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                child: IconButton(
+                  onPressed: () {
+                    MyDialogs.downloadCompleatedDialog(context);
+                  },
+                  icon: const Icon(
+                    Icons.download_sharp,
+                    color: Colors.blue,
+                    size: 35,
+                  ),
+                )
+              )
+            ]
+          )
+        ),
+      ]
+    );
+  }
+
+
+  Widget _getRowCaricati(BuildContext context, Topic topic) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+          alignment: Alignment.bottomLeft,
+          decoration: const BoxDecoration(
+            border: Border(
+              bottom: BorderSide(width: 2, color: Colors.blue),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              HomeLibUtility.getTitle(context, topic),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Row(
+                      children: const <Icon>[
+                        Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                         Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                         Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                         Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                         Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 30,
+                      decoration: const BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/recensioni');
+                        },
+                        child: const Text(
+                          "Visualizza Recensioni",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ]
+          )
+        ),
+      ]
+    );
   }
 
   @override

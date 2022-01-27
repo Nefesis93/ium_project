@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
-import 'package:ium_project/utility/materie/algebra.dart';
-import 'package:ium_project/utility/materie/lock.dart';
 import 'package:ium_project/utility/materie/materia.dart';
 
 class AppuntiUtility {
@@ -38,11 +37,6 @@ class AppuntiUtility {
   }
 
   static Widget getBody(BuildContext context, Topic topic) {
-    Map map = <Topic, Materia>{
-      Topic.lock: Lock(),
-      Topic.algebra: Algebra(),
-    };
-
     return ListView(
       shrinkWrap: true,
       children: <Widget>[
@@ -52,7 +46,7 @@ class AppuntiUtility {
           child: Column(
             children: <Widget>[
               Text(
-                (map[topic] as Materia).getTitle(),
+                (TopicToMateria().getMap()[topic] as Materia).getTitle(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.blue,
@@ -72,7 +66,7 @@ class AppuntiUtility {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            (map[topic] as Materia).getPublisher(),
+                            (TopicToMateria().getMap()[topic] as Materia).getPublisher(),
                             style: const TextStyle(
                               color: Colors.blue,
                               fontSize: 16,
@@ -95,14 +89,14 @@ class AppuntiUtility {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Text(
-                            (map[topic] as Materia).getTopic(),
+                            (TopicToMateria().getMap()[topic] as Materia).getTopic(),
                             style: const TextStyle(
                               color: Colors.blue,
                               fontSize: 16,
                             ),
                           ),
                           Text(
-                            (map[topic] as Materia).getDepartment(),
+                            (TopicToMateria().getMap()[topic] as Materia).getDepartment(),
                             style: const TextStyle(
                               color: Colors.blue,
                               fontSize: 16,
@@ -134,7 +128,7 @@ class AppuntiUtility {
                       children: <Widget>[
                         IconButton(
                           icon: Image.asset(
-                            (map[topic] as Materia).getList()[0],
+                            (TopicToMateria().getMap()[topic] as Materia).getList()[0],
                             height: 300,
                           ),
                           iconSize: 320,
@@ -145,7 +139,7 @@ class AppuntiUtility {
                         ),
                         IconButton(
                           icon: Image.asset(
-                            (map[topic] as Materia).getList()[1],
+                            (TopicToMateria().getMap()[topic] as Materia).getList()[1],
                             height: 300,
                           ),
                           iconSize: 320,

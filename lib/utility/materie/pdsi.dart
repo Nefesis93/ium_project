@@ -3,7 +3,7 @@ import 'materia.dart';
 class Pdsi extends Materia {
   Pdsi()
       : super(
-            "Processi di Sviluppo Ingegneristico",
+            "Processi di Sviluppo Ing.",
             "Valerio Mezzoprete",
             "Ingegneria del Software",
             "Prof. Tronci",

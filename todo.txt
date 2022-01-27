@@ -1,10 +1,7 @@
 to do:
 - ricerca
-- pagina generica di appunti che servirà per i due punti seguenti (con titolo e body che cambiano in base a che appunto stiamo guardanto tipo le anteprime)
-    fatto  per algebra e lock
+- sistemare routing delle pagine
 
-- home (mancano da inserire i link ai singoli appunti)
-- la mia libreria (mancano da inserire i link ai singoli appunti e alle anteprime)
 - poplare le varie pagine
 
 - inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload

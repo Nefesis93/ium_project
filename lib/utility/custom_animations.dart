@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/main.dart';
 import 'package:ium_project/enums/my_page.dart';
 
 /*
@@ -25,5 +24,13 @@ class CustomAnimations {
         );
       },
     );
+  }
+
+  static Route leftToRight(MyPage page) {
+    
+  }
+
+  static Route rightToLeft(MyPage page) {
+
   }
 }
