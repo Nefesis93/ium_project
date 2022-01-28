@@ -153,20 +153,9 @@ class AppuntiUtility {
                   )
                 ),
               ),
-              
             ],
           )
         ),
-        AppuntiUtility.getRecensioni(context),
-      ]
-    );
-  }
-
-  static Widget getRecensioni(BuildContext context) {
-    double myOpacity = 0.3;
-    return Column(
-      //shrinkWrap: true,
-      children: <Widget> [
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -201,6 +190,15 @@ class AppuntiUtility {
             ),
           ),
         ),
+        AppuntiUtility.getRecensioni(context),
+      ]
+    );
+  }
+
+  static Widget getRecensioni(BuildContext context) {
+    double myOpacity = 0.3;
+    return Column(
+      children: <Widget> [
         //container che contiene le 3 stelline a inizio pagina
         Container(
           height: 40,

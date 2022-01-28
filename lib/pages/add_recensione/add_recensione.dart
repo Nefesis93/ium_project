@@ -186,7 +186,7 @@ class AddRecensione extends StatelessWidget {
                                 child: Text(
                                   'Correttezza',
                                   style: TextStyle(
-                                    color: Colors.green,
+                                    color: Colors.blue,
                                     fontSize: 15,
                                   ),
                                 ),

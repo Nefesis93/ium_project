@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 
@@ -44,7 +45,11 @@ class NotesPreview extends StatelessWidget {
         ),
         child: TextButton(
           onPressed: () {
-            MyDialogs.downloadCompleatedDialog(context);
+            if (UserLogin().getLoginInfo()) {
+              MyDialogs.downloadCompleatedDialog(context);
+            } else {
+              MyDialogs.permissionDialog(context);
+            }
           },
           child: const Text(
             "Scarica gli appunti completi",
