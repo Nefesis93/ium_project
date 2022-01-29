@@ -200,31 +200,8 @@ class AddRecensione extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Container(
-                            height: 40,
-                            width: 150,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.blue,
-                              ),
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(20)
-                            ),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                "Annulla",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                )
-                              )
-                            )
-                          ),
                           Container(
                             height: 40,
                             width: 150,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/login/login.dart';
 
 /*
@@ -71,14 +72,34 @@ class CustomDialogs {
           "Appunti scaricati con successo",
           textAlign: TextAlign.center,
         ),
-        actionsAlignment: MainAxisAlignment.end,
+        actionsAlignment: MainAxisAlignment.spaceBetween,
         actions: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/library');
+              Navigator.pop(context);
             },
             child: const Text("ok"),
           ),
+          Container(
+            height: 40,
+            width: 150,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child: TextButton(
+              onPressed: () {
+                LibraryInfo().appuntiScaricati();
+                Navigator.pushReplacementNamed(context, '/library');
+              },
+              child: const Text(
+                "Vai alla Libreria",
+                style: TextStyle(
+                  color: Colors.white
+                )
+              )
+            )
+          )
         ],
       )
     );

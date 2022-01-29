@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/utility/appunti/home_lib_utility.dart';
 import 'package:ium_project/utility/bars/bars.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -105,8 +107,7 @@ class Home extends StatelessWidget {
                           ),
                           child: TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(
-                                  context, '/recensioni');
+                              Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
                             },
                             child: const Text(
                               "Recensioni: 150",
@@ -124,7 +125,7 @@ class Home extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         TopicInfo().setTopic(topic);
-                        Navigator.pushNamed(context, '/notes_preview');
+                        Navigator.push(context, CustomAnimations.rightToLeft(MyPage.notesPreview));
                       },
                       icon: const Icon(
                         Icons.find_in_page_outlined,

@@ -178,7 +178,7 @@ class Library extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: IconButton(
                   onPressed: () {
-                    CustomDialogs.downloadCompleatedDialog(context);
+                    _downloadCompleatedDialog(context);
                   },
                   icon: const Icon(
                     Icons.download_sharp,
@@ -266,6 +266,31 @@ class Library extends StatelessWidget {
           )
         ),
       ]
+    );
+  }
+
+  void _downloadCompleatedDialog(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text(
+          "Download Completato",
+          textAlign: TextAlign.center,
+        ),
+        content: const Text(
+          "Appunti scaricati con successo",
+          textAlign: TextAlign.center,
+        ),
+        actionsAlignment: MainAxisAlignment.end,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("ok"),
+          ),
+        ],
+      )
     );
   }
 

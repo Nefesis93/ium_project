@@ -9,8 +9,6 @@ class Search {
         actionsAlignment: MainAxisAlignment.end,
         elevation: 0,
         alignment: Alignment.topRight,
-        buttonPadding: const EdgeInsets.all(0),
-        actionsPadding: const EdgeInsets.all(0),
         insetPadding: const EdgeInsets.all(0),
         contentPadding: const EdgeInsets.all(0),
         backgroundColor: Colors.transparent,
@@ -26,12 +24,29 @@ class Search {
               _getInputRow(context, "Corso"),
               _getInputRow(context, "Prof"),
               _getInputRow(context, "Autore"),
+              Container(
+                width: 150,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: const BorderRadius.horizontal(left: Radius.circular(30)),
+                  border: Border.all(
+                    color: Colors.black
+                  ),
+                ),
+                child: TextButton(
+                  onPressed: () => 0,
+                  child: const Text(
+                    'Cerca',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
-        actions: <Widget>[
-          //inserire il bottone di ricerca qui
-        ],
       )
     );
   }

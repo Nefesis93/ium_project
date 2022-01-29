@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/materie/materia.dart';
 
 class HomeLibUtility {
@@ -9,7 +11,7 @@ class HomeLibUtility {
     return TextButton(
       onPressed: () {
         TopicInfo().setTopic(topic);
-        Navigator.pushNamed(context, '/appunti');
+        Navigator.push(context, CustomAnimations.rightToLeft(MyPage.appunti));
       },
       style: TextButton.styleFrom(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),

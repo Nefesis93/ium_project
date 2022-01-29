@@ -64,10 +64,7 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         IconButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Settings()),
-            );
+            Navigator.push(context, CustomAnimations.rightToLeft(MyPage.settings));
           },
           icon: const Icon(
             Icons.settings,

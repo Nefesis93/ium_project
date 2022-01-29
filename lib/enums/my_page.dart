@@ -27,6 +27,6 @@ class MyPage {
   static const MyPage settingsInformation = MyPage._(SettingsInformation());
   static const MyPage recensioni = MyPage._(Recensioni());
   static const MyPage addRecensione = MyPage._(AddRecensione());
-  static const MyPage lock = MyPage._(Appunti());
+  static const MyPage appunti = MyPage._(Appunti());
   static const MyPage notesPreview = MyPage._(NotesPreview());
 }
