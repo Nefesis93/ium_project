@@ -35,7 +35,7 @@ class Settings extends StatelessWidget {
                 if (UserLogin().getLoginInfo()) {
                   SettingsDialogs.changePasswordDialog(context);
                 } else {
-                  MyDialogs.permissionDialog(context);
+                  CustomDialogs.permissionDialog(context);
                 }
               },
               style: TextButton.styleFrom(

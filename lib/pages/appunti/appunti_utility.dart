@@ -20,10 +20,10 @@ class AppuntiUtility {
         onPressed: () {
           if (UserLogin().getLoginInfo()) {
             //l'utente è loggato
-            MyDialogs.downloadCompleatedDialog(context);
+            CustomDialogs.downloadCompleatedDialog(context);
           } else {
             //l'utente non è loggato
-            MyDialogs.permissionDialog(context);
+            CustomDialogs.permissionDialog(context);
           }
         },
         child: const Text(
@@ -216,10 +216,10 @@ class AppuntiUtility {
               //bottone chiarezza
               TextButton(
                 onLongPress: () {
-                  MyDialogs.chiarezzaDialog(context);
+                  CustomDialogs.chiarezzaDialog(context);
                 },
                 onPressed: () {
-                  MyDialogs.chiarezzaDialog(context);
+                  CustomDialogs.chiarezzaDialog(context);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -240,10 +240,10 @@ class AppuntiUtility {
               //bottone validità
               TextButton(
                 onLongPress: () {
-                  MyDialogs.validitaDialog(context);
+                  CustomDialogs.validitaDialog(context);
                 },
                 onPressed: () {
-                  MyDialogs.validitaDialog(context);
+                  CustomDialogs.validitaDialog(context);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -264,10 +264,10 @@ class AppuntiUtility {
               //bottone completezza
               TextButton(
                 onLongPress: () {
-                  MyDialogs.completezzaDialog(context);
+                  CustomDialogs.completezzaDialog(context);
                 },
                 onPressed: () {
-                  MyDialogs.completezzaDialog(context);
+                  CustomDialogs.completezzaDialog(context);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

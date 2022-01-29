@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
+import 'package:ium_project/pages/home/search.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/settings/settings.dart';
 import 'package:ium_project/informations/login_info.dart';
@@ -34,7 +35,7 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: IconButton(
         onPressed: () {
-          //codice
+          Search.searchDialog(context);
         },
         icon: const Icon(
           Icons.search,
@@ -124,7 +125,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
                   Navigator.of(context).pushReplacement(CustomAnimations.flatAnimation(MyPage.library));
                 } else {
                   //l'utente non è loggato
-                  MyDialogs.permissionDialog(context);
+                  CustomDialogs.permissionDialog(context);
                 } 
               },
               icon: const Icon(
@@ -159,7 +160,7 @@ class FloatingPlusButton extends StatelessWidget {
             Navigator.pushNamed(context, '/add_appunto');
           } else {
             //l'utente non è loggato
-            MyDialogs.permissionDialog(context);
+            CustomDialogs.permissionDialog(context);
           } 
         },
         elevation: 0,

@@ -4,7 +4,7 @@ import 'package:ium_project/pages/login/login.dart';
 /*
 classe che conterrà tutti i dialog utilizzati su più di una pagina
 */
-class MyDialogs {
+class CustomDialogs {
   /*
   funzione che crea il pop-up che impedisce agli utenti non loggati di accedere a funzioni riservate a utenti loggati
   */

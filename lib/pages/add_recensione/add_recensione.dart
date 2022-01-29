@@ -270,7 +270,7 @@ class VotoRecensione extends StatefulWidget {
 class VotoState extends State<VotoRecensione> {
   int? _voto = 0;
 
-   @override
+  @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[ 

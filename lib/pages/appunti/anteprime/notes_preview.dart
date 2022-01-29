@@ -46,9 +46,9 @@ class NotesPreview extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             if (UserLogin().getLoginInfo()) {
-              MyDialogs.downloadCompleatedDialog(context);
+              CustomDialogs.downloadCompleatedDialog(context);
             } else {
-              MyDialogs.permissionDialog(context);
+              CustomDialogs.permissionDialog(context);
             }
           },
           child: const Text(

@@ -178,7 +178,7 @@ class Library extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                 child: IconButton(
                   onPressed: () {
-                    MyDialogs.downloadCompleatedDialog(context);
+                    CustomDialogs.downloadCompleatedDialog(context);
                   },
                   icon: const Icon(
                     Icons.download_sharp,
