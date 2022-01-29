@@ -1,6 +1,8 @@
 to do:
 - completare pseudo back end di ricerca
-- comportamento del bottone scrivi una recensione
+- completare pseudo back end su libreria (quando scarichi un appunto vai alla libreria ti porta alla libreria con quell'appunto aggiornato)
+- comportamento del bottone scrivi una recensione (il bottone deve anche riportare alla pagina con la recensione aggiunta)
+- il pulsante "Scrivi una recensione" deve essere visibile solo se quella recensione è presente nelle recensioni della libreria dell'utente e non sia gia stata recensita
 
 - inserire eventuali controlli su input incompleti nella pagine login (mail e password)
 - inserire eventuali controlli su input incompleti nelle pagina add recensione (testo presente, inseriti voti)
