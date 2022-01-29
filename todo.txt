@@ -1,7 +1,6 @@
 to do:
-- metodo per fare recensioni obj oriented
-- sistemare routing e animazioni delle pagine
-- far si che l'opacità del pollice cambi quando ci si clicca sopra
+- completare pseudo back end
+- comportamento del bottone scrivi una recensione
 
 - inserire eventuali controlli su input incompleti nelle pagine login, addrecensione e upload
 

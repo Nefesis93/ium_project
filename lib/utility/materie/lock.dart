@@ -10,6 +10,8 @@ class Lock extends Materia {
     [
       'assets/images/sincronizzazione1.png',
       'assets/images/sincronizzazione2.png'
-    ]
+    ],
+    5,
+    2,
   );
 }

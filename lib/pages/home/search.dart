@@ -14,7 +14,7 @@ class Search {
         backgroundColor: Colors.transparent,
         content: SizedBox(
           width: 330,
-          height: 400,
+          height: 300,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[

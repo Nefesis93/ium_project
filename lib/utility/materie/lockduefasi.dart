@@ -8,5 +8,8 @@ class LockDueFasi extends Materia {
             "Basi di Dati",
             "Prof. Pirrò",
             "Facoltà di Informatica",
-            ['assets/images/unknown.png', 'assets/images/unknown1.png']);
+            ['assets/images/unknown.png', 'assets/images/unknown1.png'],
+            3,
+            2,
+            );
 }

@@ -16,8 +16,14 @@ class LoginPage extends StatelessWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        appBar: const CloseAppBar(
-          title: "Login",
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text(
+            "Login",
+            style: TextStyle(
+              fontSize: 25,
+            ),
+          ),
         ),
         body: SingleChildScrollView(
           child: Container(

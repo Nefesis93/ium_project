@@ -8,5 +8,7 @@ class Turing extends Materia {
             "Automi",
             "Prof. Galesi",
             "Facoltà di Informatica",
-            ['assets/images/mdt1.png', 'assets/images/mdt2.png']);
+            ['assets/images/mdt1.png', 'assets/images/mdt2.png'],
+            3,
+            2);
 }

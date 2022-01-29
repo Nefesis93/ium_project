@@ -8,5 +8,7 @@ class Algoritmi extends Materia {
             "Algoritmi",
             "Prof. Monti",
             "Facoltà di Informatica",
-            ['assets/images/algo1.png', 'assets/images/algo2.png']);
+            ['assets/images/algo1.png', 'assets/images/algo2.png'],
+            4,
+            2);
 }

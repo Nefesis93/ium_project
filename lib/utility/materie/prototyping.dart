@@ -6,5 +6,7 @@ class Prototyping extends Materia {
             "Prof. Panizzi", "Facoltà di Informatica", [
           'assets/images/prototyping1.png',
           'assets/images/prototyping2.png'
-        ]);
+        ],
+        0,
+        0);
 }

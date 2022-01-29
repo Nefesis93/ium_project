@@ -5,9 +5,11 @@ abstract class Materia {
   String topic;
   String teacher;
   String department;
+  int voto;
+  int numeroRecensioni;
   List<String> images;
 
-  Materia(this.title, this.publisher, this.topic, this.teacher, this.department, this.images);
+  Materia(this.title, this.publisher, this.topic, this.teacher, this.department, this.images, this.voto, this.numeroRecensioni);
 
   String getTitle() { return title; }
 
@@ -18,6 +20,10 @@ abstract class Materia {
   String getTeacher() { return teacher; }
 
   String getDepartment() { return department; }
+
+  int getVoto() { return voto; }
+
+  int getNumeroRecensioni() { return numeroRecensioni; }
 
   List<String> getList() { return images; }
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/appunti/home_lib_utility.dart';
 import 'package:ium_project/utility/bars/bars.dart';
-import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/informations/library_info.dart';
+import 'package:ium_project/utility/materie/materia.dart';
 
 class Library extends StatelessWidget {
   const Library({Key? key}) : super(key: key);
@@ -150,6 +151,8 @@ class Library extends StatelessWidget {
             shrinkWrap: true,
             children: <Widget>[
               _getRowScaricati(context, Topic.pdsi),
+              _getRowScaricati(context, Topic.algoritmi),
+              _getRowScaricati(context, Topic.turing),
             ],
           ),
         ],
@@ -218,26 +221,41 @@ class Library extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Row(
-                      children: const <Icon>[
-                        Icon(
-                          Icons.star,
-                          color: Colors.blue,
+                      children: <Widget>[
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 0 ? 1 : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
                         ),
-                         Icon(
-                          Icons.star,
-                          color: Colors.blue,
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 1 ? 1 : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
                         ),
-                         Icon(
-                          Icons.star,
-                          color: Colors.blue,
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 2 ? 1 : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
                         ),
-                         Icon(
-                          Icons.star,
-                          color: Colors.blue,
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 3 ? 1 : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
                         ),
-                         Icon(
-                          Icons.star,
-                          color: Colors.blue,
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 4 ? 1 : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
                         ),
                       ],
                     ),
@@ -248,7 +266,7 @@ class Library extends StatelessWidget {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/recensioni');
+                          Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
                         },
                         child: const Text(
                           "Visualizza Recensioni",

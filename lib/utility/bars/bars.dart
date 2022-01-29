@@ -3,7 +3,6 @@ import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/home/search.dart';
 import 'package:ium_project/pages/login/login.dart';
-import 'package:ium_project/pages/settings/settings.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/bars/bars_dialogs.dart';
@@ -51,10 +50,7 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
               BarsDialogs.logoutDialog(context);
             } else {
               //l'utente non è loggato
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginPage()),
-              );
+              Navigator.push(context, CustomAnimations.rightToLeft(MyPage.login));
             }
           },
           icon: const Icon(
