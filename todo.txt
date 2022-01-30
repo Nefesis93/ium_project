@@ -2,8 +2,16 @@ to do:
 
 - completare pseudo back end di ricerca (inserire gli output della ricerca nell'enum home_query)
 - comportamento del bottone scrivi una recensione (il bottone deve anche riportare alla pagina con la recensione aggiunta)
+    onPressed -> spostarsi nella pagina delle recensioni dell'appunto selezionato (getTopic??) e aggiungere alla lista delle recensioni
+    la recensione appena creata (lista stile appunti ma ci portiamo dietro l'input inserito, per creare la recensione c'è il metodo già pronto)
 
-- inserire eventuali controlli su input incompleti nelle pagina add recensione (testo presente, inseriti voti)
+- inserire eventuali controlli su input incompleti nelle pagina add recensione 
+    pagina stateful -> 
+        creare pagina stateful e pagina state 
+        unire scaffold della pagina e metodo di creazione del voto nella pagina state
+        inserire controller per il testo e campi _voto delle 3 stelline
+    testo presente -> usare un controller
+    voti inseriti -> controllo se i campi _voto != 0
 
 - in TUTTI i popup che portano alla schermata di login bisogna fixare l'animazione
     (dovrebbe essere fixato, da verificare bene)
