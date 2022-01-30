@@ -44,7 +44,7 @@ class SettingsDialogs {
                 Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
               },
               child: const Text(
-                "Esci",
+                "Disconnetti",
                 style: TextStyle(
                   color: Colors.white
                 )

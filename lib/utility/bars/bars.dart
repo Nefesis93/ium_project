@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/home/search.dart';
-import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/bars/bars_dialogs.dart';

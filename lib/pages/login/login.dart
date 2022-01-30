@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/pages/login/login_dialogs.dart';
-import 'package:ium_project/utility/bars/bars.dart';
 
 /*
 schermata di login
