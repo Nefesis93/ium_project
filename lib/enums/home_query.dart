@@ -16,10 +16,12 @@ class HomeQuery {
   static const HomeQuery proto = HomeQuery._([
     Topic.algebra,
     Topic.algoritmi,
-    Topic.basi,
     Topic.lock,
-    Topic.lockduefasi,
     Topic.pdsi,
+    Topic.basi,
+    
+    Topic.lockduefasi,
+    
     Topic.prototyping,
     Topic.tipidilock,
     Topic.turing
@@ -28,15 +30,35 @@ class HomeQuery {
   //questo è il risultato della query solo facoltà senza prototyping
   static const HomeQuery facolta = HomeQuery._([
     Topic.algebra,
+    Topic.lock,
+    Topic.pdsi,
     Topic.algoritmi,
     Topic.basi,
-    Topic.lock,
+    
     Topic.lockduefasi,
-    Topic.pdsi,
+    
     Topic.tipidilock,
     Topic.turing
   ]);
 
+  //query per sistemi operativi
+  static const HomeQuery sistemiOperativi = HomeQuery._([Topic.lock]);
+
+  //query per algebra
+  static const HomeQuery algebra = HomeQuery._([Topic.algebra]);
+
+  //query per algoritmi
+  static const HomeQuery algoritmi = HomeQuery._([Topic.algoritmi]);
+
+  //query per basi
+  static const HomeQuery basi = HomeQuery._([Topic.basi, Topic.tipidilock, Topic.lockduefasi]);
+
+  //query per ingegneria del softwere
+  static const HomeQuery swEng = HomeQuery._([Topic.pdsi]);
+
+  //query per automi
+  static const HomeQuery automi = HomeQuery._([Topic.turing]);
+  
   /*
   Questo è il risultato delle query:
   1) titolo-facoltà-prof
