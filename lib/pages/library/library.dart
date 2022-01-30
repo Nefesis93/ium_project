@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/appunti/home_lib_utility.dart';
 import 'package:ium_project/utility/bars/bars.dart';
@@ -293,6 +294,7 @@ class Library extends StatelessWidget {
                       ),
                       child: TextButton(
                         onPressed: () {
+                          TopicInfo().setTopic(topic);
                           Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
                         },
                         child: const Text(

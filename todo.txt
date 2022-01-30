@@ -3,11 +3,7 @@ to do:
 - completare pseudo back end di ricerca (inserire gli output della ricerca nell'enum home_query)
 - comportamento del bottone scrivi una recensione (il bottone deve anche riportare alla pagina con la recensione aggiunta)
 
-
-
-- inserire eventuali controlli su input incompleti nella pagine login (mail e password)
 - inserire eventuali controlli su input incompleti nelle pagina add recensione (testo presente, inseriti voti)
-- inserire eventuali controlli su input incompleti nella pagina di upload (tutti i capi completati)
 
 - in TUTTI i popup che portano alla schermata di login bisogna fixare l'animazione
     (dovrebbe essere fixato, da verificare bene)

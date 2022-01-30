@@ -47,4 +47,30 @@ class AddAppuntoDialogs {
       )
     );
   }
+
+  static void uploadErrorDialog(BuildContext context) {
+    showDialog<String>(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text(
+          "Attenzione",
+          textAlign: TextAlign.center,
+        ),
+        content: const Text(
+          "Devi prima compilare tutti i campi",
+          textAlign: TextAlign.center,
+        ),
+        actionsAlignment: MainAxisAlignment.end,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("ok"),
+          ),
+        ],
+      )
+    );
+  }
 }
