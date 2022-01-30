@@ -9,7 +9,7 @@ import 'package:ium_project/utility/materie/materia.dart';
 
 class AppuntiUtility {
 
-  static Widget getButtonScarica(BuildContext context) {
+  static Widget getButtonScarica(BuildContext context, Topic topic) {
     return Container(
       height: 50,
       width: 250,
@@ -21,7 +21,7 @@ class AppuntiUtility {
         onPressed: () {
           if (UserLogin().getLoginInfo()) {
             //l'utente è loggato
-            CustomDialogs.downloadCompleatedDialog(context);
+            CustomDialogs.downloadCompleatedDialog(context, topic);
           } else {
             //l'utente non è loggato
             CustomDialogs.permissionDialog(context);
@@ -111,7 +111,7 @@ class AppuntiUtility {
                 ),
               ),
               //bottone scarica
-              AppuntiUtility.getButtonScarica(context),
+              AppuntiUtility.getButtonScarica(context, topic),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Container(

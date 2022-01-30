@@ -10,6 +10,6 @@ class HomeQuery {
   }
 
   static const HomeQuery home = HomeQuery._([Topic.lock, Topic.algebra]);
-  static const HomeQuery prova = HomeQuery._([Topic.prototyping, Topic.pdsi]);
+  static const HomeQuery prova = HomeQuery._([Topic.pdsi, Topic.prototyping]);
   //qui va inserita una const con il risultato di ogni tipo di ricerca prevista dall'app
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/library_info.dart';
-import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 
 /*
@@ -59,7 +59,7 @@ class CustomDialogs {
   /*
   funzione che crea il dialog utilizzato per dare conferma del download degli appunti compleatato con successo
   */
-  static void downloadCompleatedDialog(BuildContext context) {
+  static void downloadCompleatedDialog(BuildContext context, Topic topic) {
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -89,6 +89,7 @@ class CustomDialogs {
             child: TextButton(
               onPressed: () {
                 LibraryInfo().appuntiScaricati();
+                LibraryInfo().addScaricati(topic);
                 Navigator.pushReplacementNamed(context, '/library');
               },
               child: const Text(

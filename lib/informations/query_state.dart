@@ -1,5 +1,4 @@
 import 'package:ium_project/enums/home_query.dart';
-import 'package:ium_project/pages/home/home.dart';
 
 class QueryState {
   static final QueryState _user = QueryState._internal();

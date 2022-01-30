@@ -33,20 +33,21 @@ class Home extends StatelessWidget {
 
   Widget _getBody(BuildContext context, HomeQuery query) {
     return ListView.builder(
-        itemCount: HomeQuery.home.getInstance().length + 1,
-        itemBuilder: (BuildContext context, int i) {
-          if (i == 0) {
-            if (QueryState().getState() == HomeQuery.home) {
-              return _getSubTitle(context, "Appunti piú Scaricati");
-            }
-            else {
-              return _getSubTitle(context, "Risultati ricerca");
-            }
-          } else{
-            return _getRow(context, query.getInstance()[i-1]);
+      shrinkWrap: true,
+      itemCount: HomeQuery.home.getInstance().length + 1,
+      itemBuilder: (BuildContext context, int i) {
+        if (i == 0) {
+          if (QueryState().getState() == HomeQuery.home) {
+            return _getSubTitle(context, "Appunti piú Scaricati");
           }
-        },
-      );
+          else {
+            return _getSubTitle(context, "Risultati ricerca");
+          }
+        } else{
+          return _getRow(context, query.getInstance()[i-1]);
+        }
+      },
+    );
   }
 
   Widget _getSubTitle(BuildContext context, String subTitle) {

@@ -1,3 +1,5 @@
+import 'package:ium_project/enums/topic.dart';
+
 /*
 file che mantiene traccia dello stato della libreria
 */
@@ -6,7 +8,9 @@ class LibraryInfo {
 
   //se settato a true significa che sto nel tab appunti caricati
   bool _state = true;
-
+  List<Topic> _caricati = [Topic.lock, Topic.basi];
+  List<Topic> _scaricati = [Topic.pdsi, Topic.algoritmi, Topic.turing];
+  
   LibraryInfo._internal();
 
   factory LibraryInfo() {
@@ -27,5 +31,25 @@ class LibraryInfo {
 
   bool getState() {
     return _state;
+  }
+
+  void addCaricati(Topic topic) {
+    if (!_caricati.contains(topic)) {
+      _caricati.add(topic);
+    }
+  }
+
+  void addScaricati(Topic topic) {
+    if (!_scaricati.contains(topic)) {
+      _scaricati.add(topic);
+    }
+  }
+
+  List<Topic> getCaricati() {
+    return _caricati;
+  }
+
+  List<Topic> getScaricati() {
+    return _scaricati;
   }
 }

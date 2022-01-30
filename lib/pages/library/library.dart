@@ -74,15 +74,17 @@ class Library extends StatelessWidget {
               )
             ],
           ),
+          _getBody(context, true),
           //lista che contiene l'elenco degli appunti
+          /*
           ListView(
             shrinkWrap: true,
             children: <Widget> [
-              //prima riga della lista della view
               _getRowCaricati(context, Topic.lock),
               _getRowCaricati(context, Topic.basi),
             ]
           )
+          */
         ],
       );
     } else {
@@ -147,6 +149,8 @@ class Library extends StatelessWidget {
               )
             ],
           ),
+          _getBody(context, false),
+          /*
           ListView(
             shrinkWrap: true,
             children: <Widget>[
@@ -155,7 +159,30 @@ class Library extends StatelessWidget {
               _getRowScaricati(context, Topic.turing),
             ],
           ),
+          */
         ],
+      );
+    }
+  }
+
+  Widget _getBody(BuildContext context, bool caricati) {
+    if (caricati) {
+      List libCaricati = LibraryInfo().getCaricati();
+      return ListView.builder(
+        shrinkWrap: true,
+        itemCount: libCaricati.length,
+        itemBuilder: (BuildContext context, int i) {
+          return _getRowCaricati(context,libCaricati[i]);
+        },
+      );
+    } else {
+      List libScaricati = LibraryInfo().getScaricati();
+      return ListView.builder(
+        shrinkWrap: true,
+        itemCount: libScaricati.length,
+        itemBuilder: (BuildContext context, int i) {
+          return _getRowScaricati(context, libScaricati[i]);
+        },
       );
     }
   }

@@ -27,13 +27,13 @@ class NotesPreview extends StatelessWidget {
         shrinkWrap: true,
         children: <Widget>[
           _getList(TopicInfo().getTopic()),
-          _getButton(context),
+          _getButton(context, TopicInfo().getTopic()),
         ],
       ),
     );
   }
 
-  Widget _getButton(BuildContext context) {
+  Widget _getButton(BuildContext context, Topic topic) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
       child: Container(
@@ -46,7 +46,7 @@ class NotesPreview extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             if (UserLogin().getLoginInfo()) {
-              CustomDialogs.downloadCompleatedDialog(context);
+              CustomDialogs.downloadCompleatedDialog(context, topic);
             } else {
               CustomDialogs.permissionDialog(context);
             }
