@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
+import 'package:ium_project/informations/query_state.dart';
 import 'package:ium_project/pages/home/search.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
@@ -94,6 +96,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () {
                 //resetto lo stato della libreria
                 LibraryInfo().appuntiCaricati();
+                QueryState().setState(HomeQuery.home);
                 Navigator.of(context).pushReplacement(CustomAnimations.flatAnimation(MyPage.home));
               },
               icon: const Icon(

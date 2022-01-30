@@ -4,7 +4,7 @@ file che mantiente le informazioni di login di un utente
 class UserLogin {
   static final UserLogin _user = UserLogin._internal();
 
-  bool _isLoggedIn = false;
+  bool _isLoggedIn = true;
 
   UserLogin._internal();
 

@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/home_query.dart';
+import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/informations/query_state.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 class Search {
   static void searchDialog(BuildContext context) {
@@ -34,7 +38,11 @@ class Search {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () => 0,
+                  onPressed: () {
+                    QueryState().setState(HomeQuery.prova);
+                    //Navigator.pop(context);
+                    Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                  },
                   child: const Text(
                     'Cerca',
                     style: TextStyle(

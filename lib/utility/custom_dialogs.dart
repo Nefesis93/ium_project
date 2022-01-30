@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/pages/login/login.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 /*
 classe che conterrà tutti i dialog utilizzati su più di una pagina
@@ -39,10 +41,7 @@ class CustomDialogs {
             child: TextButton(
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
+                Navigator.push(context, CustomAnimations.rightToLeft(MyPage.login));
               },
               child: const Text(
                 "Effettua l'accesso",

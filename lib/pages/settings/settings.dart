@@ -3,7 +3,6 @@ import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
-import 'package:ium_project/pages/settings_information/settings_information.dart';
 import 'package:ium_project/pages/settings/settings_dialogs.dart';
 
 

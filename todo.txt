@@ -1,9 +1,13 @@
 to do:
-- completare pseudo back end di ricerca
+
+- completare pseudo back end di ricerca (inserire gli output della ricerca nell'enum home_query)
+    
 - completare pseudo back end su libreria (quando scarichi un appunto vai alla libreria ti porta alla libreria con quell'appunto aggiornato)
 - comportamento del bottone scrivi una recensione (il bottone deve anche riportare alla pagina con la recensione aggiunta)
 - il pulsante "Scrivi una recensione" deve essere visibile solo se quella recensione è presente nelle recensioni della libreria dell'utente e non sia gia stata recensita
 - il pulsante "Scrivi una recensione" dovrebbe essere più corto ma stranamente non riesco a fixare mettendo la width al container
+- anche le stelline della home devono diventare trasparenti in base ai voti come nella libreria
+- in TUTTI i popup che portano alla schermat adi login bisogna fixare l'animazione
 
 
 - inserire eventuali controlli su input incompleti nella pagine login (mail e password)
