@@ -145,6 +145,7 @@ class Home extends StatelessWidget {
                           ),
                           child: TextButton(
                             onPressed: () {
+                              TopicInfo().setTopic(topic);
                               Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
                             },
                             child: Text(

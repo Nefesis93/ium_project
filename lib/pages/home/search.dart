@@ -3,6 +3,7 @@ import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/query_state.dart';
 import 'package:ium_project/utility/custom_animations.dart';
+import 'package:ium_project/utility/custom_dialogs.dart';
 
 class Search {
   static void searchDialog(BuildContext context) {
@@ -122,10 +123,14 @@ class Search {
 
                           /*quì prima c'era .prova e funzionava (2 elementi), se
                           metti .lock che ha un solo elemento da index error*/
-                          QueryState().setState(HomeQuery.facolta);
+
+                          /*
+                          QueryState().setState(HomeQuery.proto);
                           //Navigator.pop(context);
                           Navigator.pushReplacement(context,
                               CustomAnimations.flatAnimation(MyPage.home));
+                            */
+                            CustomDialogs.searchDialog(context);
                         },
                         child: const Text(
                           'Cerca',
@@ -182,4 +187,6 @@ class Search {
       ),
     );
   }
+
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/custom_animations.dart';
@@ -167,32 +168,40 @@ class AppuntiUtility {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
-          child: Container(
-            height: 50,
-            width: 250,
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: TextButton(
-              onPressed: () => {
-                Navigator.pushNamed(context, '/add_recensione')
-              },
-              child: const Text(
-                "Scrivi una recensione",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                )   
-              ),
+        _getButtonRecensione(context, topic),
+        AppuntiUtility.getRecensioni(context, topic),
+      ]
+    );
+  }
+
+  static Widget _getButtonRecensione(BuildContext context, Topic topic) {
+    if (!LibraryInfo().getCaricati().contains(topic)) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
+        child: Container(
+          height: 50,
+          width: 250,
+          decoration: const BoxDecoration(
+            color: Colors.blue,
+          ),
+          child: TextButton(
+            onPressed: () => {
+              Navigator.pushNamed(context, '/add_recensione')
+            },
+            child: const Text(
+              "Scrivi una recensione",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              )   
             ),
           ),
         ),
-        AppuntiUtility.getRecensioni(context),
-      ]
-    );
+      );
+    } else {
+      return Container();
+    }
   }
 
   static Widget getBoxRecensione(BuildContext context, String nome, int chiarezza, int validita, int completezza, String testoRecensione) {
@@ -340,7 +349,7 @@ class AppuntiUtility {
     );
   }
 
-  static Widget getRecensioni(BuildContext context) {
+  static Widget getRecensioni(BuildContext context, Topic topic) {
     return Column(
       children: <Widget> [
         //container che contiene le 3 stelline a inizio pagina
@@ -432,28 +441,82 @@ class AppuntiUtility {
             ],
           )
         ),
-        //prima recensione
-        getBoxRecensione(
-          context, 
-          "Anonimo1", 
-          4, 
-          3, 
-          5, 
-          "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
-          "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
-          "Consigliatissimi a chiunque!"),
-        //seconda recensione
-        getBoxRecensione(
-          context, 
-          "Anonimo2", 
-          1, 
-          2, 
-          4, 
-          "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
-          "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
-          "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti."),
+        getRecensioniFromTopic(context, topic),
       ],
     );
+  }
+
+  static Widget getRecensioniFromTopic(BuildContext context, Topic topic) {
+    if (topic != Topic.prototyping) {
+      if ((TopicToMateria().getMap()[topic] as Materia).getNumeroRecensioni() == 2) {
+        return Column(
+          children: <Widget>[
+            //prima recensione
+            getBoxRecensione(
+              context, 
+              "Anonimo1", 
+              4, 
+              3, 
+              5, 
+              "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
+              "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
+              "Consigliatissimi a chiunque!"
+            ),
+            //seconda recensione
+            getBoxRecensione(
+              context, 
+              "Anonimo2", 
+              1, 
+              2, 
+              4, 
+              "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
+              "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
+              "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti."
+            ),
+          ],
+        );
+      } else {
+        return Column(
+          children: <Widget>[
+            //prima recensione
+            getBoxRecensione(
+              context, 
+              "Anonimo1", 
+              4, 
+              3, 
+              5, 
+              "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
+              "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
+              "Consigliatissimi a chiunque!"
+            ),
+            //seconda recensione
+            getBoxRecensione(
+              context, 
+              "Anonimo2", 
+              1, 
+              2, 
+              4, 
+              "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
+              "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
+              "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti."
+            ),
+            //terza recensione dinamica da implementare con i controller
+            /*
+            getBoxRecensione(
+              context,
+              "Anonimo3",
+              ,
+              ,
+              ,
+              ,
+            )
+            */
+          ],
+        );
+      }
+    } else {
+      return Column();
+    }
   }
 }
 

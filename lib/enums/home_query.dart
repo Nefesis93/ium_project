@@ -19,12 +19,10 @@ class HomeQuery {
     Topic.lock,
     Topic.pdsi,
     Topic.basi,
-    
-    Topic.lockduefasi,
-    
-    Topic.prototyping,
     Topic.tipidilock,
-    Topic.turing
+    Topic.turing,
+    Topic.lockduefasi,
+    Topic.prototyping,
   ]);
 
   //questo è il risultato della query solo facoltà senza prototyping
@@ -34,10 +32,8 @@ class HomeQuery {
     Topic.pdsi,
     Topic.algoritmi,
     Topic.basi,
-    
-    Topic.lockduefasi,
-    
     Topic.tipidilock,
+    Topic.lockduefasi,
     Topic.turing
   ]);
 
@@ -59,16 +55,6 @@ class HomeQuery {
   //query per automi
   static const HomeQuery automi = HomeQuery._([Topic.turing]);
   
-  /*
-  Questo è il risultato delle query:
-  1) titolo-facoltà-prof
-  2) titolo-prof
-  3) titolo-facoltà
-  4) titolo
-  */
-  static const HomeQuery locks =
-      HomeQuery._([Topic.lock, Topic.lockduefasi, Topic.tipidilock]);
-
-  //questo è il risultato di tutte le altre query
-  static const HomeQuery lock = HomeQuery._([Topic.lock]);
+  //query per lock nel titolo
+  static const HomeQuery locks = HomeQuery._([Topic.lock, Topic.lockduefasi, Topic.tipidilock]);
 }

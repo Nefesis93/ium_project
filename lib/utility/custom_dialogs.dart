@@ -188,4 +188,29 @@ class CustomDialogs {
       )
     );
   }
+
+  static void searchDialog(BuildContext context) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: const Text(
+          "Attenzione",
+          textAlign: TextAlign.center,
+        ),
+        content: const Text(
+          "Devi inserire almeno un campo per effettuare la ricerca",
+          textAlign: TextAlign.center,
+        ),
+        actionsAlignment: MainAxisAlignment.end,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("ok"),
+          ),
+        ],
+      )
+    );
+  }
 }
