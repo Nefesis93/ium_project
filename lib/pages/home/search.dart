@@ -50,7 +50,7 @@ class Search {
                           quando l'utente carica un appunto (prototyping)*/
                           boolean queryProto = false;
 
-                          //questa variabile serve a capire se l'utente ha inserito un input
+                           //questa variabile serve a capire se l'utente ha inserito un input
                           riscontrabile nel database oppure no
                           queryValide = false;
                           
@@ -122,7 +122,7 @@ class Search {
 
                           /*quì prima c'era .prova e funzionava (2 elementi), se
                           metti .lock che ha un solo elemento da index error*/
-                          QueryState().setState(HomeQuery.home);
+                          QueryState().setState(HomeQuery.facolta);
                           //Navigator.pop(context);
                           Navigator.pushReplacement(context,
                               CustomAnimations.flatAnimation(MyPage.home));

@@ -34,7 +34,7 @@ class Home extends StatelessWidget {
   Widget _getBody(BuildContext context, HomeQuery query) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: HomeQuery.home.getInstance().length + 1,
+      itemCount: query.getInstance().length + 1,
       itemBuilder: (BuildContext context, int i) {
         if (i == 0) {
           if (QueryState().getState() == HomeQuery.home) {
