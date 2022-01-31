@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/pages/add_recensione/add_recensione_dialog.dart';
+import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/informations/recensione.dart';
+import 'package:ium_project/pages/add_appunto/add_appunto_dialog.dart';
 import 'package:ium_project/utility/bars/bars.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
-class AddRecensione extends StatelessWidget {
+class AddRecensione extends StatefulWidget {
   const AddRecensione({Key? key}) : super(key: key);
+
+  @override
+  _AddRecensioneState createState() => _AddRecensioneState();
+}
+
+class _AddRecensioneState extends State<AddRecensione> {
+  int? _votoChiarezza = 0;
+  int? _votoValidita = 0;
+  int? _votoCompletezza = 0;
+  final TextEditingController _recensioneController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,11 +59,12 @@ class AddRecensione extends StatelessWidget {
                           ),
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: const Padding(
-                          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                           child: TextField(
+                            controller: _recensioneController,
                             maxLines: 10,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               border: InputBorder.none,
                             ),
                           ),
@@ -132,10 +147,57 @@ class AddRecensione extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                                
                             ],
                           ),
-                          const VotoRecensione(),
+                          Row(
+                            children: <Widget>[ 
+                              Radio(
+                                value: 1,
+                                groupValue: _votoChiarezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoChiarezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 2,
+                                groupValue: _votoChiarezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoChiarezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 3,
+                                groupValue: _votoChiarezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoChiarezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 4,
+                                groupValue: _votoChiarezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoChiarezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 5,
+                                groupValue: _votoChiarezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoChiarezza = k;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -164,7 +226,55 @@ class AddRecensione extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const VotoRecensione(),
+                          Row(
+                            children: <Widget>[ 
+                              Radio(
+                                value: 1,
+                                groupValue: _votoValidita,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoValidita = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 2,
+                                groupValue: _votoValidita,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoValidita = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 3,
+                                groupValue: _votoValidita,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoValidita = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 4,
+                                groupValue: _votoValidita,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoValidita = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 5,
+                                groupValue: _votoValidita,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoValidita = k;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -193,9 +303,58 @@ class AddRecensione extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const VotoRecensione(),
+                          Row(
+                            children: <Widget>[ 
+                              Radio(
+                                value: 1,
+                                groupValue: _votoCompletezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoCompletezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 2,
+                                groupValue: _votoCompletezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoCompletezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 3,
+                                groupValue: _votoCompletezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoCompletezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 4,
+                                groupValue: _votoCompletezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoCompletezza = k;
+                                  });
+                                },
+                              ),
+                              Radio(
+                                value: 5,
+                                groupValue: _votoCompletezza,
+                                onChanged: (int? k) {
+                                  setState(() {
+                                    _votoCompletezza = k;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                         ],
                       ),
+                          
                     ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10, 50, 10, 10),
@@ -211,8 +370,18 @@ class AddRecensione extends StatelessWidget {
                             ),
                             child: TextButton(
                               onPressed: () {
-                                AddRecensioneDialog.recensioneInseritaDialog(context);
-                                Navigator.pop(context);
+                                if (_votoChiarezza == 0 || _votoCompletezza == 0
+                                  || _votoValidita == 0 || _recensioneController.text == '')
+                                {
+                                  AddAppuntoDialogs.uploadErrorDialog(context);
+                                } else {
+                                  Recensione().setRecensione(_recensioneController.text);
+                                  Recensione().setChiarezza(_votoChiarezza as int);
+                                  Recensione().setValidita(_votoValidita as int);
+                                  Recensione().setCompletezza(_votoCompletezza as int);
+                                  Navigator.pop(context);
+                                  Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.recensioneInserita));
+                                }
                               },
                               child: const Text(
                                 "Inserisci Recensione",
