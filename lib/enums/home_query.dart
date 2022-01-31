@@ -57,4 +57,6 @@ class HomeQuery {
   
   //query per lock nel titolo
   static const HomeQuery locks = HomeQuery._([Topic.lock, Topic.lockduefasi, Topic.tipidilock]);
+
+  static const HomeQuery basiProf = HomeQuery._([Topic.basi]);
 }

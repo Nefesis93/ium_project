@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
+import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/query_state.dart';
+import 'package:ium_project/informations/topic_to_home_query.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 
 class Search {
+  static final TextEditingController _titoloController = TextEditingController();
+  static final TextEditingController _facoltaController = TextEditingController();
+  static final TextEditingController _corsoController = TextEditingController();
+  static final TextEditingController _profController = TextEditingController();
+  static final TextEditingController _autoreController = TextEditingController();
+
   static void searchDialog(BuildContext context) {
     showDialog<String>(
         context: context,
@@ -24,11 +32,11 @@ class Search {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     //riga Titolo`
-                    _getInputRow(context, "Titolo"),
-                    _getInputRow(context, "Facoltà"),
-                    _getInputRow(context, "Corso"),
-                    _getInputRow(context, "Prof"),
-                    _getInputRow(context, "Autore"),
+                    _getInputRow(context, "Titolo", _titoloController),
+                    _getInputRow(context, "Facoltà", _facoltaController),
+                    _getInputRow(context, "Corso", _corsoController),
+                    _getInputRow(context, "Prof", _profController),
+                    _getInputRow(context, "Autore", _autoreController),
                     Container(
                       width: 150,
                       decoration: BoxDecoration(
@@ -39,98 +47,66 @@ class Search {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          /*pseudo-codice
-
-                          //queste credo siano variabili da mettere fuori
-                          setMaterie = insieme di tutte le materie
-                          boolean queryTitolo = false;
-                          boolean queryFacolta = false;
-                          boolean queryProf = false;
-                          
-                          /*questa dovrebbe essere una variabile globale che si setta a true
-                          quando l'utente carica un appunto (prototyping)*/
-                          boolean queryProto = false;
-
-                           //questa variabile serve a capire se l'utente ha inserito un input
-                          riscontrabile nel database oppure no
-                          queryValide = false;
-                          
-                          if (titolo.getInput() != null) {
-                            for(materia in setMaterie)
-                              if titolo.getInput.lowerCase().equals(materia.getTitle())
-                                queryTitolo = true;
-                                queryValida = true;
+                          if (_corsoController.text == '' && _autoreController.text == ''
+                            && _facoltaController.text == '' && _profController.text == ''
+                            && _titoloController.text == '') {
+                              CustomDialogs.searchDialog(context);
                           }
-
-                          if (facolta.getInput() != null) {
-                            for(materia in setMaterie)
-                              if facolta.getInput.lowerCase().equals(materia.getDepartment())
-                                queryFacolta = true;
-                                queryValida = true;
-                          }
-
-                          if (corso.getInput() != null) {
-                            for(materia in setMaterie)
-                              if corso.getInput.lowerCase().equals(materia.getTopic())                                
-                                queryValida = true;
-                          }
-
-                          if (prof.getInput() != null) {
-                            for(materia in setMaterie)
-                              if prof.getInput.lowerCase().equals(materia.getTeacher())
-                                queryProf = true;
-                                queryValida = true;
-                          }
-
-                          if (autore.getInput() != null) {
-                            for(materia in setMaterie)
-                              if titolo.getInput.lowerCase().equals(materia.getTitle())
-                                queryValida = true;
-                          }
-
-                          //caso in cui l'utente cerca le quattro query che danno le tre locks
-                          if ((queryTitolo) || 
-                              (queryTitolo && queryFacolta) || 
-                              (queryTitolo && queryProf) ||
-                              (queryTitolo && queryFacolta && queryProf))
-                            if (corso.getInput == null && autore.getInput == null)
-                              QueryState().setState(HomeQuery.locks);
-                            else { QueryState().setState(HomeQuery.lock); }
-                          
-                          //caso in cui l'utente cerca solo per facoltà prima di aver caricato un appunto
-                          elseif(queryFacolta && !queryProto)
-                            if(corso.getInput == null && autore.getInput == null
-                                    && titolo.getInput == null && prof.getInput == null)
-                              QueryState().setState(HomeQuery.facolta);
-                            else { QueryState().setState(HomeQuery.lock); }
-                          
-                          //caso in cui l'utente cerca solo per facoltà successivamente aver caricato un appunto
-                          elseif(queryFacolta && queryProto)
-                            if(corso.getInput == null && autore.getInput == null
-                                    && titolo.getInput == null && prof.getInput == null)
-                              QueryState().setState(HomeQuery.proto);
-                            else { QueryState().setState(HomeQuery.lock); }
-
-                          //tutti gli altri casi
-                          else {
-                            if(queryValida)
-                              QueryState().setState(HomeQuery.lock);
-                            else {
-                              pagina con scritto "Nessun risultato ottenuto"                            
+                          String corso = _corsoController.text.toLowerCase();
+                          for (Topic t in Topic.values) {
+                            if (t.name == corso) {
+                              _corsoController.clear();
+                              _autoreController.clear();
+                              _corsoController.clear();
+                              _facoltaController.clear();
+                              _titoloController.clear();
+                              QueryState().setState(TopicToHomeQuery().getMap()[t]);
+                              Navigator.pop(context);
+                              Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
                             }
                           }
-                          */
-
-                          /*quì prima c'era .prova e funzionava (2 elementi), se
-                          metti .lock che ha un solo elemento da index error*/
-
-                          /*
-                          QueryState().setState(HomeQuery.proto);
-                          //Navigator.pop(context);
-                          Navigator.pushReplacement(context,
-                              CustomAnimations.flatAnimation(MyPage.home));
-                            */
-                            CustomDialogs.searchDialog(context);
+                          if (_facoltaController.text.toLowerCase() == 'informatica') {
+                            _corsoController.clear();
+                            _autoreController.clear();
+                            _corsoController.clear();
+                            _facoltaController.clear();
+                            _titoloController.clear();
+                            QueryState().setState(HomeQuery.facolta);
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                          }
+                          
+                          if (_titoloController.text.toLowerCase().contains('lock')) {
+                            _corsoController.clear();
+                            _autoreController.clear();
+                            _corsoController.clear();
+                            _facoltaController.clear();
+                            _titoloController.clear();
+                            QueryState().setState(HomeQuery.locks);
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                          }
+                          if (_profController.text.toLowerCase() == 'de marsico') {
+                            _corsoController.clear();
+                            _autoreController.clear();
+                            _corsoController.clear();
+                            _facoltaController.clear();
+                            _titoloController.clear();
+                            QueryState().setState(HomeQuery.basiProf);
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                          }
+                          
+                          if (_autoreController.text.toLowerCase() == 'king bradley') {
+                            _corsoController.clear();
+                            _autoreController.clear();
+                            _corsoController.clear();
+                            _facoltaController.clear();
+                            _titoloController.clear();
+                            QueryState().setState(HomeQuery.automi);
+                            Navigator.pop(context);
+                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                          }
                         },
                         child: const Text(
                           'Cerca',
@@ -150,7 +126,7 @@ class Search {
   /*
   funzione che genera la riga con il testo e l'input box
   */
-  static Widget _getInputRow(BuildContext context, String text) {
+  static Widget _getInputRow(BuildContext context, String text, TextEditingController controller) {
     return Container(
       height: 50,
       decoration: BoxDecoration(
@@ -174,8 +150,9 @@ class Search {
           Container(
             width: 240,
             padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
-            child: const TextField(
-              decoration: InputDecoration(
+            child: TextField(
+              controller: controller,
+              decoration: const InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
                   border: OutlineInputBorder(
