@@ -8,7 +8,7 @@
             "name": "Pixel 3",
             "request": "launch",
             "type": "dart",
-            "deviceId": "emulator-5554",
+            //"deviceId": "emulator-5554",
         },
         {
             "name": "Chrome",

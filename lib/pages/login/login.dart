@@ -87,9 +87,7 @@ class _LoginState extends State<LoginPage> {
                               _emailController.clear();
                               _passwordController.clear();
                               Navigator.pop(context);
-                            } else {
-                              
-                            }
+                            } else {}
                           },
                           child: const Text("Login",
                               style: TextStyle(

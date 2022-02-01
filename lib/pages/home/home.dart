@@ -17,14 +17,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       //barra superiore
-      appBar: DefaultBar(
-        title: QueryState().getState() == HomeQuery.home ? 'Home' : '',
-      ),
+      appBar: const DefaultBar(),
       //barra inferiore
-      bottomNavigationBar: const DefaultBottomBar(),
+      //bottomNavigationBar: const DefaultBottomBar(),
       //più della barra inferiore
       floatingActionButton: const FloatingPlusButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      //floatingActionButtonLocation: FloatingActionButtonLocation.
       resizeToAvoidBottomInset: false,
       //lista degli appunti
       body: _getBody(context, QueryState().getState())

@@ -14,11 +14,7 @@ import '../custom_animations.dart';
 app bar in alto con le funzioni di ricerca e login
 */
 class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
-  const DefaultBar({Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  final String title;
+  const DefaultBar({Key? key}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(55);
@@ -26,24 +22,23 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: true,
-      title: Text(
-        title,
-        style: const TextStyle(
+      title: const Text(
+        'APPunti',
+        style: TextStyle(
           fontSize: 25,
         ),
       ),
-      leading: IconButton(
-        onPressed: () {
-          Search.searchDialog(context);
-        },
-        icon: const Icon(
-          Icons.search,
-          color: Colors.white,
-          size: 30,
-        )
-      ),
       actions: <Widget>[
+        IconButton(
+          onPressed: () {
+            Search.searchDialog(context);
+          },
+          icon: const Icon(
+            Icons.search,
+            color: Colors.white,
+            size: 30,
+          )
+        ),
         IconButton(
           onPressed: () {
             if (UserLogin().getLoginInfo()) {
@@ -146,7 +141,7 @@ class FloatingPlusButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 65,
-      width: 65,
+      width: 200,
       child: FloatingActionButton(
         onPressed: () {
           if (UserLogin().getLoginInfo())
@@ -158,19 +153,29 @@ class FloatingPlusButton extends StatelessWidget {
             CustomDialogs.permissionDialog(context);
           } 
         },
-        elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.blue,
-        shape: const CircleBorder(
-          side: BorderSide(
-            color: Colors.blue,
-            width: 2,
-          )
+        //elevation: 0,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0))
         ),
-        child: const Icon(
-          Icons.add,
-          size: 35,
-        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const [
+            Icon(
+              Icons.add,
+              size: 35,
+            ),
+            Text(
+              'Carica appunti',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            )
+          ],
+        )
+        
+        
       )
     );
   }

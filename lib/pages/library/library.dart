@@ -12,7 +12,7 @@ import 'package:ium_project/utility/materie/materia.dart';
 class Library extends StatelessWidget {
   const Library({Key? key}) : super(key: key);
 
-  Widget createBody(BuildContext context) {
+  Widget _createBody(BuildContext context) {
     if (LibraryInfo().getState()) {
       //sto nel tab appunti caricati
       return ListView(
@@ -22,7 +22,7 @@ class Library extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 40,
-                width: MediaQuery.of(context).size.width/2,
+                width: MediaQuery.of(context).size.width / 2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -46,7 +46,7 @@ class Library extends StatelessWidget {
               ),
               Container(
                 height: 40,
-                width: MediaQuery.of(context).size.width/2,
+                width: MediaQuery.of(context).size.width / 2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -55,26 +55,27 @@ class Library extends StatelessWidget {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () {
-                    LibraryInfo().appuntiScaricati();
-                    Navigator.pop(context);
-                    Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
-                  },
-                  style: TextButton.styleFrom(
-                    alignment: Alignment.center,
-                    minimumSize: const Size.fromWidth(double.infinity),
-                  ),
-                  child: Text(
-                    "Appunti Scaricati",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.blue.withOpacity(0.3),
+                    onPressed: () {
+                      LibraryInfo().appuntiScaricati();
+                      Navigator.pop(context);
+                      Navigator.of(context)
+                          .push(CustomAnimations.flatAnimation(MyPage.library));
+                    },
+                    style: TextButton.styleFrom(
+                      alignment: Alignment.center,
+                      minimumSize: const Size.fromWidth(double.infinity),
                     ),
-                  )
-                ),
-              )
+                    child: Text(
+                      "Appunti Scaricati",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.blue.withOpacity(0.3),
+                      ),
+                    )),
+              ),
             ],
           ),
+          _getSearchBar(context),
           _getBody(context, true),
           //lista che contiene l'elenco degli appunti
           /*
@@ -97,7 +98,7 @@ class Library extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 40,
-                width: MediaQuery.of(context).size.width/2,
+                width: MediaQuery.of(context).size.width / 2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -109,7 +110,8 @@ class Library extends StatelessWidget {
                   onPressed: () {
                     LibraryInfo().appuntiCaricati();
                     Navigator.pop(context);
-                    Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.library));
+                    Navigator.of(context)
+                        .push(CustomAnimations.flatAnimation(MyPage.library));
                   },
                   style: TextButton.styleFrom(
                     alignment: Alignment.center,
@@ -126,7 +128,7 @@ class Library extends StatelessWidget {
               ),
               Container(
                 height: 40,
-                width: MediaQuery.of(context).size.width/2,
+                width: MediaQuery.of(context).size.width / 2,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   border: Border(
@@ -135,32 +137,22 @@ class Library extends StatelessWidget {
                   ),
                 ),
                 child: TextButton(
-                  onPressed: () => 0,
-                  style: TextButton.styleFrom(
-                    alignment: Alignment.center,
-                    minimumSize: const Size.fromWidth(double.infinity),
-                  ),
-                  child: const Text(
-                    "Appunti Scaricati",
-                    style: TextStyle(
-                      fontSize: 18,
+                    onPressed: () => 0,
+                    style: TextButton.styleFrom(
+                      alignment: Alignment.center,
+                      minimumSize: const Size.fromWidth(double.infinity),
                     ),
-                  )
-                ),
+                    child: const Text(
+                      "Appunti Scaricati",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    )),
               )
             ],
           ),
+          _getSearchBar(context),
           _getBody(context, false),
-          /*
-          ListView(
-            shrinkWrap: true,
-            children: <Widget>[
-              _getRowScaricati(context, Topic.pdsi),
-              _getRowScaricati(context, Topic.algoritmi),
-              _getRowScaricati(context, Topic.turing),
-            ],
-          ),
-          */
         ],
       );
     }
@@ -173,7 +165,7 @@ class Library extends StatelessWidget {
         shrinkWrap: true,
         itemCount: libCaricati.length,
         itemBuilder: (BuildContext context, int i) {
-          return _getRowCaricati(context,libCaricati[i]);
+          return _getRowCaricati(context, libCaricati[i]);
         },
       );
     } else {
@@ -190,47 +182,41 @@ class Library extends StatelessWidget {
 
   Widget _getRowScaricati(BuildContext context, Topic topic) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
-          height: 70,
-          width: MediaQuery.of(context).size.width,
-          alignment: Alignment.bottomLeft,
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 2, color: Colors.blue),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              HomeLibUtility.getTitle(context, topic),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                child: IconButton(
-                  onPressed: () {
-                    _downloadCompleatedDialog(context);
-                  },
-                  icon: const Icon(
-                    Icons.download_sharp,
-                    color: Colors.blue,
-                    size: 35,
-                  ),
-                )
-              )
-            ]
-          )
-        ),
-      ]
-    );
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Container(
+              height: 70,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.bottomLeft,
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(width: 2, color: Colors.blue),
+                ),
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    HomeLibUtility.getTitle(context, topic),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                        child: IconButton(
+                          onPressed: () {
+                            _downloadCompleatedDialog(context);
+                          },
+                          icon: const Icon(
+                            Icons.download_sharp,
+                            color: Colors.blue,
+                            size: 35,
+                          ),
+                        ))
+                  ])),
+        ]);
   }
 
-
   Widget _getRowCaricati(BuildContext context, Topic topic) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Container(
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
+        Widget>[
+      Container(
           height: 70,
           width: MediaQuery.of(context).size.width,
           alignment: Alignment.bottomLeft,
@@ -239,118 +225,151 @@ class Library extends StatelessWidget {
               bottom: BorderSide(width: 2, color: Colors.blue),
             ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              HomeLibUtility.getTitle(context, topic),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Opacity(
-                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 0 ? 1 : 0.3,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        Opacity(
-                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 1 ? 1 : 0.3,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        Opacity(
-                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 2 ? 1 : 0.3,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        Opacity(
-                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 3 ? 1 : 0.3,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.blue,
-                          ),
-                        ),
-                        Opacity(
-                          opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 4 ? 1 : 0.3,
-                          child: const Icon(
-                            Icons.star,
-                            color: Colors.blue,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Container(
-                      height: 30,
-                      decoration: const BoxDecoration(
-                        color: Colors.blue,
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          TopicInfo().setTopic(topic);
-                          Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
-                        },
-                        child: const Text(
-                          "Visualizza Recensioni",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
+                  Widget>[
+            HomeLibUtility.getTitle(context, topic),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Opacity(
+                        opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                    .getVoto() >
+                                0
+                            ? 1
+                            : 0.3,
+                        child: const Icon(
+                          Icons.star,
+                          color: Colors.blue,
                         ),
                       ),
+                      Opacity(
+                        opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                    .getVoto() >
+                                1
+                            ? 1
+                            : 0.3,
+                        child: const Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      Opacity(
+                        opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                    .getVoto() >
+                                2
+                            ? 1
+                            : 0.3,
+                        child: const Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      Opacity(
+                        opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                    .getVoto() >
+                                3
+                            ? 1
+                            : 0.3,
+                        child: const Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      Opacity(
+                        opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                    .getVoto() >
+                                4
+                            ? 1
+                            : 0.3,
+                        child: const Icon(
+                          Icons.star,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 30,
+                    decoration: const BoxDecoration(
+                      color: Colors.blue,
                     ),
-                  ],
-                ),
-              )
-            ]
-          )
-        ),
-      ]
-    );
+                    child: TextButton(
+                      onPressed: () {
+                        TopicInfo().setTopic(topic);
+                        Navigator.push(context,
+                            CustomAnimations.rightToLeft(MyPage.recensioni));
+                      },
+                      child: const Text(
+                        "Visualizza Recensioni",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ])),
+    ]);
   }
 
   void _downloadCompleatedDialog(BuildContext context) {
     showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text(
-          "Download Completato",
-          textAlign: TextAlign.center,
-        ),
-        content: const Text(
-          "Appunti scaricati con successo",
-          textAlign: TextAlign.center,
-        ),
-        actionsAlignment: MainAxisAlignment.end,
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("ok"),
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              title: const Text(
+                "Download Completato",
+                textAlign: TextAlign.center,
+              ),
+              content: const Text(
+                "Appunti scaricati con successo",
+                textAlign: TextAlign.center,
+              ),
+              actionsAlignment: MainAxisAlignment.end,
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("ok"),
+                ),
+              ],
+            ));
+  }
+
+  Widget _getSearchBar(BuildContext context) {
+    return Container(
+        height: 70,
+        padding: const EdgeInsets.all(10),
+        child: const TextField(
+            //controller: _emailController,
+            //keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue, width: 2)),
+          counterText: "",
+          suffixIcon: Icon(
+            Icons.search,
+            color: Colors.blue,
           ),
-        ],
-      )
-    );
+          border: OutlineInputBorder(),
+          labelText: "Trova tra i tuoi appunti",
+        )));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const DefaultBar(
-        title: "Libreria",
-      ),
-      bottomNavigationBar: const DefaultBottomBar(),
+      appBar: const DefaultBar(),
       floatingActionButton: const FloatingPlusButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: createBody(context),
+      body: _createBody(context),
     );
   }
 }
