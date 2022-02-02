@@ -8,9 +8,9 @@ class LibraryInfo {
 
   //se settato a true significa che sto nel tab appunti caricati
   bool _state = true;
-  List<Topic> _caricati = [Topic.lock, Topic.basi];
-  List<Topic> _scaricati = [Topic.pdsi, Topic.algoritmi, Topic.turing];
-  
+  final List<Topic> _caricati = [Topic.lock, Topic.basi];
+  final List<Topic> _scaricati = [Topic.pdsi, Topic.algoritmi, Topic.turing];
+
   LibraryInfo._internal();
 
   factory LibraryInfo() {

@@ -15,11 +15,11 @@ class Library extends StatelessWidget {
   Widget _createBody(BuildContext context) {
     if (LibraryInfo().getState()) {
       //sto nel tab appunti caricati
-      return ListView(
+      return Column(
         children: <Widget>[
           //barra con appunti caricati e scaricati
           Row(
-            children: <Widget>[
+            children: [
               Container(
                 height: 40,
                 width: MediaQuery.of(context).size.width / 2,
@@ -75,19 +75,9 @@ class Library extends StatelessWidget {
               ),
             ],
           ),
-          _getSearchBar(context),
           _getBody(context, true),
-          //lista che contiene l'elenco degli appunti
-          /*
-          ListView(
-            shrinkWrap: true,
-            children: <Widget> [
-              _getRowCaricati(context, Topic.lock),
-              _getRowCaricati(context, Topic.basi),
-            ]
-          )
-          */
         ],
+        //_getSearchBar(context),
       );
     } else {
       //sto nel tab appunti scaricati
@@ -151,7 +141,6 @@ class Library extends StatelessWidget {
               )
             ],
           ),
-          _getSearchBar(context),
           _getBody(context, false),
         ],
       );
@@ -161,21 +150,33 @@ class Library extends StatelessWidget {
   Widget _getBody(BuildContext context, bool caricati) {
     if (caricati) {
       List libCaricati = LibraryInfo().getCaricati();
-      return ListView.builder(
-        shrinkWrap: true,
-        itemCount: libCaricati.length,
-        itemBuilder: (BuildContext context, int i) {
-          return _getRowCaricati(context, libCaricati[i]);
-        },
+      return Expanded(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: libCaricati.length + 1,
+          itemBuilder: (BuildContext context, int i) {
+            if (i == 0) {
+              return _getSearchBar(context);
+            } else {
+              return _getRowCaricati(context, libCaricati[i - 1]);
+            }
+          },
+        ),
       );
     } else {
       List libScaricati = LibraryInfo().getScaricati();
-      return ListView.builder(
-        shrinkWrap: true,
-        itemCount: libScaricati.length,
-        itemBuilder: (BuildContext context, int i) {
-          return _getRowScaricati(context, libScaricati[i]);
-        },
+      return Expanded(
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: libScaricati.length + 1,
+          itemBuilder: (BuildContext context, int i) {
+            if (i == 0) {
+              return _getSearchBar(context);
+            } else {
+              return _getRowScaricati(context, libScaricati[i - 1]);
+            }
+          },
+        ),
       );
     }
   }
@@ -368,7 +369,9 @@ class Library extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const DefaultBar(),
-      floatingActionButton: const FloatingPlusButton(),
+      floatingActionButton:
+          LibraryInfo().getState() ? const FloatingPlusButton() : null,
+      resizeToAvoidBottomInset: false,
       body: _createBody(context),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/login_info.dart';
 import 'package:ium_project/pages/login/login_dialogs.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -86,8 +88,11 @@ class _LoginState extends State<LoginPage> {
                               UserLogin().login();
                               _emailController.clear();
                               _passwordController.clear();
-                              Navigator.pop(context);
-                            } else {}
+                              Navigator.pushReplacement(context,
+                                  CustomAnimations.rightToLeft(MyPage.library));
+                            } else {
+                              LoginDialogs.fieldsDialog(context);
+                            }
                           },
                           child: const Text("Login",
                               style: TextStyle(

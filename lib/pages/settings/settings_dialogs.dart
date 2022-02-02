@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ium_project/enums/my_page.dart';
-import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/informations/login_info.dart';
+import 'package:ium_project/utility/custom_animations.dart';
 
 /*
 classe che conterrà tutti i dialog utilizzati sulla pagina settings
@@ -41,7 +41,8 @@ class SettingsDialogs {
                           UserLogin().logout();
                           Navigator.pop(context);
                           Navigator.pop(context);
-                          //Navigator.of(context).push(CustomAnimations.flatAnimation(MyPage.home));
+                          Navigator.pushReplacement(context,
+                              CustomAnimations.flatAnimation(MyPage.login));
                         },
                         child: const Text("Disconnetti",
                             style: TextStyle(color: Colors.white))))

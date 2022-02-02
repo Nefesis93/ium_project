@@ -20,9 +20,6 @@ class Appunti extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: const DefaultBottomBar(),
-      floatingActionButton: const FloatingPlusButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: _getList(TopicInfo().getTopic(), context),
     );
   }
