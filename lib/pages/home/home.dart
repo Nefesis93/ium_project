@@ -16,18 +16,17 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //barra superiore
-      appBar: const DefaultBar(),
-      //barra inferiore
-      //bottomNavigationBar: const DefaultBottomBar(),
-      //più della barra inferiore
-      floatingActionButton: const FloatingPlusButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      //floatingActionButtonLocation: FloatingActionButtonLocation.
-      resizeToAvoidBottomInset: false,
-      //lista degli appunti
-      body: _getBody(context, QueryState().getState())
-    );
+        //barra superiore
+        appBar: const DefaultBar(),
+        //barra inferiore
+        //bottomNavigationBar: const DefaultBottomBar(),
+        //più della barra inferiore
+        floatingActionButton: const FloatingPlusButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        //floatingActionButtonLocation: FloatingActionButtonLocation.
+        resizeToAvoidBottomInset: false,
+        //lista degli appunti
+        body: _getBody(context, QueryState().getState()));
   }
 
   Widget _getBody(BuildContext context, HomeQuery query) {
@@ -38,12 +37,11 @@ class Home extends StatelessWidget {
         if (i == 0) {
           if (QueryState().getState() == HomeQuery.home) {
             return _getSubTitle(context, "Appunti piú Scaricati");
-          }
-          else {
+          } else {
             return _getSubTitle(context, "Risultati ricerca");
           }
-        } else{
-          return _getRow(context, query.getInstance()[i-1]);
+        } else {
+          return _getRow(context, query.getInstance()[i - 1]);
         }
       },
     );
@@ -51,31 +49,29 @@ class Home extends StatelessWidget {
 
   Widget _getSubTitle(BuildContext context, String subTitle) {
     return Container(
-      height: 40,
-      alignment: Alignment.center,
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 2, color: Colors.blue),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(0),
-        child: Text(
-          subTitle,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.blue,
-            fontSize: 18,
+        height: 40,
+        alignment: Alignment.center,
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(width: 2, color: Colors.blue),
           ),
         ),
-      )
-    );
+        child: Padding(
+          padding: const EdgeInsets.all(0),
+          child: Text(
+            subTitle,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.blue,
+              fontSize: 18,
+            ),
+          ),
+        ));
   }
 
   Widget _getRow(BuildContext context, Topic topic) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
+        Widget>[
       //bottoni con le scritte
       Container(
           height: 70,
@@ -86,99 +82,117 @@ class Home extends StatelessWidget {
               bottom: BorderSide(width: 2, color: Colors.blue),
             ),
           ),
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                HomeLibUtility.getTitle(context, topic),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
+                  Widget>[
+            HomeLibUtility.getTitle(context, topic, true),
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    Row(
                       children: <Widget>[
-                        Row(
-                          children: <Widget>[
-                            Opacity(
-                              opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 0 ? 1 : 0.3,
-                              child: const Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            Opacity(
-                              opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 1 ? 1 : 0.3,
-                              child: const Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            Opacity(
-                              opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 2 ? 1 : 0.3,
-                              child: const Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            Opacity(
-                              opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 3 ? 1 : 0.3,
-                              child: const Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            Opacity(
-                              opacity: (TopicToMateria().getMap()[topic] as Materia).getVoto() > 4 ? 1 : 0.3,
-                              child: const Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 30,
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                      .getVoto() >
+                                  0
+                              ? 1
+                              : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              TopicInfo().setTopic(topic);
-                              Navigator.push(context, CustomAnimations.rightToLeft(MyPage.recensioni));
-                            },
-                            child: Text(
-                              "Recensioni: " + (TopicToMateria().getMap()[topic] as Materia).getNumeroRecensioni().toString(),
-                              style: const TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
+                        ),
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                      .getVoto() >
+                                  1
+                              ? 1
+                              : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                      .getVoto() >
+                                  2
+                              ? 1
+                              : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                      .getVoto() >
+                                  3
+                              ? 1
+                              : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
+                        ),
+                        Opacity(
+                          opacity: (TopicToMateria().getMap()[topic] as Materia)
+                                      .getVoto() >
+                                  4
+                              ? 1
+                              : 0.3,
+                          child: const Icon(
+                            Icons.star,
+                            color: Colors.blue,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: IconButton(
-                      onPressed: () {
-                        TopicInfo().setTopic(topic);
-                        Navigator.push(context, CustomAnimations.rightToLeft(MyPage.notesPreview));
-                      },
-                      icon: const Icon(
-                        Icons.find_in_page_outlined,
-                        color: Colors.blue,
-                        size: 30,
+                    Container(
+                      height: 30,
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child: TextButton(
+                        onPressed: () {
+                          TopicInfo().setTopic(topic);
+                          Navigator.push(context,
+                              CustomAnimations.rightToLeft(MyPage.recensioni));
+                        },
+                        child: Text(
+                          "Recensioni: " +
+                              (TopicToMateria().getMap()[topic] as Materia)
+                                  .getNumeroRecensioni()
+                                  .toString(),
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ]
+                  ],
+                ),
               ),
-            ]
-          )
-        ),
-      ]
-    );
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: IconButton(
+                  onPressed: () {
+                    TopicInfo().setTopic(topic);
+                    Navigator.push(context,
+                        CustomAnimations.rightToLeft(MyPage.notesPreview));
+                  },
+                  icon: const Icon(
+                    Icons.find_in_page_outlined,
+                    color: Colors.blue,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ]),
+          ])),
+    ]);
   }
-
 }

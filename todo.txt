@@ -1,6 +1,7 @@
 to do:
 
 - ricera e ricerca tra i propri appunti
+- modificare la funzione di inserimento appunti per far fare il reload page 
 
 
 noi saremo talmente tanto bravi che non ci saranno modifiche cit Valerio

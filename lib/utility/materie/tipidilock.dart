@@ -10,5 +10,6 @@ class TipiDiLock extends Materia {
             "Facoltà di Informatica",
             ['assets/images/unknown.png', 'assets/images/unknown1.png'],
             4,
-            2);
+            2,
+            "15/6/2021");
 }

@@ -10,5 +10,6 @@ class Basi extends Materia {
             "Facoltà di Informatica",
             ['assets/images/basi1.png', 'assets/images/basi2.png'],
             4,
-            2);
+            2,
+            "12/7/2021");
 }

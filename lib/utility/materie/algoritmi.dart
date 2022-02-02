@@ -10,5 +10,6 @@ class Algoritmi extends Materia {
             "Facoltà di Informatica",
             ['assets/images/algo1.png', 'assets/images/algo2.png'],
             4,
-            2);
+            2,
+            "23/12/2019");
 }

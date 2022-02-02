@@ -10,5 +10,6 @@ class Turing extends Materia {
             "Facoltà di Informatica",
             ['assets/images/mdt1.png', 'assets/images/mdt2.png'],
             3,
-            2);
+            2,
+            "10/2/2020");
 }

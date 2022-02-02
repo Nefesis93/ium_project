@@ -183,7 +183,7 @@ class Library extends StatelessWidget {
 
   Widget _getRowScaricati(BuildContext context, Topic topic) {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Container(
               height: 70,
@@ -197,7 +197,22 @@ class Library extends StatelessWidget {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    HomeLibUtility.getTitle(context, topic),
+                    SizedBox(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            child: IconButton(
+                              padding: const EdgeInsets.all(0),
+                              onPressed: () => 0,
+                              icon: const Icon(Icons.bookmark),
+                              iconSize: 30,
+                              color: Colors.yellow.shade700,
+                            ),
+                          ),
+                          HomeLibUtility.getTitle(context, topic, false),
+                        ],
+                      ),
+                    ),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                         child: IconButton(
@@ -229,7 +244,7 @@ class Library extends StatelessWidget {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <
                   Widget>[
-            HomeLibUtility.getTitle(context, topic),
+            HomeLibUtility.getTitle(context, topic, true),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
               child: Column(
