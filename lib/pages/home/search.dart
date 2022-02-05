@@ -8,11 +8,14 @@ import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 
 class Search {
-  static final TextEditingController _titoloController = TextEditingController();
-  static final TextEditingController _facoltaController = TextEditingController();
+  static final TextEditingController _titoloController =
+      TextEditingController();
+  static final TextEditingController _facoltaController =
+      TextEditingController();
   static final TextEditingController _corsoController = TextEditingController();
   static final TextEditingController _profController = TextEditingController();
-  static final TextEditingController _autoreController = TextEditingController();
+  static final TextEditingController _autoreController =
+      TextEditingController();
 
   static void searchDialog(BuildContext context) {
     showDialog<String>(
@@ -24,13 +27,14 @@ class Search {
               alignment: Alignment.topRight,
               insetPadding: const EdgeInsets.all(0),
               contentPadding: const EdgeInsets.all(0),
-              backgroundColor: Colors.transparent,
+              backgroundColor: Colors.blue,
               content: SizedBox(
-                width: 330,
+                width: MediaQuery.of(context).size.width,
                 height: 300,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
+                    /*
                     //riga Titolo`
                     _getInputRow(context, "Titolo", _titoloController),
                     _getInputRow(context, "Facoltà", _facoltaController),
@@ -47,10 +51,12 @@ class Search {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          if (_corsoController.text == '' && _autoreController.text == ''
-                            && _facoltaController.text == '' && _profController.text == ''
-                            && _titoloController.text == '') {
-                              CustomDialogs.searchDialog(context);
+                          if (_corsoController.text == '' &&
+                              _autoreController.text == '' &&
+                              _facoltaController.text == '' &&
+                              _profController.text == '' &&
+                              _titoloController.text == '') {
+                            CustomDialogs.searchDialog(context);
                           }
                           String corso = _corsoController.text.toLowerCase();
                           for (Topic t in Topic.values) {
@@ -60,12 +66,15 @@ class Search {
                               _corsoController.clear();
                               _facoltaController.clear();
                               _titoloController.clear();
-                              QueryState().setState(TopicToHomeQuery().getMap()[t]);
+                              QueryState()
+                                  .setState(TopicToHomeQuery().getMap()[t]);
                               Navigator.pop(context);
-                              Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                              Navigator.pushReplacement(context,
+                                  CustomAnimations.flatAnimation(MyPage.home));
                             }
                           }
-                          if (_facoltaController.text.toLowerCase() == 'informatica') {
+                          if (_facoltaController.text.toLowerCase() ==
+                              'informatica') {
                             _corsoController.clear();
                             _autoreController.clear();
                             _corsoController.clear();
@@ -73,10 +82,13 @@ class Search {
                             _titoloController.clear();
                             QueryState().setState(HomeQuery.facolta);
                             Navigator.pop(context);
-                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                            Navigator.pushReplacement(context,
+                                CustomAnimations.flatAnimation(MyPage.home));
                           }
-                          
-                          if (_titoloController.text.toLowerCase().contains('lock')) {
+
+                          if (_titoloController.text
+                              .toLowerCase()
+                              .contains('lock')) {
                             _corsoController.clear();
                             _autoreController.clear();
                             _corsoController.clear();
@@ -84,9 +96,11 @@ class Search {
                             _titoloController.clear();
                             QueryState().setState(HomeQuery.locks);
                             Navigator.pop(context);
-                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                            Navigator.pushReplacement(context,
+                                CustomAnimations.flatAnimation(MyPage.home));
                           }
-                          if (_profController.text.toLowerCase() == 'de marsico') {
+                          if (_profController.text.toLowerCase() ==
+                              'de marsico') {
                             _corsoController.clear();
                             _autoreController.clear();
                             _corsoController.clear();
@@ -94,10 +108,12 @@ class Search {
                             _titoloController.clear();
                             QueryState().setState(HomeQuery.basiProf);
                             Navigator.pop(context);
-                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                            Navigator.pushReplacement(context,
+                                CustomAnimations.flatAnimation(MyPage.home));
                           }
-                          
-                          if (_autoreController.text.toLowerCase() == 'king bradley') {
+
+                          if (_autoreController.text.toLowerCase() ==
+                              'king bradley') {
                             _corsoController.clear();
                             _autoreController.clear();
                             _corsoController.clear();
@@ -105,7 +121,8 @@ class Search {
                             _titoloController.clear();
                             QueryState().setState(HomeQuery.automi);
                             Navigator.pop(context);
-                            Navigator.pushReplacement(context, CustomAnimations.flatAnimation(MyPage.home));
+                            Navigator.pushReplacement(context,
+                                CustomAnimations.flatAnimation(MyPage.home));
                           }
                         },
                         child: const Text(
@@ -117,6 +134,7 @@ class Search {
                         ),
                       ),
                     )
+                    */
                   ],
                 ),
               ),
@@ -126,7 +144,8 @@ class Search {
   /*
   funzione che genera la riga con il testo e l'input box
   */
-  static Widget _getInputRow(BuildContext context, String text, TextEditingController controller) {
+  static Widget _getInputRow(
+      BuildContext context, String text, TextEditingController controller) {
     return Container(
       height: 50,
       decoration: BoxDecoration(
@@ -164,6 +183,4 @@ class Search {
       ),
     );
   }
-
-
 }

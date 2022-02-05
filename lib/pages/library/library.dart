@@ -9,8 +9,54 @@ import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/utility/materie/materia.dart';
 
-class Library extends StatelessWidget {
+class Library extends StatefulWidget {
   const Library({Key? key}) : super(key: key);
+
+  @override
+  _LibraryState createState() => _LibraryState();
+}
+
+class _LibraryState extends State<Library> {
+  //bool _tab = true;
+  List<Topic> _foundtopics = LibraryInfo().getState()
+      ? LibraryInfo().getCaricati()
+      : LibraryInfo().getScaricati();
+
+  @override
+  initState() {
+    //_tab = true;
+    _foundtopics = LibraryInfo().getState()
+        ? LibraryInfo().getCaricati()
+        : LibraryInfo().getScaricati();
+    super.initState();
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<Topic> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = LibraryInfo().getState()
+          ? LibraryInfo().getCaricati()
+          : LibraryInfo().getScaricati();
+    } else {
+      enteredKeyword = enteredKeyword.toLowerCase();
+      for (Topic t in LibraryInfo().getState()
+          ? LibraryInfo().getCaricati()
+          : LibraryInfo().getScaricati()) {
+        Materia materia = TopicToMateria().getMap()[t];
+        if (materia.getDepartment().toLowerCase().contains(enteredKeyword) ||
+            materia.getPublisher().toLowerCase().contains(enteredKeyword) ||
+            materia.getTeacher().toLowerCase().contains(enteredKeyword) ||
+            materia.getTitle().toLowerCase().contains(enteredKeyword) ||
+            materia.getTopic().toLowerCase().contains(enteredKeyword)) {
+          results.add(t);
+        }
+      }
+    }
+
+    setState(() {
+      _foundtopics = results;
+    });
+  }
 
   Widget _createBody(BuildContext context) {
     if (LibraryInfo().getState()) {
@@ -148,6 +194,20 @@ class Library extends StatelessWidget {
   }
 
   Widget _getBody(BuildContext context, bool caricati) {
+    return Expanded(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: _foundtopics.length + 1,
+        itemBuilder: (BuildContext context, int i) {
+          if (i == 0) {
+            return _getSearchBar(context);
+          } else {
+            return _getRowCaricati(context, _foundtopics[i - 1]);
+          }
+        },
+      ),
+    );
+
     if (caricati) {
       List libCaricati = LibraryInfo().getCaricati();
       return Expanded(
@@ -364,20 +424,21 @@ class Library extends StatelessWidget {
     return Container(
         height: 70,
         padding: const EdgeInsets.all(10),
-        child: const TextField(
+        child: TextField(
+            onChanged: (value) => _runFilter(value),
             //controller: _emailController,
             //keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue, width: 2)),
-          counterText: "",
-          suffixIcon: Icon(
-            Icons.search,
-            color: Colors.blue,
-          ),
-          border: OutlineInputBorder(),
-          labelText: "Trova tra i tuoi appunti",
-        )));
+            decoration: const InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue, width: 2)),
+              counterText: "",
+              suffixIcon: Icon(
+                Icons.search,
+                color: Colors.blue,
+              ),
+              border: OutlineInputBorder(),
+              labelText: "Trova tra i tuoi appunti",
+            )));
   }
 
   @override
