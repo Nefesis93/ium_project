@@ -17,14 +17,13 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
-  //bool _tab = true;
   List<Topic> _foundtopics = LibraryInfo().getState()
       ? LibraryInfo().getCaricati()
       : LibraryInfo().getScaricati();
+  final TextEditingController _search = TextEditingController();
 
   @override
   initState() {
-    //_tab = true;
     _foundtopics = LibraryInfo().getState()
         ? LibraryInfo().getCaricati()
         : LibraryInfo().getScaricati();
@@ -59,138 +58,87 @@ class _LibraryState extends State<Library> {
   }
 
   Widget _createBody(BuildContext context) {
-    if (LibraryInfo().getState()) {
-      //sto nel tab appunti caricati
-      return Column(
-        children: <Widget>[
-          //barra con appunti caricati e scaricati
-          Row(
-            children: [
-              Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 2,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(width: 1, color: Colors.blue),
-                    bottom: BorderSide(width: 2, color: Colors.blue),
-                  ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width / 2,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                border: Border(
+                  right: BorderSide(width: 1, color: Colors.blue),
+                  bottom: BorderSide(width: 2, color: Colors.blue),
                 ),
-                child: TextButton(
-                  onPressed: () => 0,
-                  style: TextButton.styleFrom(
-                    alignment: Alignment.center,
-                    minimumSize: const Size.fromWidth(double.infinity),
-                  ),
-                  child: const Text(
-                    "Appunti Caricati",
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
+              ),
+              child: TextButton(
+                onPressed: () {
+                  LibraryInfo().appuntiCaricati();
+                  _search.clear();
+                  setState(() {
+                    _foundtopics = LibraryInfo().getState()
+                        ? LibraryInfo().getCaricati()
+                        : LibraryInfo().getScaricati();
+                  });
+                },
+                style: TextButton.styleFrom(
+                  alignment: Alignment.center,
+                  minimumSize: const Size.fromWidth(double.infinity),
+                ),
+                child: Text(
+                  "Appunti Caricati",
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: LibraryInfo().getState()
+                        ? Colors.blue
+                        : Colors.blue.withOpacity(0.3),
                   ),
                 ),
               ),
-              Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 2,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    left: BorderSide(width: 1, color: Colors.blue),
-                    bottom: BorderSide(width: 2, color: Colors.blue),
-                  ),
+            ),
+            Container(
+              height: 40,
+              width: MediaQuery.of(context).size.width / 2,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                border: Border(
+                  left: BorderSide(width: 1, color: Colors.blue),
+                  bottom: BorderSide(width: 2, color: Colors.blue),
                 ),
-                child: TextButton(
-                    onPressed: () {
-                      LibraryInfo().appuntiScaricati();
-                      Navigator.pop(context);
-                      Navigator.of(context)
-                          .push(CustomAnimations.flatAnimation(MyPage.library));
-                    },
-                    style: TextButton.styleFrom(
-                      alignment: Alignment.center,
-                      minimumSize: const Size.fromWidth(double.infinity),
-                    ),
-                    child: Text(
-                      "Appunti Scaricati",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.blue.withOpacity(0.3),
-                      ),
-                    )),
               ),
-            ],
-          ),
-          _getBody(context, true),
-        ],
-        //_getSearchBar(context),
-      );
-    } else {
-      //sto nel tab appunti scaricati
-      return Column(
-        children: [
-          //barra con appunti caricati e scaricati
-          Row(
-            children: <Widget>[
-              Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 2,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(width: 1, color: Colors.blue),
-                    bottom: BorderSide(width: 2, color: Colors.blue),
-                  ),
-                ),
-                child: TextButton(
+              child: TextButton(
                   onPressed: () {
-                    LibraryInfo().appuntiCaricati();
-                    Navigator.pop(context);
-                    Navigator.of(context)
-                        .push(CustomAnimations.flatAnimation(MyPage.library));
+                    LibraryInfo().appuntiScaricati();
+                    _search.clear();
+                    setState(() {
+                      _foundtopics = LibraryInfo().getState()
+                          ? LibraryInfo().getCaricati()
+                          : LibraryInfo().getScaricati();
+                    });
                   },
                   style: TextButton.styleFrom(
                     alignment: Alignment.center,
                     minimumSize: const Size.fromWidth(double.infinity),
                   ),
                   child: Text(
-                    "Appunti Caricati",
+                    "Appunti Scaricati",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.blue.withOpacity(0.3),
+                      color: LibraryInfo().getState()
+                          ? Colors.blue.withOpacity(0.3)
+                          : Colors.blue,
                     ),
-                  ),
-                ),
-              ),
-              Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width / 2,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    left: BorderSide(width: 1, color: Colors.blue),
-                    bottom: BorderSide(width: 2, color: Colors.blue),
-                  ),
-                ),
-                child: TextButton(
-                    onPressed: () => 0,
-                    style: TextButton.styleFrom(
-                      alignment: Alignment.center,
-                      minimumSize: const Size.fromWidth(double.infinity),
-                    ),
-                    child: const Text(
-                      "Appunti Scaricati",
-                      style: TextStyle(
-                        fontSize: 18,
-                      ),
-                    )),
-              )
-            ],
-          ),
-          _getBody(context, false),
-        ],
-      );
-    }
+                  )),
+            ),
+          ],
+        ),
+        _getBody(
+          context,
+          LibraryInfo().getState(),
+        ),
+      ],
+    );
   }
 
   Widget _getBody(BuildContext context, bool caricati) {
@@ -202,43 +150,15 @@ class _LibraryState extends State<Library> {
           if (i == 0) {
             return _getSearchBar(context);
           } else {
-            return _getRowCaricati(context, _foundtopics[i - 1]);
+            if (caricati) {
+              return _getRowCaricati(context, _foundtopics[i - 1]);
+            } else {
+              return _getRowScaricati(context, _foundtopics[i - 1]);
+            }
           }
         },
       ),
     );
-
-    if (caricati) {
-      List libCaricati = LibraryInfo().getCaricati();
-      return Expanded(
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: libCaricati.length + 1,
-          itemBuilder: (BuildContext context, int i) {
-            if (i == 0) {
-              return _getSearchBar(context);
-            } else {
-              return _getRowCaricati(context, libCaricati[i - 1]);
-            }
-          },
-        ),
-      );
-    } else {
-      List libScaricati = LibraryInfo().getScaricati();
-      return Expanded(
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: libScaricati.length + 1,
-          itemBuilder: (BuildContext context, int i) {
-            if (i == 0) {
-              return _getSearchBar(context);
-            } else {
-              return _getRowScaricati(context, libScaricati[i - 1]);
-            }
-          },
-        ),
-      );
-    }
   }
 
   Widget _getRowScaricati(BuildContext context, Topic topic) {
@@ -426,8 +346,7 @@ class _LibraryState extends State<Library> {
         padding: const EdgeInsets.all(10),
         child: TextField(
             onChanged: (value) => _runFilter(value),
-            //controller: _emailController,
-            //keyboardType: TextInputType.emailAddress,
+            controller: _search,
             decoration: const InputDecoration(
               enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blue, width: 2)),
