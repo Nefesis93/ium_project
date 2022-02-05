@@ -34,13 +34,22 @@ class Search {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    /*
+                    Row(children: <Widget>[
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.arrow_back,
+                            size: 30,
+                          ))
+                    ]),
                     //riga Titolo`
                     _getInputRow(context, "Titolo", _titoloController),
                     _getInputRow(context, "Facoltà", _facoltaController),
                     _getInputRow(context, "Corso", _corsoController),
                     _getInputRow(context, "Prof", _profController),
-                    _getInputRow(context, "Autore", _autoreController),
+                    //_getInputRow(context, "Autore", _autoreController),
                     Container(
                       width: 150,
                       decoration: BoxDecoration(
@@ -134,7 +143,6 @@ class Search {
                         ),
                       ),
                     )
-                    */
                   ],
                 ),
               ),
