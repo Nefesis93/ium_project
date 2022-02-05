@@ -21,7 +21,6 @@ class Home extends StatelessWidget {
         //barra inferiore
         //bottomNavigationBar: const DefaultBottomBar(),
         //più della barra inferiore
-        floatingActionButton: const FloatingPlusButton(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         //floatingActionButtonLocation: FloatingActionButtonLocation.
         resizeToAvoidBottomInset: false,

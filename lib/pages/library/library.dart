@@ -364,10 +364,30 @@ class _LibraryState extends State<Library> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const DefaultBar(),
-      floatingActionButton:
-          LibraryInfo().getState() ? const FloatingPlusButton() : null,
+      floatingActionButton: LibraryInfo().getState() ? getFAB(context) : null,
       resizeToAvoidBottomInset: false,
       body: _createBody(context),
     );
+  }
+
+  Widget getFAB(BuildContext context) {
+    return Container(
+        height: 70,
+        width: 70,
+        padding: const EdgeInsets.only(bottom: 10),
+        child: FittedBox(
+            child: FloatingActionButton(
+          elevation: 10,
+          backgroundColor: Colors.blue,
+          foregroundColor: Colors.white,
+          onPressed: () {
+            Navigator.pushNamed(context, '/add_appunto')
+                .then((value) => setState(() {}));
+          },
+          child: const Icon(
+            Icons.add,
+            size: 25,
+          ),
+        )));
   }
 }

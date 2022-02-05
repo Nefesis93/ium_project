@@ -30,8 +30,9 @@ class Search {
               backgroundColor: Colors.blue,
               content: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 300,
+                height: 180,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
                     Row(children: <Widget>[
@@ -41,16 +42,44 @@ class Search {
                           },
                           icon: const Icon(
                             Icons.arrow_back,
+                            color: Colors.white,
                             size: 30,
-                          ))
+                          )),
+                      Container(
+                          width: 335,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: Colors.white,
+                            ),
+                          ),
+                          child: Row(children: <Widget>[
+                            TextButton(
+                                onPressed: () => 0,
+                                child: const Text("Cerca...",
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.white)))
+                          ]))
                     ]),
                     //riga Titolo`
-                    _getInputRow(context, "Titolo", _titoloController),
-                    _getInputRow(context, "Facoltà", _facoltaController),
-                    _getInputRow(context, "Corso", _corsoController),
-                    _getInputRow(context, "Prof", _profController),
-                    //_getInputRow(context, "Autore", _autoreController),
-                    Container(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _getContainerSearch(context, "Titolo", true),
+                        _getContainerSearch(context, "Facoltà", true),
+                        _getContainerSearch(context, "Corso", true),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        _getContainerSearch(context, "Prof", true),
+                        _getContainerSearch(context, "Autore", true),
+                        _getContainerSearch(context, "Ricerca avanzata", false),
+                      ],
+                    ),
+                    /*Container(
                       width: 150,
                       decoration: BoxDecoration(
                         color: Colors.blue,
@@ -142,11 +171,57 @@ class Search {
                           ),
                         ),
                       ),
-                    )
+                    )*/
                   ],
                 ),
               ),
             ));
+  }
+
+  static Widget _getContainerSearch(
+      BuildContext context, String text, bool plus) {
+    return Container(
+        width: 115,
+        height: 47,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: Colors.blue,
+            ),
+            color: Colors.white),
+        child: Row(
+            mainAxisAlignment:
+                plus ? MainAxisAlignment.center : MainAxisAlignment.end,
+            children: <Widget>[
+              getIcon(plus),
+              SizedBox(
+                  width: 80,
+                  child: TextButton(
+                      onPressed: () => 0,
+                      child: Text(text,
+                          style: TextStyle(
+                              fontSize: plus ? 19 : 12, color: Colors.blue))))
+            ]));
+  }
+
+  static Widget getIcon(bool plus) {
+    if (!plus) {
+      return Container(
+          width: 20,
+          height: 20,
+          decoration: BoxDecoration(
+            color: Colors.blue,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: const Text(
+            "+",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ));
+    } else {
+      return const SizedBox();
+    }
   }
 
   /*

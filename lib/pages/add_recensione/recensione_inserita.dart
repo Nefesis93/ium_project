@@ -19,125 +19,143 @@ class RecensioneInserita extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       bottomNavigationBar: const DefaultBottomBar(),
-      floatingActionButton: const FloatingPlusButton(),
+      //floatingActionButton: const FloatingPlusButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: ListView(
-      shrinkWrap: true,
-      children: <Widget>[
+      body: ListView(shrinkWrap: true, children: <Widget>[
         Container(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-          //titolo
-          child: Column(
-            children: <Widget>[
-              Text(
-                (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getTitle(),
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.blue,
-                  fontSize: 30,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                //riga contenente due colonne
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    SizedBox(
-                      height: 45,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getPublisher(),
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getTeacher(),
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 45,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: <Widget>[
-                          Text(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getTopic(),
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                            ),
-                          ),
-                          Text(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getDepartment(),
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ]
-                ),
-              ),
-              //bottone scarica
-              AppuntiUtility.getButtonScarica(context, TopicInfo().getTopic()),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Container(
-                  height: 330,
-                  width: 330,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Colors.blue
-                    ),
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            //titolo
+            child: Column(
+              children: <Widget>[
+                Text(
+                  (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia)
+                      .getTitle(),
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.blue,
+                    fontSize: 30,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(0),
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: <Widget>[
-                        IconButton(
-                          icon: Image.asset(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getList()[0],
-                            height: 300,
-                          ),
-                          iconSize: 320,
-                          onPressed: () {
-                            Navigator.push(context, CustomAnimations.rightToLeft(MyPage.notesPreview));
-                          },
-                        ),
-                        IconButton(
-                          icon: Image.asset(
-                            (TopicToMateria().getMap()[TopicInfo().getTopic()] as Materia).getList()[1],
-                            height: 300,
-                          ),
-                          iconSize: 320,
-                          onPressed: () {
-                            Navigator.push(context, CustomAnimations.rightToLeft(MyPage.notesPreview));
-                          },
-                        ),
-                      ],
-                    ) 
-                  )
                 ),
-              ),
-            ],
-          )
-        ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                  //riga contenente due colonne
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        SizedBox(
+                          height: 45,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                (TopicToMateria()
+                                            .getMap()[TopicInfo().getTopic()]
+                                        as Materia)
+                                    .getPublisher(),
+                                style: const TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                (TopicToMateria()
+                                            .getMap()[TopicInfo().getTopic()]
+                                        as Materia)
+                                    .getTeacher(),
+                                style: const TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 45,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                (TopicToMateria()
+                                            .getMap()[TopicInfo().getTopic()]
+                                        as Materia)
+                                    .getTopic(),
+                                style: const TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                (TopicToMateria()
+                                            .getMap()[TopicInfo().getTopic()]
+                                        as Materia)
+                                    .getDepartment(),
+                                style: const TextStyle(
+                                  color: Colors.blue,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                ),
+                //bottone scarica
+                AppuntiUtility.getButtonScarica(
+                    context, TopicInfo().getTopic()),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Container(
+                      height: 330,
+                      width: 330,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.blue),
+                      ),
+                      child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              IconButton(
+                                icon: Image.asset(
+                                  (TopicToMateria()
+                                              .getMap()[TopicInfo().getTopic()]
+                                          as Materia)
+                                      .getList()[0],
+                                  height: 300,
+                                ),
+                                iconSize: 320,
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      CustomAnimations.rightToLeft(
+                                          MyPage.notesPreview));
+                                },
+                              ),
+                              IconButton(
+                                icon: Image.asset(
+                                  (TopicToMateria()
+                                              .getMap()[TopicInfo().getTopic()]
+                                          as Materia)
+                                      .getList()[1],
+                                  height: 300,
+                                ),
+                                iconSize: 320,
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      CustomAnimations.rightToLeft(
+                                          MyPage.notesPreview));
+                                },
+                              ),
+                            ],
+                          ))),
+                ),
+              ],
+            )),
         Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
@@ -152,138 +170,130 @@ class RecensioneInserita extends StatelessWidget {
         _getButtonRecensione(context, TopicInfo().getTopic()),
         //AppuntiUtility.getRecensioni(context, TopicInfo().getTopic()),
         Column(
-      children: <Widget> [
-        //container che contiene le 3 stelline a inizio pagina
-        Container(
-          height: 40,
-          width: MediaQuery.of(context).size.width,
-          alignment: Alignment.center,
-          decoration: const BoxDecoration(
-            border: Border(
-              bottom: BorderSide(width: 2, color: Colors.blue),
-              top: BorderSide(width: 2, color: Colors.blue),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              //bottone chiarezza
-              TextButton(
-                onLongPress: () {
-                  CustomDialogs.chiarezzaDialog(context);
-                },
-                onPressed: () {
-                  CustomDialogs.chiarezzaDialog(context);
-                },
+          children: <Widget>[
+            //container che contiene le 3 stelline a inizio pagina
+            Container(
+                height: 40,
+                width: MediaQuery.of(context).size.width,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(width: 2, color: Colors.blue),
+                    top: BorderSide(width: 2, color: Colors.blue),
+                  ),
+                ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[ 
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.blue,
-                      ),
-                    ),
-                    Text(
-                      "Chiarezza",
-                    ) 
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    //bottone chiarezza
+                    TextButton(
+                        onLongPress: () {
+                          CustomDialogs.chiarezzaDialog(context);
+                        },
+                        onPressed: () {
+                          CustomDialogs.chiarezzaDialog(context);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const <Widget>[
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                              child: Icon(
+                                Icons.star,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            Text(
+                              "Chiarezza",
+                            )
+                          ],
+                        )),
+                    //bottone validità
+                    TextButton(
+                        onLongPress: () {
+                          CustomDialogs.validitaDialog(context);
+                        },
+                        onPressed: () {
+                          CustomDialogs.validitaDialog(context);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const <Widget>[
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                              child: Icon(
+                                Icons.star,
+                                color: Colors.green,
+                              ),
+                            ),
+                            Text(
+                              "Validitá",
+                            ),
+                          ],
+                        )),
+                    //bottone completezza
+                    TextButton(
+                        onLongPress: () {
+                          CustomDialogs.completezzaDialog(context);
+                        },
+                        onPressed: () {
+                          CustomDialogs.completezzaDialog(context);
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: const <Widget>[
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                              child: Icon(
+                                Icons.star,
+                                color: Colors.red,
+                              ),
+                            ),
+                            Text(
+                              "Completezza",
+                            )
+                          ],
+                        ))
                   ],
-                )
-              ),
-              //bottone validità
-              TextButton(
-                onLongPress: () {
-                  CustomDialogs.validitaDialog(context);
-                },
-                onPressed: () {
-                  CustomDialogs.validitaDialog(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[ 
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.green,
-                      ),
-                    ),
-                    Text(
-                      "Validitá",
-                    ),
-                  ],
-                )
-              ),
-              //bottone completezza
-              TextButton(
-                onLongPress: () {
-                  CustomDialogs.completezzaDialog(context);
-                },
-                onPressed: () {
-                  CustomDialogs.completezzaDialog(context);
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const <Widget>[ 
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                      child: Icon(
-                        Icons.star,
-                        color: Colors.red,
-                      ),
-                    ),
-                    Text(
-                      "Completezza",
-                    ) 
-                  ],
-                )
-              )
-            ],
-          )
-        ),
-        _getBoxRecensione(
-          context,
-          "Edward Elric",
-          Recensione().getVotoChiarezza(),
-          Recensione().getVotoValidita(),
-          Recensione().getVotoCompletezza(),
-          Recensione().getRecensione(),
-          true
-        ),
+                )),
+            _getBoxRecensione(
+                context,
+                "Edward Elric",
+                Recensione().getVotoChiarezza(),
+                Recensione().getVotoValidita(),
+                Recensione().getVotoCompletezza(),
+                Recensione().getRecensione(),
+                true),
 
-
-        _getBoxRecensione(
-              context, 
-              "Roy Mustang", 
-              4, 
-              3, 
-              5, 
-              "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
-              "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
-              "Consigliatissimi a chiunque!",
-              false
-            ),
+            _getBoxRecensione(
+                context,
+                "Roy Mustang",
+                4,
+                3,
+                5,
+                "Gli appunti sono veramente ben fatti. Sono riuscita a passare l’esame solo grazie a questi appunti."
+                    "Da sola non riuscivo a capire molti concetti che invece quì ho trovato espressi molto chiaramente."
+                    "Consigliatissimi a chiunque!",
+                false),
             //seconda recensione
             _getBoxRecensione(
-              context, 
-              "Louis Armstrong", 
-              1, 
-              2, 
-              4, 
+              context,
+              "Louis Armstrong",
+              1,
+              2,
+              4,
               "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
-              "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
-              "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti.",
+                  "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
+                  "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti.",
               false,
             ),
-      ],
-    )
-      ]
-    ),
+          ],
+        )
+      ]),
     );
   }
 
-    static Widget _getButtonRecensione(BuildContext context, Topic topic) {
+  static Widget _getButtonRecensione(BuildContext context, Topic topic) {
     if (!LibraryInfo().getCaricati().contains(topic)) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
@@ -294,17 +304,13 @@ class RecensioneInserita extends StatelessWidget {
             color: Colors.blue,
           ),
           child: TextButton(
-            onPressed: () => {
-              Navigator.pushNamed(context, '/add_recensione')
-            },
-            child: const Text(
-              "Modifica la tua Recensione",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              )   
-            ),
+            onPressed: () => {Navigator.pushNamed(context, '/add_recensione')},
+            child: const Text("Modifica la tua Recensione",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                )),
           ),
         ),
       );
@@ -313,13 +319,20 @@ class RecensioneInserita extends StatelessWidget {
     }
   }
 
-  static Widget _getBoxRecensione(BuildContext context, String nome, int chiarezza, int validita, int completezza, String testoRecensione, bool personale) {
+  static Widget _getBoxRecensione(
+      BuildContext context,
+      String nome,
+      int chiarezza,
+      int validita,
+      int completezza,
+      String testoRecensione,
+      bool personale) {
     Map<int, Color> coloreVoto = {
-      1 : Colors.red.shade600,
-      2 : Colors.red.shade400,
-      3 : Colors.orange,
-      4 : Colors.lightGreen.shade300,
-      5 : Colors.green.shade500
+      1: Colors.red.shade600,
+      2: Colors.red.shade400,
+      3: Colors.orange,
+      4: Colors.lightGreen.shade300,
+      5: Colors.green.shade500
     };
 
     return Row(
@@ -396,7 +409,7 @@ class RecensioneInserita extends StatelessWidget {
                             Text(
                               validita.toString(),
                               style: TextStyle(
-                                color:coloreVoto[validita],
+                                color: coloreVoto[validita],
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -437,7 +450,6 @@ class RecensioneInserita extends StatelessWidget {
     );
   }
 
-
   static Widget _getPollice(bool personale) {
     if (personale) {
       return Container(
@@ -445,28 +457,28 @@ class RecensioneInserita extends StatelessWidget {
       );
     } else {
       return Container(
-                  height: 30,
-                  alignment: Alignment.bottomRight,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const <Widget>[
-                      //commento utile?
-                      Padding(
-                        padding: EdgeInsets.all(0),
-                        child: Text(
-                          "Ti è stata utile questa recensione?",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ),
-                      //pollice
-                      LikeButton(),
-                    ],
-                  ),
-                );
-    } 
+        height: 30,
+        alignment: Alignment.bottomRight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: const <Widget>[
+            //commento utile?
+            Padding(
+              padding: EdgeInsets.all(0),
+              child: Text(
+                "Ti è stata utile questa recensione?",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 13,
+                ),
+              ),
+            ),
+            //pollice
+            LikeButton(),
+          ],
+        ),
+      );
+    }
   }
 }

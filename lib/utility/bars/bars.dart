@@ -113,6 +113,7 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
 /*
 pulsante + che andrà inserito nel mezzo della bottom bar
 */
+/*
 class FloatingPlusButton extends StatelessWidget {
   const FloatingPlusButton({Key? key}) : super(key: key);
 
@@ -143,6 +144,7 @@ class FloatingPlusButton extends StatelessWidget {
         )));
   }
 }
+*/
 
 class CloseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CloseAppBar({
