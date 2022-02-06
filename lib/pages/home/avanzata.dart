@@ -4,9 +4,11 @@ import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/informations/search_info.dart';
+import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
+import 'package:ium_project/utility/materie/materia.dart';
 
 /*
 schermata di caricamento appunti
@@ -211,8 +213,12 @@ class _RicercaAvanzataState extends State<RicercaAvanzata> {
                               _corsoController.clear();
                               _profController.clear();
                               _autoreController.clear();
-                              _filterFunction(context, titolo, facolta, corso,
-                                  prof, autore);
+                              _multiFilterSearch(Filters.none, autore, corso,
+                                  facolta, prof, titolo);
+                              Navigator.pushReplacement(
+                                  context,
+                                  CustomAnimations.topToBottom(
+                                      MyPage.risultati));
                             }
                           },
                           child: Row(
@@ -238,28 +244,24 @@ class _RicercaAvanzataState extends State<RicercaAvanzata> {
     );
   }
 
-  void _filterFunction(BuildContext context, String titolo, String facolta,
-      String corso, String prof, String autore) {
-    SearchInfo().setFilter(Filters.avanzata);
-  }
-
-  /*static void multiFilterSearch(Filters filter, String autoreA, String corsoA,
+  static void _multiFilterSearch(Filters filter, String autoreA, String corsoA,
       String facoltaA, String profA, String titoloA) {
+    SearchInfo().setFilter(Filters.avanzata);
     for (Topic t in Topic.values) {
       Materia materia = TopicToMateria().getMap()[t];
       if (materia
               .getPublisher()
               .toLowerCase()
-              .contains(autoreA.toLowerCase()) ||
-          materia.getTopic().toLowerCase().contains(corsoA.toLowerCase()) ||
+              .contains(autoreA.toLowerCase()) &&
+          materia.getTopic().toLowerCase().contains(corsoA.toLowerCase()) &&
           materia
               .getDepartment()
               .toLowerCase()
-              .contains(facoltaA.toLowerCase()) ||
-          materia.getTeacher().toLowerCase().contains(profA.toLowerCase()) ||
+              .contains(facoltaA.toLowerCase()) &&
+          materia.getTeacher().toLowerCase().contains(profA.toLowerCase()) &&
           materia.getTitle().toLowerCase().contains(titoloA.toLowerCase())) {
         SearchInfo().addRisultato(t);
       }
     }
-  }*/
+  }
 }

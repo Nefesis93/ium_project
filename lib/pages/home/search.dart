@@ -85,40 +85,46 @@ class Search {
                                     color: Colors.white, fontSize: 18),
                               ),
                               onPressed: () {
-                                if (filter == Filters.none) {
-                                  //ricerca su tutto
-                                  multiFilterSearch(
-                                      filter, _noneController.text);
-                                  _corsoController.clear();
-                                  _autoreController.clear();
-                                  _facoltaController.clear();
-                                  _profController.clear();
-                                  _titoloController.clear();
-                                  SearchInfo().setFilter(filter);
-                                  Navigator.pushReplacement(
-                                      context,
-                                      CustomAnimations.rightToLeft(
-                                          MyPage.risultati));
-                                } else {
-                                  //switch context per andare alla pagina dei risultati
-                                  //ricerca su un filtro
-                                  singleFilterSearch(
-                                      filter,
-                                      _autoreController.text,
-                                      _corsoController.text,
-                                      _facoltaController.text,
-                                      _profController.text,
-                                      _titoloController.text);
-                                  _corsoController.clear();
-                                  _autoreController.clear();
-                                  _facoltaController.clear();
-                                  _profController.clear();
-                                  _titoloController.clear();
-                                  SearchInfo().setFilter(filter);
-                                  Navigator.pushReplacement(
-                                      context,
-                                      CustomAnimations.rightToLeft(
-                                          MyPage.risultati));
+                                if (_titoloController.text != "" ||
+                                    _autoreController.text != "" ||
+                                    _corsoController.text != "" ||
+                                    _profController.text != "" ||
+                                    _noneController.text != "") {
+                                  if (filter == Filters.none) {
+                                    //ricerca su tutto
+                                    multiFilterSearch(
+                                        filter, _noneController.text);
+                                    _corsoController.clear();
+                                    _autoreController.clear();
+                                    _facoltaController.clear();
+                                    _profController.clear();
+                                    _titoloController.clear();
+                                    SearchInfo().setFilter(filter);
+                                    Navigator.pushReplacement(
+                                        context,
+                                        CustomAnimations.rightToLeft(
+                                            MyPage.risultati));
+                                  } else {
+                                    //switch context per andare alla pagina dei risultati
+                                    //ricerca su un filtro
+                                    singleFilterSearch(
+                                        filter,
+                                        _autoreController.text,
+                                        _corsoController.text,
+                                        _facoltaController.text,
+                                        _profController.text,
+                                        _titoloController.text);
+                                    _corsoController.clear();
+                                    _autoreController.clear();
+                                    _facoltaController.clear();
+                                    _profController.clear();
+                                    _titoloController.clear();
+                                    SearchInfo().setFilter(filter);
+                                    Navigator.pushReplacement(
+                                        context,
+                                        CustomAnimations.rightToLeft(
+                                            MyPage.risultati));
+                                  }
                                 }
                               },
                             )))
@@ -319,7 +325,6 @@ class Search {
                       onPressed: () {
                         Navigator.pop(context);
                         if (filter == Filters.avanzata) {
-                          searchDialog(context, Filters.none);
                           Navigator.pushNamed(context, "/avanzata");
                         } else {
                           searchDialog(context, filter);

@@ -4,6 +4,7 @@ import 'package:ium_project/pages/add_recensione/add_recensione.dart';
 import 'package:ium_project/pages/appunti/anteprime/notes_preview.dart';
 import 'package:ium_project/pages/home/avanzata.dart';
 import 'package:ium_project/pages/home/home.dart';
+import 'package:ium_project/pages/home/risultati.dart';
 import 'package:ium_project/pages/library/library.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/appunti/pagina_appunti/appunti.dart';
@@ -40,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/notes_preview': (_) => const NotesPreview(),
         '/appunti': (_) => const Appunti(),
         '/avanzata': (_) => const RicercaAvanzata(),
+        '/risultati_ricerca': (_) => const Risultati(),
       },
     );
   }
