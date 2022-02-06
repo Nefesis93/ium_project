@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/filters.dart';
 import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
@@ -17,7 +18,7 @@ class Search {
   static final TextEditingController _autoreController =
       TextEditingController();
 
-  static void searchDialog(BuildContext context) {
+  static void searchDialog(BuildContext context, Filters filter) {
     showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -30,55 +31,37 @@ class Search {
               backgroundColor: Colors.blue,
               content: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 180,
+                height: filter != Filters.none ? 60 : 180,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    Row(children: <Widget>[
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.white,
-                            size: 30,
-                          )),
-                      Container(
-                          width: 335,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Colors.white,
-                            ),
-                          ),
-                          child: Row(children: <Widget>[
-                            TextButton(
-                                onPressed: () => 0,
-                                child: const Text("Cerca...",
-                                    style: TextStyle(
-                                        fontSize: 20, color: Colors.white)))
-                          ]))
-                    ]),
+                    _getSearchBar(filter, context),
                     //riga Titolo`
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        _getContainerSearch(context, "Titolo", true),
-                        _getContainerSearch(context, "Facoltà", true),
-                        _getContainerSearch(context, "Corso", true),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        _getContainerSearch(context, "Prof", true),
-                        _getContainerSearch(context, "Autore", true),
-                        _getContainerSearch(context, "Ricerca avanzata", false),
-                      ],
-                    ),
+                    filter == Filters.none
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              _getContainerSearch(
+                                  context, Filters.titolo, true),
+                              _getContainerSearch(
+                                  context, Filters.facolta, true),
+                              _getContainerSearch(context, Filters.corso, true),
+                            ],
+                          )
+                        : const SizedBox(),
+                    filter == Filters.none
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              _getContainerSearch(context, Filters.prof, true),
+                              _getContainerSearch(
+                                  context, Filters.autore, true),
+                              _getContainerSearch(
+                                  context, Filters.avanzata, false),
+                            ],
+                          )
+                        : const SizedBox(),
                     /*Container(
                       width: 150,
                       decoration: BoxDecoration(
@@ -179,7 +162,7 @@ class Search {
   }
 
   static Widget _getContainerSearch(
-      BuildContext context, String text, bool plus) {
+      BuildContext context, Filters filter, bool plus) {
     return Container(
         width: 115,
         height: 47,
@@ -198,8 +181,19 @@ class Search {
               SizedBox(
                   width: 80,
                   child: TextButton(
-                      onPressed: () => 0,
-                      child: Text(text,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        if (filter == Filters.avanzata) {
+                          searchDialog(context, Filters.none);
+                          Navigator.pushNamed(context, "/avanzata");
+                        } else {
+                          searchDialog(context, filter);
+                        }
+                      },
+                      child: Text(
+                          filter == Filters.avanzata
+                              ? "Ricerca Avanzata"
+                              : _upperFirstChar(filter.toString().substring(8)),
                           style: TextStyle(
                               fontSize: plus ? 19 : 12, color: Colors.blue))))
             ]));
@@ -265,5 +259,65 @@ class Search {
         ],
       ),
     );
+  }
+
+  static Widget _getSearchBar(Filters filter, BuildContext context) {
+    return Row(children: <Widget>[
+      IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+            size: 30,
+          )),
+      Container(
+          width: 335,
+          height: 50,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: Colors.white,
+            ),
+          ),
+          child: Row(mainAxisAlignment: MainAxisAlignment.start, children: <
+              Widget>[
+            filter != Filters.none
+                ? _getContainerSearch(
+                    context, filter, filter == Filters.avanzata ? false : true)
+                : const SizedBox(),
+            Container(
+                padding: const EdgeInsets.only(left: 15),
+                height: 50,
+                width: filter == Filters.none ? 320 : 170,
+                child: TextField(
+                    style: const TextStyle(color: Colors.white, fontSize: 20),
+                    controller: _autoreController,
+                    maxLength: 25,
+                    decoration: const InputDecoration(
+                        counterText: "",
+                        border: InputBorder.none,
+                        hintStyle: TextStyle(color: Colors.white, fontSize: 20),
+                        hintText: "Cerca..."))),
+            filter != Filters.none
+                ? Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          searchDialog(context, Filters.none);
+                        },
+                        icon: const Icon(
+                          Icons.close,
+                          color: Colors.white,
+                        )))
+                : const SizedBox()
+          ]))
+    ]);
+  }
+
+  static String _upperFirstChar(String string) {
+    return string[0].toUpperCase() + string.substring(1);
   }
 }

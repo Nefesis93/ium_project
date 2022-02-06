@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ium_project/enums/filters.dart';
 import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/informations/library_info.dart';
@@ -30,7 +31,7 @@ class DefaultBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
             onPressed: () {
-              Search.searchDialog(context);
+              Search.searchDialog(context, Filters.none);
             },
             icon: const Icon(
               Icons.search,
