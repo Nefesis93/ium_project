@@ -11,5 +11,5 @@ class LockDueFasi extends Materia {
             ['assets/images/unknown.png', 'assets/images/unknown1.png'],
             3,
             2,
-            "2/5/2020");
+            "2/5/20");
 }

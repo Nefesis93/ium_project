@@ -14,5 +14,5 @@ class Lock extends Materia {
             ],
             5,
             2,
-            "14/4/2018");
+            "14/4/18");
 }

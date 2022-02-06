@@ -11,5 +11,5 @@ class Turing extends Materia {
             ['assets/images/mdt1.png', 'assets/images/mdt2.png'],
             3,
             2,
-            "10/2/2020");
+            "10/2/20");
 }

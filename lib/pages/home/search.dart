@@ -3,10 +3,14 @@ import 'package:ium_project/enums/filters.dart';
 import 'package:ium_project/enums/home_query.dart';
 import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
+import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/informations/query_state.dart';
+import 'package:ium_project/informations/search_info.dart';
 import 'package:ium_project/informations/topic_to_home_query.dart';
+import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
+import 'package:ium_project/utility/materie/materia.dart';
 
 class Search {
   static final TextEditingController _titoloController =
@@ -17,6 +21,7 @@ class Search {
   static final TextEditingController _profController = TextEditingController();
   static final TextEditingController _autoreController =
       TextEditingController();
+  static final TextEditingController _noneController = TextEditingController();
 
   static void searchDialog(BuildContext context, Filters filter) {
     showDialog<String>(
@@ -31,12 +36,12 @@ class Search {
               backgroundColor: Colors.blue,
               content: SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: filter != Filters.none ? 60 : 180,
+                height: filter != Filters.none ? 110 : 220,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    _getSearchBar(filter, context),
+                    getSearchBar(context, filter),
                     //riga Titolo`
                     filter == Filters.none
                         ? Row(
@@ -62,6 +67,61 @@ class Search {
                             ],
                           )
                         : const SizedBox(),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                        child: Container(
+                            width: 150,
+                            height: 40,
+                            decoration: BoxDecoration(
+                                color: Colors.blue.shade700,
+                                borderRadius: const BorderRadius.horizontal(
+                                    left: Radius.circular(30)),
+                                border:
+                                    Border.all(color: Colors.white, width: 2)),
+                            child: TextButton(
+                              child: const Text(
+                                "Cerca",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                              onPressed: () {
+                                if (filter == Filters.none) {
+                                  //ricerca su tutto
+                                  multiFilterSearch(
+                                      filter, _noneController.text);
+                                  _corsoController.clear();
+                                  _autoreController.clear();
+                                  _facoltaController.clear();
+                                  _profController.clear();
+                                  _titoloController.clear();
+                                  SearchInfo().setFilter(filter);
+                                  Navigator.pushReplacement(
+                                      context,
+                                      CustomAnimations.rightToLeft(
+                                          MyPage.risultati));
+                                } else {
+                                  //switch context per andare alla pagina dei risultati
+                                  //ricerca su un filtro
+                                  singleFilterSearch(
+                                      filter,
+                                      _autoreController.text,
+                                      _corsoController.text,
+                                      _facoltaController.text,
+                                      _profController.text,
+                                      _titoloController.text);
+                                  _corsoController.clear();
+                                  _autoreController.clear();
+                                  _facoltaController.clear();
+                                  _profController.clear();
+                                  _titoloController.clear();
+                                  SearchInfo().setFilter(filter);
+                                  Navigator.pushReplacement(
+                                      context,
+                                      CustomAnimations.rightToLeft(
+                                          MyPage.risultati));
+                                }
+                              },
+                            )))
                     /*Container(
                       width: 150,
                       decoration: BoxDecoration(
@@ -159,6 +219,81 @@ class Search {
                 ),
               ),
             ));
+  }
+
+  static void multiFilterSearch(Filters filter, String noneA) {
+    for (Topic t in Topic.values) {
+      Materia materia = TopicToMateria().getMap()[t];
+      if (materia.getPublisher().toLowerCase().contains(noneA.toLowerCase()) ||
+          materia.getTopic().toLowerCase().contains(noneA.toLowerCase()) ||
+          materia.getDepartment().toLowerCase().contains(noneA.toLowerCase()) ||
+          materia.getTeacher().toLowerCase().contains(noneA.toLowerCase()) ||
+          materia.getTitle().toLowerCase().contains(noneA.toLowerCase())) {
+        SearchInfo().addRisultato(t);
+      }
+    }
+  }
+
+  static void singleFilterSearch(Filters filter, String autoreA, String corsoA,
+      String facoltaA, String profA, String titoloA) {
+    for (Topic t in Topic.values) {
+      Materia materia = TopicToMateria().getMap()[t];
+      switch (filter) {
+        case Filters.autore:
+          {
+            if (materia
+                .getPublisher()
+                .toLowerCase()
+                .contains(autoreA.toLowerCase())) {
+              SearchInfo().addRisultato(t);
+            }
+          }
+          break;
+        case Filters.corso:
+          {
+            if (materia
+                .getTopic()
+                .toLowerCase()
+                .contains(corsoA.toLowerCase())) {
+              SearchInfo().addRisultato(t);
+            }
+          }
+          break;
+        case Filters.facolta:
+          {
+            if (materia
+                .getDepartment()
+                .toLowerCase()
+                .contains(facoltaA.toLowerCase())) {
+              SearchInfo().addRisultato(t);
+            }
+          }
+          break;
+        case Filters.prof:
+          {
+            if (materia
+                .getTeacher()
+                .toLowerCase()
+                .contains(profA.toLowerCase())) {
+              SearchInfo().addRisultato(t);
+            }
+          }
+          break;
+        case Filters.titolo:
+          {
+            if (materia
+                .getTitle()
+                .toLowerCase()
+                .contains(titoloA.toLowerCase())) {
+              SearchInfo().addRisultato(t);
+            }
+          }
+          break;
+        default:
+          {}
+          break;
+      }
+    }
   }
 
   static Widget _getContainerSearch(
@@ -261,10 +396,11 @@ class Search {
     );
   }
 
-  static Widget _getSearchBar(Filters filter, BuildContext context) {
+  static Widget getSearchBar(BuildContext context, Filters filter) {
     return Row(children: <Widget>[
       IconButton(
           onPressed: () {
+            SearchInfo().clearRisultato();
             Navigator.pop(context);
           },
           icon: const Icon(
@@ -290,10 +426,10 @@ class Search {
             Container(
                 padding: const EdgeInsets.only(left: 15),
                 height: 50,
-                width: filter == Filters.none ? 320 : 170,
+                width: filter == Filters.none ? 280 : 170,
                 child: TextField(
                     style: const TextStyle(color: Colors.white, fontSize: 20),
-                    controller: _autoreController,
+                    controller: _getController(filter),
                     maxLength: 25,
                     decoration: const InputDecoration(
                         counterText: "",
@@ -305,6 +441,7 @@ class Search {
                     padding: const EdgeInsets.all(0),
                     child: IconButton(
                         onPressed: () {
+                          SearchInfo().clearRisultato();
                           Navigator.pop(context);
                           searchDialog(context, Filters.none);
                         },
@@ -315,6 +452,25 @@ class Search {
                 : const SizedBox()
           ]))
     ]);
+  }
+
+  static TextEditingController _getController(Filters filter) {
+    switch (filter) {
+      case Filters.autore:
+        return _autoreController;
+      case Filters.corso:
+        return _corsoController;
+      case Filters.facolta:
+        return _facoltaController;
+      case Filters.titolo:
+        return _titoloController;
+      case Filters.prof:
+        return _profController;
+      case Filters.none:
+        return _noneController;
+      default:
+        return TextEditingController();
+    }
   }
 
   static String _upperFirstChar(String string) {

@@ -4,6 +4,7 @@ import 'package:ium_project/pages/add_recensione/add_recensione.dart';
 import 'package:ium_project/pages/add_recensione/recensione_inserita.dart';
 import 'package:ium_project/pages/appunti/anteprime/notes_preview.dart';
 import 'package:ium_project/pages/home/home.dart';
+import 'package:ium_project/pages/home/risultati.dart';
 import 'package:ium_project/pages/library/library.dart';
 import 'package:ium_project/pages/login/login.dart';
 import 'package:ium_project/pages/recensioni/recensioni.dart';
@@ -31,4 +32,5 @@ class MyPage {
   static const MyPage appunti = MyPage._(Appunti());
   static const MyPage notesPreview = MyPage._(NotesPreview());
   static const MyPage recensioneInserita = MyPage._(RecensioneInserita());
+  static const MyPage risultati = MyPage._(Risultati());
 }

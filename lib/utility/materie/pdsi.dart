@@ -11,5 +11,5 @@ class Pdsi extends Materia {
             ['assets/images/Pdsi1.png', 'assets/images/Pdsi2.png'],
             5,
             2,
-            "1/9/2020");
+            "1/9/20");
 }

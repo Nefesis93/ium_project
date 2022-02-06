@@ -11,5 +11,5 @@ class TipiDiLock extends Materia {
             ['assets/images/unknown.png', 'assets/images/unknown1.png'],
             4,
             2,
-            "15/6/2021");
+            "15/6/21");
 }

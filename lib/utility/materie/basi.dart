@@ -11,5 +11,5 @@ class Basi extends Materia {
             ['assets/images/basi1.png', 'assets/images/basi2.png'],
             4,
             2,
-            "12/7/2021");
+            "12/7/21");
 }

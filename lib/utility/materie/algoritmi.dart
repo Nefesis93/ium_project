@@ -11,5 +11,5 @@ class Algoritmi extends Materia {
             ['assets/images/algo1.png', 'assets/images/algo2.png'],
             4,
             2,
-            "23/12/2019");
+            "23/12/19");
 }

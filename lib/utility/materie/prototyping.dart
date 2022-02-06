@@ -15,6 +15,6 @@ class Prototyping extends Materia {
               "/" +
               DateTime.now().month.toString() +
               "/" +
-              DateTime.now().year.toString(),
+              DateTime.now().year.toString().substring(2),
         );
 }

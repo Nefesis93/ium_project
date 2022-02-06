@@ -11,5 +11,5 @@ class Algebra extends Materia {
             ['assets/images/algebra1.png', 'assets/images/algebra2.png'],
             5,
             2,
-            "1/1/2022");
+            "1/1/22");
 }
