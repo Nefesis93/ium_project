@@ -8,7 +8,6 @@ import 'package:ium_project/pages/appunti/appunti_specifici/pdsi_page.dart';
 import 'package:ium_project/pages/appunti/appunti_specifici/prototyping_page.dart';
 import 'package:ium_project/pages/appunti/appunti_specifici/tipidilock_page.dart';
 import 'package:ium_project/pages/appunti/appunti_specifici/turing_page.dart';
-import 'package:ium_project/utility/bars/bars.dart';
 
 import '../appunti_specifici/algebra_page.dart';
 import '../appunti_specifici/lock_page.dart';

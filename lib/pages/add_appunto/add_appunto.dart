@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ium_project/enums/my_page.dart';
 import 'package:ium_project/enums/topic.dart';
 import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/utility/bars/bars.dart';
-import 'package:ium_project/utility/custom_animations.dart';
 
 import 'add_appunto_dialog.dart';
 

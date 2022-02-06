@@ -111,42 +111,6 @@ class DefaultBottomBar extends StatelessWidget implements PreferredSizeWidget {
   }
 }
 
-/*
-pulsante + che andrà inserito nel mezzo della bottom bar
-*/
-/*
-class FloatingPlusButton extends StatelessWidget {
-  const FloatingPlusButton({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 70,
-        width: 70,
-        padding: const EdgeInsets.only(bottom: 10),
-        child: FittedBox(
-            child: FloatingActionButton(
-          elevation: 10,
-          backgroundColor: Colors.blue,
-          foregroundColor: Colors.white,
-          onPressed: () {
-            if (UserLogin().getLoginInfo()) {
-              //l'utente è loggato
-              Navigator.pushNamed(context, '/add_appunto');
-            } else {
-              //l'utente non è loggato
-              CustomDialogs.permissionDialog(context);
-            }
-          },
-          child: const Icon(
-            Icons.add,
-            size: 25,
-          ),
-        )));
-  }
-}
-*/
-
 class CloseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CloseAppBar({
     Key? key,

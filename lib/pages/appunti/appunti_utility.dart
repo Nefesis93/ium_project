@@ -502,17 +502,6 @@ class AppuntiUtility {
                 "Appunti molto chiari, sintetici e abbastanza completi. Purtroppo non sono riuscito "
                     "a prendere un buon voto all’esame perchè gli argomenti trattati rimangono complessi "
                     "nonostante la chiarezza degli appunti. Non so se consigliarli al 100% ma sono sicuramente ben fatti."),
-            //terza recensione dinamica da implementare con i controller
-            /*
-            getBoxRecensione(
-              context,
-              "Anonimo3",
-              ,
-              ,
-              ,
-              ,
-            )
-            */
           ],
         );
       }

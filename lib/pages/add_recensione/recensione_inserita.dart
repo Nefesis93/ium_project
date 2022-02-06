@@ -6,7 +6,6 @@ import 'package:ium_project/informations/recensione.dart';
 import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/pages/appunti/appunti_utility.dart';
-import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_animations.dart';
 import 'package:ium_project/utility/custom_dialogs.dart';
 import 'package:ium_project/utility/materie/materia.dart';
@@ -18,8 +17,6 @@ class RecensioneInserita extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      bottomNavigationBar: const DefaultBottomBar(),
-      //floatingActionButton: const FloatingPlusButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: ListView(shrinkWrap: true, children: <Widget>[
         Container(
@@ -173,7 +170,7 @@ class RecensioneInserita extends StatelessWidget {
           children: <Widget>[
             //container che contiene le 3 stelline a inizio pagina
             Container(
-                height: 40,
+                height: 55,
                 width: MediaQuery.of(context).size.width,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
@@ -186,74 +183,94 @@ class RecensioneInserita extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     //bottone chiarezza
-                    TextButton(
-                        onLongPress: () {
-                          CustomDialogs.chiarezzaDialog(context);
-                        },
-                        onPressed: () {
-                          CustomDialogs.chiarezzaDialog(context);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const <Widget>[
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              child: Icon(
-                                Icons.star,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            Text(
-                              "Chiarezza",
-                            )
-                          ],
+                    Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: Container(
+                          width: 120,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blue),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: TextButton(
+                              onLongPress: () {
+                                CustomDialogs.chiarezzaDialog(context);
+                              },
+                              onPressed: () {
+                                CustomDialogs.chiarezzaDialog(context);
+                              },
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: const <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.blue,
+                                    ),
+                                    Text(
+                                      "Chiarezza",
+                                    )
+                                  ])),
                         )),
                     //bottone validità
-                    TextButton(
-                        onLongPress: () {
-                          CustomDialogs.validitaDialog(context);
-                        },
-                        onPressed: () {
-                          CustomDialogs.validitaDialog(context);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const <Widget>[
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              child: Icon(
-                                Icons.star,
-                                color: Colors.green,
-                              ),
-                            ),
-                            Text(
-                              "Validitá",
-                            ),
-                          ],
+                    Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: Container(
+                          width: 120,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blue),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: TextButton(
+                              onLongPress: () {
+                                CustomDialogs.validitaDialog(context);
+                              },
+                              onPressed: () {
+                                CustomDialogs.validitaDialog(context);
+                              },
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: const <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.green,
+                                    ),
+                                    Text(
+                                      "Validitá",
+                                    )
+                                  ])),
                         )),
-                    //bottone completezza
-                    TextButton(
-                        onLongPress: () {
-                          CustomDialogs.completezzaDialog(context);
-                        },
-                        onPressed: () {
-                          CustomDialogs.completezzaDialog(context);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const <Widget>[
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                              child: Icon(
-                                Icons.star,
-                                color: Colors.red,
-                              ),
-                            ),
-                            Text(
-                              "Completezza",
-                            )
-                          ],
-                        ))
+                    Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 5),
+                        child: Container(
+                          width: 130,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blue),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: TextButton(
+                              onLongPress: () {
+                                CustomDialogs.completezzaDialog(context);
+                              },
+                              onPressed: () {
+                                CustomDialogs.completezzaDialog(context);
+                              },
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: const <Widget>[
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.red,
+                                    ),
+                                    Text(
+                                      "Completezza",
+                                    )
+                                  ])),
+                        )),
                   ],
                 )),
             _getBoxRecensione(

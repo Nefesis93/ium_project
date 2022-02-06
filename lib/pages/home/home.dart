@@ -18,11 +18,8 @@ class Home extends StatelessWidget {
     return Scaffold(
         //barra superiore
         appBar: const DefaultBar(),
-        //barra inferiore
-        //bottomNavigationBar: const DefaultBottomBar(),
         //più della barra inferiore
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        //floatingActionButtonLocation: FloatingActionButtonLocation.
         resizeToAvoidBottomInset: false,
         //lista degli appunti
         body: _getBody(context, QueryState().getState()));

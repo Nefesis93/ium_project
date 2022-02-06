@@ -6,9 +6,7 @@ import 'package:ium_project/informations/search_info.dart';
 import 'package:ium_project/informations/topic_info.dart';
 import 'package:ium_project/informations/topic_to_materia.dart';
 import 'package:ium_project/utility/appunti/home_lib_utility.dart';
-import 'package:ium_project/utility/bars/bars.dart';
 import 'package:ium_project/utility/custom_animations.dart';
-import 'package:ium_project/informations/library_info.dart';
 import 'package:ium_project/utility/materie/materia.dart';
 import 'package:ium_project/pages/home/search.dart';
 

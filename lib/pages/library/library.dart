@@ -177,21 +177,9 @@ class _LibraryState extends State<Library> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    SizedBox(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            child: IconButton(
-                              padding: const EdgeInsets.all(0),
-                              onPressed: () => 0,
-                              icon: const Icon(Icons.bookmark),
-                              iconSize: 30,
-                              color: Colors.yellow.shade700,
-                            ),
-                          ),
-                          HomeLibUtility.getTitle(context, topic, false),
-                        ],
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: HomeLibUtility.getTitle(context, topic, false),
                     ),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),

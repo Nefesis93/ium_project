@@ -43,11 +43,8 @@ class LoginDialogs {
                         borderRadius: BorderRadius.circular(10)),
                     child: TextButton(
                         onPressed: () {
-                          //da inserire condizione se testo è vuoto oppure no if
                           Navigator.pop(context);
                           emailDialog(context);
-                          //else
-                          //_missingEmailDialog(context);
                         },
                         child: const Text("Invia",
                             style: TextStyle(color: Colors.white)))),
