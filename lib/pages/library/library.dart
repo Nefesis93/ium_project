@@ -17,9 +17,7 @@ class Library extends StatefulWidget {
 }
 
 class _LibraryState extends State<Library> {
-  List<Topic> _foundtopics = LibraryInfo().getState()
-      ? LibraryInfo().getCaricati()
-      : LibraryInfo().getScaricati();
+  List<Topic> _foundtopics = Topic.values;
   final TextEditingController _search = TextEditingController();
 
   @override
